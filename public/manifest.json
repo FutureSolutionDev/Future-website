@@ -1,0 +1,48 @@
+{
+  "name": "Future Solutions",
+  "short_name": "Future Solutions",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#28408c",
+  "background_color": "#ffffff",
+  "description": "Future Solutions (Bring Your Vision To Life).",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "Icons/192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "Icons/512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "Icons/144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "Icons/1920x1080.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "Icons/750x1334.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages": []
+}
