@@ -2,6 +2,8 @@
 
 import { Button } from '@/components/ui/Button';
 import { useLanguage } from '@/context/LanguageContext';
+import { Contact } from '@/lib/constants';
+import Link from 'next/link';
 
 export function CTASection() {
     const { t } = useLanguage();
@@ -18,8 +20,12 @@ export function CTASection() {
                     {t('cta.description')}
                 </p>
                 <div className="flex justify-center gap-4">
-                    <Button size="lg">{t('cta.button1')}</Button>
-                    <Button variant="secondary" size="lg">{t('cta.button2')}</Button>
+                    <Link href={Contact.WhatsApp} target="_blank">
+                        <Button size="lg">{t('cta.button1')}</Button>
+                    </Link>
+                    <Link href={"/contact"}>
+                        <Button variant="secondary" size="lg">{t('cta.button2')}</Button>
+                    </Link>
                 </div>
             </div>
         </section>

@@ -106,6 +106,6 @@ export const translations = {
   "cta.button2": { en: "Contact Us", ar: "تواصل معنا" },
   // whyUs
   "whyUs.title": { en: "WHY", ar: "لماذا" },
-  "whyUs.subtitle": { en: "Future Solutions Dev?", ar: "Future Solutions Dev?" },
+  "whyUs.subtitle": { en: "Future Solutions Dev ?", ar: "Future Solutions Dev ؟" },
   "whyUs.description": { en: "We don't just write code; we architect success. Our team combines technical expertise with business acumen to deliver solutions that drive real results.", ar: "نحن لا نكتب الكود فقط؛ نحن نصمم النجاح. يجمع فريقنا بين الخبرة التقنية والفطنة التجارية لتقديم حلول تحقق نتائج حقيقية." },
 };

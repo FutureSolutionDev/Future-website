@@ -1,10 +1,8 @@
 "use client";
-
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/Button';
 import { useLanguage } from '@/context/LanguageContext';
 import { usePathname } from 'next/navigation';
 
@@ -69,8 +67,6 @@ export function Navbar() {
                             {hasMounted ? (language === 'en' ? 'العربية' : 'English') : '...'}
                         </span>
                     </button>
-
-                    <Button variant="primary" size="sm">{t('nav.getStarted')}</Button>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -113,7 +109,6 @@ export function Navbar() {
                                     <Globe size={18} />
                                     <span>{language === 'en' ? 'العربية' : 'English'}</span>
                                 </button>
-                                <Button variant="primary" size="sm" className="w-full ml-4">{t('nav.getStarted')}</Button>
                             </div>
                         </div>
                     </motion.div>

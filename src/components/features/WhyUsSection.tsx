@@ -41,12 +41,14 @@ export function WhyUsSection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-3xl md:text-5xl font-bold mb-6">
-                            {t('whyUs.title')}
-                            <span className="text-primary-blue">{t('whyUs.subtitle')}</span></h2>
-                        <p className="text-text-muted text-lg mb-8"
-                            dir={language === 'ar' ? 'rtl' : 'ltr'}
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6"
                         >
+                            {t('whyUs.title')}
+                            <span className="text-primary-blue"
+                                dir={language === 'ar' ? 'rtl' : 'ltr'}
+
+                            > {t('whyUs.subtitle')}</span></h2>
+                        <p className="text-text-muted text-lg mb-8"                        >
                             {t('whyUs.description')}
                         </p>
 

@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { useLanguage } from '@/context/LanguageContext';
 import Image from 'next/image';
+import { Contact } from '@/lib/constants';
+import Link from 'next/link';
 
 export function Hero() {
     const { t, language } = useLanguage();
@@ -37,19 +39,21 @@ export function Hero() {
                     </div>
 
                     <div className="flex flex-wrap gap-4">
-                        <Button
+                        {/* <Button
                             size="lg"
                             className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 border-none shadow-[0_0_30px_-10px_rgba(37,99,235,0.6)]"
                         >
                             {t('hero.cta.primary')}
-                        </Button>
-                        <Button
-                            variant="outline"
-                            size="lg"
-                            className="bg-transparent border-blue-500/30 text-blue-100 hover:bg-blue-500/10 hover:border-blue-500/50"
-                        >
-                            {t('hero.cta.secondary')}
-                        </Button>
+                        </Button> */}
+                        <Link href={Contact.WhatsApp} target="_blank" referrerPolicy='no-referrer'>
+                            <Button
+                                variant="outline"
+                                size="lg"
+                                className="bg-transparent border-blue-500/30 text-blue-100 hover:bg-blue-500/10 hover:border-blue-500/50"
+                            >
+                                {t('hero.cta.secondary')}
+                            </Button>
+                        </Link>
                     </div>
                 </motion.div>
 
