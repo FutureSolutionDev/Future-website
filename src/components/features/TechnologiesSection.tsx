@@ -1,33 +1,50 @@
 "use client";
 
+import { useLanguage } from '@/context/LanguageContext';
+import { techs } from '@/lib/constants';
 import { motion } from 'framer-motion';
+import {
+    Atom,
+    Server,
+    Triangle,
+    FileCode2,
+    Braces,
+    Cloud,
+    Database,
+    Container,
+} from 'lucide-react';
 
 export function TechnologiesSection() {
-    const techs = [
-        { name: 'React', icon: '⚛️', color: 'text-cyan-400' },
-        { name: 'Node.js', icon: '🟢', color: 'text-green-500' },
-        { name: 'NEXT.js', icon: '▲', color: 'text-white' },
-        { name: 'TypeScript', icon: 'TS', color: 'text-blue-500' },
-        { name: 'Python', icon: '🐍', color: 'text-yellow-300' },
-        { name: 'AWS', icon: '☁️', color: 'text-orange-400' },
-        { name: 'PostgreSQL', icon: '🐘', color: 'text-blue-300' },
-        { name: 'Docker', icon: '🐳', color: 'text-blue-500' },
-    ];
+    const { t, language } = useLanguage();
+
+    const techsData = techs({
+        Atom,
+        Server,
+        Triangle,
+        FileCode2,
+        Braces,
+        Cloud,
+        Database,
+        Container,
+    })
 
     return (
-        <section className="py-24 relative z-10 w-full">
+        <section className="relative z-10 w-full">
             <div className="container mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    className="mb-16"
+                    className="mb-8"
                 >
-                    <h2 className="text-4xl font-bold mb-4">Technologies We Use</h2>
-                    <p className="text-blue-200/60">Cutting-edge tools for cutting-edge solutions.</p>
+                    <h2 className="text-4xl font-bold mb-4">   {language === 'ar' ? 'التقنيات' : 'Technologies'} <span className="text-purple-500">{language === 'ar' ? 'والأدوات' : '& Tools'}</span>
+                    </h2>
+                    <p className="text-blue-200/60">   {language === 'ar'
+                        ? 'نستخدم أحدث التقنيات وأكثرها موثوقية لبناء منتجاتك الرقمية.'
+                        : 'We use the latest and most reliable technologies to build your digital products.'}</p>
                 </motion.div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    {techs.map((tech, i) => (
+                    {techsData.map((tech, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -39,6 +56,9 @@ export function TechnologiesSection() {
                                 {tech.icon}
                             </div>
                             <span className="font-semibold text-xl text-white/90">{tech.name}</span>
+                            {tech.description?.[language] && <p className="text-blue-200/60 mb-8 leading-relaxed text-sm">
+                                {tech.description[language]}
+                            </p>}
                         </motion.div>
                     ))}
                 </div>

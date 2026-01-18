@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { useLanguage } from '@/context/LanguageContext';
+import Image from 'next/image';
 
 export function Hero() {
     const { t, language } = useLanguage();
@@ -57,14 +58,16 @@ export function Hero() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1 }}
-                    className="relative flex items-center justify-center rtl:justify-start"
+                    className="relative flex items-center justify-center rtl:justify-start pt-20"
                 >
                     <div className="relative w-full max-w-[650px] aspect-square">
                         {/* Glow behind image */}
                         <div className="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full" />
-                        <img
+                        <Image
                             src="/assets/hero-illustration.png"
                             alt="Future Solutions Technology"
+                            width={650}
+                            height={650}
                             className="relative z-10 w-full h-auto drop-shadow-2xl"
                         />
                     </div>

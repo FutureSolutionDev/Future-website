@@ -9,7 +9,6 @@ export const translations = {
   "nav.about": { en: "About", ar: "من نحن" },
   "nav.contact": { en: "Contact", ar: "تواصل معنا" },
   "nav.getStarted": { en: "Get Started", ar: "ابدأ الآن" },
-
   // Hero
   "hero.badge": { en: "Future Solutions Dev", ar: "فيوتشر سوليوشنز للتطوير" },
   "hero.title.building": { en: "Building", ar: "نصنع" },
@@ -90,7 +89,22 @@ export const translations = {
   "contact.form.subject": { en: "Subject", ar: "الموضوع" },
   "contact.form.message": { en: "Message", ar: "الرسالة" },
   "contact.form.send": { en: "Send Message", ar: "إرسال الرسالة" },
-
   // Footer & Common
   "footer.rights": { en: "All rights reserved.", ar: "جميع الحقوق محفوظة." },
+  // cta
+  "cta.title": { en: "Ready to", ar: "هل أنت جاهز" },
+  "cta.subtitle": {
+    en: "Scale?",
+    ar: "للتوسع؟",
+  },
+  "cta.description": {
+    en: "Let's discuss how we can transform your business with cutting-edge technology.",
+    ar: "دعنا نناقش كيف يمكننا تحويل عملك باستخدام التقنيات الحديثة.",
+  },
+  "cta.button1": { en: "Start Your Project", ar: "ابدأ مشروعك" },
+  "cta.button2": { en: "Contact Us", ar: "تواصل معنا" },
+  // whyUs
+  "whyUs.title": { en: "WHY", ar: "لماذا" },
+  "whyUs.subtitle": { en: "Future Solutions Dev?", ar: "Future Solutions Dev?" },
+  "whyUs.description": { en: "We don't just write code; we architect success. Our team combines technical expertise with business acumen to deliver solutions that drive real results.", ar: "نحن لا نكتب الكود فقط؛ نحن نصمم النجاح. يجمع فريقنا بين الخبرة التقنية والفطنة التجارية لتقديم حلول تحقق نتائج حقيقية." },
 };

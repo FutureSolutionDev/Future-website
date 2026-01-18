@@ -6,4 +6,40 @@
         <changefreq>hourly</changefreq>
         <priority>1.0</priority>
     </url>
+    <url>
+        <loc>https://www.futuresolutionsdev.com/about</loc>
+        <lastmod>2023-08-31</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://www.futuresolutionsdev.com/contact</loc>
+        <lastmod>2023-08-31</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://www.futuresolutionsdev.com/services</loc>
+        <lastmod>2023-08-31</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://www.futuresolutionsdev.com/portfolio</loc>
+        <lastmod>2023-08-31</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://www.futuresolutionsdev.com/solutions</loc>
+        <lastmod>2023-08-31</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://www.futuresolutionsdev.com/bltechnologiesog</loc>
+        <lastmod>2023-08-31</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>1.0</priority>
+    </url>
 </urlset>

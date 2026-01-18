@@ -2,55 +2,25 @@
 
 import { motion } from 'framer-motion';
 import { Code, Smartphone, Cloud, Brain, Database, Shield, CheckCircle } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
 import { useLanguage } from '@/context/LanguageContext';
-
+import { services } from '@/lib/constants';
+import Link from 'next/link';
 export default function ServicesPage() {
     const { t } = useLanguage();
-
-    const services = [
-        {
-            icon: Code,
-            title: t('services.web.title'),
-            description: t('services.web.desc'),
-            features: ['Next.js', 'React', 'Tailwind', 'PWA']
-        },
-        {
-            icon: Smartphone,
-            title: t('services.mobile.title'),
-            description: t('services.mobile.desc'),
-            features: ['iOS', 'Android', 'Flutter', 'React Native']
-        },
-        {
-            icon: Cloud,
-            title: t('services.saas.title'),
-            description: t('services.saas.desc'),
-            features: ['Multi-tenancy', 'Cloud', 'API', 'Scale']
-        },
-        {
-            icon: Brain,
-            title: t('services.ai.title'),
-            description: t('services.ai.desc'),
-            features: ['ML', 'NLP', 'Data', 'Bot']
-        },
-        {
-            icon: Database,
-            title: t('services.devops.title'),
-            description: t('services.devops.desc'),
-            features: ['CI/CD', 'AWS', 'Docker', 'Security']
-        },
-        {
-            icon: Shield,
-            title: t('services.security.title'),
-            description: t('services.security.desc'),
-            features: ['PenTest', 'Compliance', 'Audit', 'Guard']
-        }
-    ];
+    const servicesData = services({
+        t,
+        Code,
+        Smartphone,
+        Cloud,
+        Brain,
+        Database,
+        Shield,
+    })
 
     return (
-        <div className="pt-20">
+        <>
             {/* Header */}
-            <section className="py-20 bg-bg-dark relative overflow-hidden">
+            <section className="pt-20 bg-bg-dark relative overflow-hidden">
                 <div className="absolute inset-0 bg-primary-blue/5 blur-3xl pointer-events-none" />
                 <div className="container mx-auto px-4 text-center relative z-10">
                     <motion.h1
@@ -65,12 +35,11 @@ export default function ServicesPage() {
                     </p>
                 </div>
             </section>
-
             {/* Services Grid */}
-            <section className="py-20 bg-surface-dark/30">
+            <section className="py-10 bg-surface-dark/30">
                 <div className="container mx-auto px-4">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {services.map((service, i) => (
+                        {servicesData.map((service, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 20 }}
@@ -99,12 +68,17 @@ export default function ServicesPage() {
             </section>
 
             {/* CTA */}
-            <section className="py-20 bg-bg-dark text-center">
+            <section className="pb-10 bg-bg-dark text-center">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold mb-6">{t('services.cta.title')}</h2>
-                    <Button size="lg">{t('services.cta.btn')}</Button>
+
+                    <Link
+                        href={"/contact"}
+                        className="relative inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 active:scale-95 bg-primary-blue text-white hover:bg-blue-600 shadow-[0_0_20px_rgba(29,161,242,0.5)] px-8 py-4 text-lg"
+                    >
+                        {t('services.cta.btn')}</Link>
                 </div>
             </section>
-        </div>
+        </>
     );
 }

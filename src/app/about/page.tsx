@@ -2,10 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
+import QuoteCanvas from './QuoteCanvas';
 
 export default function AboutPage() {
     const { language } = useLanguage();
-
+    const about = {
+        title: language === 'ar' ? 'من' : 'Who We',
+        description: language === 'ar' ? 'فيوتشر سوليوشنز للتطوير هي وكالة برمجيات رائدة مكرسة لتحويل الأعمال من خلال التكنولوجيا. تأسست في عام 2024، وسرعان ما نمت لتصبح فريقًا من المهندسين والمصممين والاستراتيجيين الشغوفين.' : 'Future Solutions Dev is a premier software development agency dedicated to transforming businesses through technology. Founded in 2024, we have rapidly grown into a team of passionate engineers, designers, and strategists.',
+    }
     return (
         <div className="pt-20">
             <section className="py-20 bg-bg-dark">
@@ -16,13 +20,11 @@ export default function AboutPage() {
                             animate={{ opacity: 1, x: 0 }}
                         >
                             <h1 className="text-4xl font-bold mb-6">
-                                {language === 'ar' ? 'من' : 'Who We'} <span className="text-primary-blue">{language === 'ar' ? 'نحن' : 'Are'}</span>
+                                {about.title} <span className="text-primary-blue">{language === 'ar' ? 'نحن' : 'Are'}</span>
                             </h1>
                             <div className="prose prose-invert text-text-muted">
                                 <p className="mb-4">
-                                    {language === 'ar'
-                                        ? 'فيوتشر سوليوشنز للتطوير هي وكالة برمجيات رائدة مكرسة لتحويل الأعمال من خلال التكنولوجيا. تأسست في عام 2024، وسرعان ما نمت لتصبح فريقًا من المهندسين والمصممين والاستراتيجيين الشغوفين.'
-                                        : 'Future Solutions Dev is a premier software development agency dedicated to transforming businesses through technology. Founded in 2024, we have rapidly grown into a team of passionate engineers, designers, and strategists.'}
+                                    {about.description}
                                 </p>
                                 <p className="mb-4">
                                     {language === 'ar'
@@ -42,9 +44,11 @@ export default function AboutPage() {
                             className="relative h-[400px] rounded-2xl overflow-hidden bg-surface-dark border border-white/10 flex items-center justify-center p-8 text-center"
                         >
                             <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/10 to-purple-500/10" />
-                            <h3 className="text-2xl font-bold relative z-10">
-                                &quot;{language === 'ar' ? 'الابتكار هو جوهر كل ما نقوم به.' : 'Innovation is at the heart of everything we do.'}&quot;
-                            </h3>
+                            {/* <QuoteCanvas lang={language} /> */}
+                            <QuoteCanvas
+                                lang={language}
+                                text={language === 'ar' ? 'الابتكار في قلب كل شيء نقوم به' : 'Innovation is at the core of everything we do'}
+                            />
                         </motion.div>
                     </div>
                 </div>

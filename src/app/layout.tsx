@@ -5,14 +5,12 @@ import { Footer } from '@/components/layout/Footer';
 import { LanguageProvider } from '@/context/LanguageContext';
 import './globals.css';
 import { cn } from '@/lib/utils';
+import { MetaConfig } from '@/lib/constants';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const cairo = Cairo({ subsets: ['arabic'], variable: '--font-cairo' });
 
-export const metadata: Metadata = {
-  title: 'Future Solutions Dev',
-  description: 'Building Future-Ready Software Solutions',
-};
+export const metadata: Metadata = MetaConfig
 
 export default function RootLayout({
   children,
@@ -24,7 +22,13 @@ export default function RootLayout({
       <body className={cn(inter.variable, cairo.variable, "min-h-screen bg-bg-dark text-text-main antialiased flex flex-col")}>
         <LanguageProvider>
           <Navbar />
-          <main className="flex-grow">
+          <main className="flex-grow"
+            style={{
+              minHeight: "calc(100dvh - 6rem)",
+              overflowY: "auto",
+              overflowX: "hidden",
+            }}
+          >
             {children}
           </main>
           <Footer />
