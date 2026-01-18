@@ -205,8 +205,6 @@ export const services = ({
             features: ['PenTest', 'Compliance', 'Audit', 'Guard']
         }
     ];
-
-
 export const projects = ({ language }) => [
     {
         title: 'FinDash System',
@@ -257,8 +255,6 @@ export const projects = ({ language }) => [
         }
     }
 ];
-
-
 
 export const techs = ({
     Atom,
@@ -343,9 +339,6 @@ export const techs = ({
             },
         },
     ];
-
-
-
 export const features = ({ language, ShieldCheck, Zap, Globe, Users }) => [
     {
         icon: ShieldCheck,
