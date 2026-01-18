@@ -23,6 +23,7 @@ export function Navbar() {
         { href: '/technologies', label: t('nav.technologies') },
         { href: '/about', label: t('nav.about') },
         { href: '/contact', label: t('nav.contact') },
+        { href: '/blog', label: t('nav.blog') },
     ];
 
     const toggleLanguage = () => {

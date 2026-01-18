@@ -1,0 +1,764 @@
+{
+  "articles": [
+    {
+      "slug": "e-commerce-solutions",
+      "icon": "ShoppingCart",
+      "category": {
+        "en": "E-Commerce",
+        "ar": "التجارة الإلكترونية"
+      },
+      "title": {
+        "en": "Complete E-Commerce Solutions: Transform Your Business Online",
+        "ar": "حلول التجارة الإلكترونية الشاملة: حوّل أعمالك رقمياً"
+      },
+      "excerpt": {
+        "en": "Discover how our comprehensive e-commerce solutions can help you build a successful online store with inventory management, payment gateways, and more.",
+        "ar": "اكتشف كيف يمكن لحلول التجارة الإلكترونية الشاملة أن تساعدك في بناء متجر إلكتروني ناجح مع إدارة المخزون وبوابات الدفع والمزيد."
+      },
+      "coverImage": "/blog/e-commerce.jpg",
+      "readTime": {
+        "en": "8 min read",
+        "ar": "8 دقائق قراءة"
+      },
+      "publishedAt": "2024-01-15",
+      "author": {
+        "name": "Future Solutions Team",
+        "avatar": "/team/avatar.png"
+      },
+      "content": {
+        "en": {
+          "introduction": "In today's digital-first world, having a robust e-commerce presence isn't just an option—it's a necessity. At Future Solutions, we specialize in building comprehensive e-commerce platforms that drive sales and enhance customer experience.",
+          "sections": [
+            {
+              "title": "Why E-Commerce Matters for Your Business",
+              "content": "The global e-commerce market continues to grow exponentially. With more consumers preferring online shopping, businesses that lack a digital presence risk falling behind. Our e-commerce solutions help you tap into this massive market opportunity.",
+              "highlights": [
+                "24/7 availability for your customers",
+                "Reach customers globally without geographical limitations",
+                "Lower operational costs compared to physical stores",
+                "Data-driven insights for better business decisions"
+              ]
+            },
+            {
+              "title": "Our E-Commerce Development Approach",
+              "content": "We follow a systematic approach to building e-commerce platforms that are scalable, secure, and user-friendly.",
+              "steps": [
+                {
+                  "title": "Discovery & Planning",
+                  "description": "We analyze your business model, target audience, and competitors to create a strategic roadmap."
+                },
+                {
+                  "title": "UI/UX Design",
+                  "description": "Our designers create intuitive, conversion-optimized interfaces that enhance the shopping experience."
+                },
+                {
+                  "title": "Development & Integration",
+                  "description": "We build your platform using modern technologies and integrate essential tools like payment gateways and shipping APIs."
+                },
+                {
+                  "title": "Testing & Launch",
+                  "description": "Rigorous testing ensures a bug-free experience before going live."
+                }
+              ]
+            },
+            {
+              "title": "Key Features We Implement",
+              "content": "Every e-commerce platform we build comes packed with features designed to maximize your success.",
+              "features": [
+                {
+                  "name": "Inventory Management",
+                  "description": "Real-time stock tracking, automated reorder alerts, and multi-warehouse support."
+                },
+                {
+                  "name": "Payment Gateway Integration",
+                  "description": "Secure payment processing with support for multiple payment methods including credit cards, PayPal, and local payment options."
+                },
+                {
+                  "name": "Order Management System",
+                  "description": "Streamlined order processing from placement to delivery with automated notifications."
+                },
+                {
+                  "name": "Analytics Dashboard",
+                  "description": "Comprehensive analytics to track sales, customer behavior, and business performance."
+                },
+                {
+                  "name": "Mobile-First Design",
+                  "description": "Responsive design that provides seamless shopping experience across all devices."
+                },
+                {
+                  "name": "SEO Optimization",
+                  "description": "Built-in SEO features to improve your store's visibility in search engines."
+                }
+              ]
+            },
+            {
+              "title": "Technologies We Use",
+              "content": "We leverage cutting-edge technologies to build fast, secure, and scalable e-commerce platforms.",
+              "technologies": [
+                "Next.js & React for blazing-fast frontend",
+                "Node.js & Python for robust backend",
+                "PostgreSQL & MongoDB for data management",
+                "Stripe, PayPal & local payment integrations",
+                "AWS & Vercel for reliable hosting"
+              ]
+            },
+            {
+              "title": "Success Stories",
+              "content": "Our e-commerce solutions have helped numerous businesses achieve significant growth. From small boutiques to large retailers, we've delivered results that matter.",
+              "stats": [
+                { "value": "150%", "label": "Average increase in online sales" },
+                { "value": "40%", "label": "Reduction in cart abandonment" },
+                { "value": "99.9%", "label": "Uptime guarantee" }
+              ]
+            }
+          ],
+          "cta": {
+            "title": "Ready to Launch Your E-Commerce Platform?",
+            "description": "Let's discuss how we can help you build a powerful online store that drives sales and delights customers.",
+            "buttonText": "Get Started Today"
+          }
+        },
+        "ar": {
+          "introduction": "في عالم اليوم الرقمي، أصبح وجود منصة تجارة إلكترونية قوية ضرورة وليس خياراً. في Future Solutions، نتخصص في بناء منصات تجارة إلكترونية شاملة تزيد المبيعات وتحسن تجربة العملاء.",
+          "sections": [
+            {
+              "title": "لماذا التجارة الإلكترونية مهمة لأعمالك؟",
+              "content": "يستمر سوق التجارة الإلكترونية العالمي في النمو بشكل متسارع. مع تفضيل المزيد من المستهلكين للتسوق عبر الإنترنت، تخاطر الشركات التي تفتقر إلى وجود رقمي بالتخلف عن الركب.",
+              "highlights": [
+                "توفر على مدار الساعة لعملائك",
+                "الوصول للعملاء عالمياً دون قيود جغرافية",
+                "تكاليف تشغيلية أقل مقارنة بالمتاجر الفعلية",
+                "رؤى مبنية على البيانات لقرارات أفضل"
+              ]
+            },
+            {
+              "title": "منهجيتنا في تطوير التجارة الإلكترونية",
+              "content": "نتبع نهجاً منظماً لبناء منصات تجارة إلكترونية قابلة للتوسع وآمنة وسهلة الاستخدام.",
+              "steps": [
+                {
+                  "title": "الاكتشاف والتخطيط",
+                  "description": "نحلل نموذج عملك والجمهور المستهدف والمنافسين لإنشاء خارطة طريق استراتيجية."
+                },
+                {
+                  "title": "تصميم واجهة المستخدم",
+                  "description": "يصمم مصممونا واجهات بديهية محسنة للتحويل تعزز تجربة التسوق."
+                },
+                {
+                  "title": "التطوير والتكامل",
+                  "description": "نبني منصتك باستخدام تقنيات حديثة وندمج الأدوات الأساسية مثل بوابات الدفع وواجهات الشحن."
+                },
+                {
+                  "title": "الاختبار والإطلاق",
+                  "description": "اختبار صارم يضمن تجربة خالية من الأخطاء قبل الإطلاق."
+                }
+              ]
+            },
+            {
+              "title": "الميزات الرئيسية التي ننفذها",
+              "content": "كل منصة تجارة إلكترونية نبنيها تأتي مع ميزات مصممة لتحقيق أقصى نجاح.",
+              "features": [
+                {
+                  "name": "إدارة المخزون",
+                  "description": "تتبع المخزون في الوقت الفعلي، تنبيهات إعادة الطلب التلقائية، ودعم المستودعات المتعددة."
+                },
+                {
+                  "name": "تكامل بوابات الدفع",
+                  "description": "معالجة دفع آمنة مع دعم طرق دفع متعددة بما في ذلك البطاقات الائتمانية وباي بال والخيارات المحلية."
+                },
+                {
+                  "name": "نظام إدارة الطلبات",
+                  "description": "معالجة طلبات مبسطة من الطلب إلى التسليم مع إشعارات تلقائية."
+                },
+                {
+                  "name": "لوحة تحكم تحليلية",
+                  "description": "تحليلات شاملة لتتبع المبيعات وسلوك العملاء وأداء الأعمال."
+                },
+                {
+                  "name": "تصميم Mobile-First",
+                  "description": "تصميم متجاوب يوفر تجربة تسوق سلسة عبر جميع الأجهزة."
+                },
+                {
+                  "name": "تحسين محركات البحث",
+                  "description": "ميزات SEO مدمجة لتحسين ظهور متجرك في محركات البحث."
+                }
+              ]
+            },
+            {
+              "title": "التقنيات التي نستخدمها",
+              "content": "نستخدم أحدث التقنيات لبناء منصات تجارة إلكترونية سريعة وآمنة وقابلة للتوسع.",
+              "technologies": [
+                "Next.js و React لواجهة أمامية فائقة السرعة",
+                "Node.js و Python لخلفية قوية",
+                "PostgreSQL و MongoDB لإدارة البيانات",
+                "Stripe و PayPal وتكاملات الدفع المحلية",
+                "AWS و Vercel للاستضافة الموثوقة"
+              ]
+            },
+            {
+              "title": "قصص النجاح",
+              "content": "ساعدت حلول التجارة الإلكترونية لدينا العديد من الشركات على تحقيق نمو كبير. من المتاجر الصغيرة إلى كبار التجار، قدمنا نتائج ذات أهمية.",
+              "stats": [
+                { "value": "150%", "label": "متوسط الزيادة في المبيعات" },
+                { "value": "40%", "label": "انخفاض في ترك سلة التسوق" },
+                { "value": "99.9%", "label": "ضمان وقت التشغيل" }
+              ]
+            }
+          ],
+          "cta": {
+            "title": "جاهز لإطلاق منصة التجارة الإلكترونية الخاصة بك؟",
+            "description": "دعنا نناقش كيف يمكننا مساعدتك في بناء متجر إلكتروني قوي يزيد المبيعات ويسعد العملاء.",
+            "buttonText": "ابدأ اليوم"
+          }
+        }
+      },
+      "relatedSolutions": ["fintech-solutions", "erp-solutions"]
+    },
+    {
+      "slug": "fintech-solutions",
+      "icon": "BarChart",
+      "category": {
+        "en": "FinTech",
+        "ar": "التقنية المالية"
+      },
+      "title": {
+        "en": "FinTech Solutions: Secure Financial Technology for Modern Business",
+        "ar": "حلول التقنية المالية: تكنولوجيا مالية آمنة للأعمال الحديثة"
+      },
+      "excerpt": {
+        "en": "Build secure, compliant financial applications with our expert FinTech development services. From banking apps to trading platforms.",
+        "ar": "ابنِ تطبيقات مالية آمنة ومتوافقة مع خدمات تطوير التقنية المالية المتخصصة لدينا. من تطبيقات البنوك إلى منصات التداول."
+      },
+      "coverImage": "/blog/fintech.jpg",
+      "readTime": {
+        "en": "10 min read",
+        "ar": "10 دقائق قراءة"
+      },
+      "publishedAt": "2024-01-20",
+      "author": {
+        "name": "Future Solutions Team",
+        "avatar": "/team/avatar.png"
+      },
+      "content": {
+        "en": {
+          "introduction": "The financial technology sector is revolutionizing how we handle money. At Future Solutions, we build secure, compliant, and innovative FinTech applications that meet the highest industry standards.",
+          "sections": [
+            {
+              "title": "The FinTech Revolution",
+              "content": "Financial technology is transforming traditional banking and finance. From mobile payments to cryptocurrency, the opportunities are endless.",
+              "highlights": [
+                "Digital banking adoption has increased by 200% in recent years",
+                "Mobile payment transactions exceed $1 trillion annually",
+                "AI-powered financial services are becoming mainstream",
+                "Blockchain technology is reshaping financial infrastructure"
+              ]
+            },
+            {
+              "title": "Our FinTech Expertise",
+              "content": "We specialize in building various types of financial technology solutions.",
+              "features": [
+                {
+                  "name": "Banking Applications",
+                  "description": "Digital banking platforms with account management, transfers, and financial tracking."
+                },
+                {
+                  "name": "Payment Solutions",
+                  "description": "Secure payment processing systems, mobile wallets, and POS integrations."
+                },
+                {
+                  "name": "Trading Platforms",
+                  "description": "Real-time trading applications with market data, analytics, and portfolio management."
+                },
+                {
+                  "name": "Lending Platforms",
+                  "description": "P2P lending, loan origination systems, and credit scoring solutions."
+                },
+                {
+                  "name": "Insurance Tech",
+                  "description": "Digital insurance platforms with claims processing and policy management."
+                },
+                {
+                  "name": "Wealth Management",
+                  "description": "Robo-advisors, investment tracking, and financial planning tools."
+                }
+              ]
+            },
+            {
+              "title": "Security & Compliance",
+              "content": "Security is paramount in financial applications. We implement industry-leading security measures.",
+              "highlights": [
+                "End-to-end encryption for all sensitive data",
+                "PCI DSS compliance for payment processing",
+                "Multi-factor authentication (MFA)",
+                "Regular security audits and penetration testing",
+                "GDPR and local regulatory compliance"
+              ]
+            },
+            {
+              "title": "Technologies & Architecture",
+              "content": "We use battle-tested technologies for building robust financial systems.",
+              "technologies": [
+                "Microservices architecture for scalability",
+                "Real-time data processing with Apache Kafka",
+                "Secure APIs with OAuth 2.0 and JWT",
+                "Cloud-native deployment on AWS/GCP",
+                "Blockchain integration where applicable"
+              ]
+            }
+          ],
+          "cta": {
+            "title": "Ready to Build Your FinTech Solution?",
+            "description": "Partner with us to create secure, innovative financial technology that sets you apart from the competition.",
+            "buttonText": "Schedule a Consultation"
+          }
+        },
+        "ar": {
+          "introduction": "قطاع التكنولوجيا المالية يُحدث ثورة في طريقة تعاملنا مع المال. في Future Solutions، نبني تطبيقات تكنولوجيا مالية آمنة ومتوافقة ومبتكرة تلبي أعلى معايير الصناعة.",
+          "sections": [
+            {
+              "title": "ثورة التكنولوجيا المالية",
+              "content": "التكنولوجيا المالية تُحول البنوك والتمويل التقليدي. من المدفوعات المحمولة إلى العملات المشفرة، الفرص لا حصر لها.",
+              "highlights": [
+                "زاد اعتماد الخدمات المصرفية الرقمية بنسبة 200% في السنوات الأخيرة",
+                "معاملات الدفع المحمول تتجاوز تريليون دولار سنوياً",
+                "الخدمات المالية المدعومة بالذكاء الاصطناعي أصبحت سائدة",
+                "تقنية البلوكتشين تعيد تشكيل البنية التحتية المالية"
+              ]
+            },
+            {
+              "title": "خبرتنا في التكنولوجيا المالية",
+              "content": "نتخصص في بناء أنواع مختلفة من حلول التكنولوجيا المالية.",
+              "features": [
+                {
+                  "name": "تطبيقات البنوك",
+                  "description": "منصات مصرفية رقمية مع إدارة الحسابات والتحويلات والتتبع المالي."
+                },
+                {
+                  "name": "حلول الدفع",
+                  "description": "أنظمة معالجة دفع آمنة ومحافظ محمولة وتكاملات نقاط البيع."
+                },
+                {
+                  "name": "منصات التداول",
+                  "description": "تطبيقات تداول في الوقت الفعلي مع بيانات السوق والتحليلات وإدارة المحافظ."
+                },
+                {
+                  "name": "منصات الإقراض",
+                  "description": "الإقراض الند للند وأنظمة إنشاء القروض وحلول التصنيف الائتماني."
+                },
+                {
+                  "name": "تكنولوجيا التأمين",
+                  "description": "منصات تأمين رقمية مع معالجة المطالبات وإدارة البوليصة."
+                },
+                {
+                  "name": "إدارة الثروات",
+                  "description": "المستشارون الآليون وتتبع الاستثمار وأدوات التخطيط المالي."
+                }
+              ]
+            },
+            {
+              "title": "الأمان والامتثال",
+              "content": "الأمان أمر بالغ الأهمية في التطبيقات المالية. نطبق إجراءات أمنية رائدة في الصناعة.",
+              "highlights": [
+                "تشفير من طرف إلى طرف لجميع البيانات الحساسة",
+                "الامتثال لمعيار PCI DSS لمعالجة الدفع",
+                "المصادقة متعددة العوامل (MFA)",
+                "تدقيقات أمنية منتظمة واختبار الاختراق",
+                "الامتثال للائحة GDPR والقوانين المحلية"
+              ]
+            },
+            {
+              "title": "التقنيات والبنية",
+              "content": "نستخدم تقنيات مُختبرة لبناء أنظمة مالية قوية.",
+              "technologies": [
+                "معمارية الخدمات المصغرة للتوسعية",
+                "معالجة البيانات في الوقت الفعلي مع Apache Kafka",
+                "واجهات برمجة تطبيقات آمنة مع OAuth 2.0 و JWT",
+                "نشر سحابي على AWS/GCP",
+                "تكامل البلوكتشين عند الاقتضاء"
+              ]
+            }
+          ],
+          "cta": {
+            "title": "جاهز لبناء حل التكنولوجيا المالية الخاص بك؟",
+            "description": "شاركنا لإنشاء تكنولوجيا مالية آمنة ومبتكرة تميزك عن المنافسين.",
+            "buttonText": "حدد موعداً للاستشارة"
+          }
+        }
+      },
+      "relatedSolutions": ["e-commerce-solutions", "erp-solutions"]
+    },
+    {
+      "slug": "erp-solutions",
+      "icon": "Server",
+      "category": {
+        "en": "ERP Systems",
+        "ar": "أنظمة تخطيط الموارد"
+      },
+      "title": {
+        "en": "Custom ERP Solutions: Streamline Your Business Operations",
+        "ar": "حلول ERP مخصصة: بسّط عمليات أعمالك"
+      },
+      "excerpt": {
+        "en": "Transform your business with custom ERP systems that integrate all your operations from HR to supply chain management.",
+        "ar": "حوّل أعمالك مع أنظمة ERP مخصصة تدمج جميع عملياتك من الموارد البشرية إلى إدارة سلسلة التوريد."
+      },
+      "coverImage": "/blog/erp.jpg",
+      "readTime": {
+        "en": "12 min read",
+        "ar": "12 دقيقة قراءة"
+      },
+      "publishedAt": "2024-01-25",
+      "author": {
+        "name": "Future Solutions Team",
+        "avatar": "/team/avatar.png"
+      },
+      "content": {
+        "en": {
+          "introduction": "Enterprise Resource Planning (ERP) systems are the backbone of modern businesses. At Future Solutions, we build custom ERP solutions tailored to your specific needs, integrating all aspects of your operations into one powerful platform.",
+          "sections": [
+            {
+              "title": "Why Custom ERP?",
+              "content": "While off-the-shelf ERP solutions exist, custom-built systems offer significant advantages for businesses with unique requirements.",
+              "highlights": [
+                "Tailored to your exact business processes",
+                "No unnecessary features or complexity",
+                "Seamless integration with existing systems",
+                "Scalable architecture that grows with you",
+                "Complete ownership and control"
+              ]
+            },
+            {
+              "title": "Modules We Build",
+              "content": "Our ERP solutions can include any combination of modules based on your needs.",
+              "features": [
+                {
+                  "name": "Human Resources (HR)",
+                  "description": "Employee management, payroll, attendance tracking, performance reviews, and recruitment."
+                },
+                {
+                  "name": "Finance & Accounting",
+                  "description": "General ledger, accounts payable/receivable, budgeting, and financial reporting."
+                },
+                {
+                  "name": "Supply Chain Management",
+                  "description": "Procurement, vendor management, logistics, and warehouse operations."
+                },
+                {
+                  "name": "Inventory Management",
+                  "description": "Stock tracking, reorder management, multi-location inventory, and barcode scanning."
+                },
+                {
+                  "name": "Sales & CRM",
+                  "description": "Lead management, sales pipeline, customer relationships, and quotation management."
+                },
+                {
+                  "name": "Manufacturing",
+                  "description": "Production planning, work orders, quality control, and shop floor management."
+                },
+                {
+                  "name": "Project Management",
+                  "description": "Task tracking, resource allocation, timesheets, and project budgeting."
+                },
+                {
+                  "name": "Business Intelligence",
+                  "description": "Dashboards, reports, KPIs, and data visualization for informed decision-making."
+                }
+              ]
+            },
+            {
+              "title": "Implementation Process",
+              "content": "We follow a proven methodology for successful ERP implementation.",
+              "steps": [
+                {
+                  "title": "Business Analysis",
+                  "description": "Deep dive into your processes, pain points, and requirements."
+                },
+                {
+                  "title": "Solution Design",
+                  "description": "Architecture and module planning based on your specific needs."
+                },
+                {
+                  "title": "Phased Development",
+                  "description": "Iterative development with regular demos and feedback loops."
+                },
+                {
+                  "title": "Data Migration",
+                  "description": "Safe migration of existing data to the new system."
+                },
+                {
+                  "title": "Training & Support",
+                  "description": "Comprehensive training for your team and ongoing support."
+                }
+              ]
+            }
+          ],
+          "cta": {
+            "title": "Ready to Modernize Your Operations?",
+            "description": "Let's discuss how a custom ERP can transform your business efficiency and drive growth.",
+            "buttonText": "Request a Demo"
+          }
+        },
+        "ar": {
+          "introduction": "أنظمة تخطيط موارد المؤسسات (ERP) هي العمود الفقري للأعمال الحديثة. في Future Solutions، نبني حلول ERP مخصصة مصممة لاحتياجاتك المحددة، تدمج جميع جوانب عملياتك في منصة واحدة قوية.",
+          "sections": [
+            {
+              "title": "لماذا ERP مخصص؟",
+              "content": "بينما توجد حلول ERP جاهزة، تقدم الأنظمة المبنية خصيصاً مزايا كبيرة للشركات ذات المتطلبات الفريدة.",
+              "highlights": [
+                "مصمم لعمليات أعمالك بالضبط",
+                "لا ميزات غير ضرورية أو تعقيد",
+                "تكامل سلس مع الأنظمة الحالية",
+                "بنية قابلة للتوسع تنمو معك",
+                "ملكية وتحكم كامل"
+              ]
+            },
+            {
+              "title": "الوحدات التي نبنيها",
+              "content": "يمكن أن تتضمن حلول ERP لدينا أي مجموعة من الوحدات بناءً على احتياجاتك.",
+              "features": [
+                {
+                  "name": "الموارد البشرية (HR)",
+                  "description": "إدارة الموظفين، الرواتب، تتبع الحضور، مراجعات الأداء، والتوظيف."
+                },
+                {
+                  "name": "المالية والمحاسبة",
+                  "description": "دفتر الأستاذ العام، الحسابات الدائنة/المدينة، الميزانية، والتقارير المالية."
+                },
+                {
+                  "name": "إدارة سلسلة التوريد",
+                  "description": "المشتريات، إدارة الموردين، اللوجستيات، وعمليات المستودعات."
+                },
+                {
+                  "name": "إدارة المخزون",
+                  "description": "تتبع المخزون، إدارة إعادة الطلب، مخزون متعدد المواقع، ومسح الباركود."
+                },
+                {
+                  "name": "المبيعات وإدارة العملاء",
+                  "description": "إدارة العملاء المحتملين، خط أنابيب المبيعات، علاقات العملاء، وإدارة عروض الأسعار."
+                },
+                {
+                  "name": "التصنيع",
+                  "description": "تخطيط الإنتاج، أوامر العمل، مراقبة الجودة، وإدارة أرضية المصنع."
+                },
+                {
+                  "name": "إدارة المشاريع",
+                  "description": "تتبع المهام، تخصيص الموارد، جداول العمل، وميزانية المشاريع."
+                },
+                {
+                  "name": "ذكاء الأعمال",
+                  "description": "لوحات المعلومات، التقارير، مؤشرات الأداء، وتصور البيانات لاتخاذ قرارات مدروسة."
+                }
+              ]
+            },
+            {
+              "title": "عملية التنفيذ",
+              "content": "نتبع منهجية مثبتة لتنفيذ ERP ناجح.",
+              "steps": [
+                {
+                  "title": "تحليل الأعمال",
+                  "description": "غوص عميق في عملياتك ونقاط الضعف والمتطلبات."
+                },
+                {
+                  "title": "تصميم الحل",
+                  "description": "البنية وتخطيط الوحدات بناءً على احتياجاتك المحددة."
+                },
+                {
+                  "title": "التطوير المرحلي",
+                  "description": "تطوير تكراري مع عروض منتظمة وحلقات تغذية راجعة."
+                },
+                {
+                  "title": "ترحيل البيانات",
+                  "description": "ترحيل آمن للبيانات الموجودة إلى النظام الجديد."
+                },
+                {
+                  "title": "التدريب والدعم",
+                  "description": "تدريب شامل لفريقك ودعم مستمر."
+                }
+              ]
+            }
+          ],
+          "cta": {
+            "title": "جاهز لتحديث عملياتك؟",
+            "description": "دعنا نناقش كيف يمكن لنظام ERP مخصص تحويل كفاءة أعمالك ودفع النمو.",
+            "buttonText": "اطلب عرضاً توضيحياً"
+          }
+        }
+      },
+      "relatedSolutions": ["e-commerce-solutions", "healthcare-solutions"]
+    },
+    {
+      "slug": "healthcare-solutions",
+      "icon": "Layers",
+      "category": {
+        "en": "Healthcare",
+        "ar": "الرعاية الصحية"
+      },
+      "title": {
+        "en": "Healthcare Solutions: Digital Health Systems That Save Lives",
+        "ar": "حلول الرعاية الصحية: أنظمة صحية رقمية تنقذ الأرواح"
+      },
+      "excerpt": {
+        "en": "Build compliant healthcare management systems and telemedicine platforms that improve patient care and streamline operations.",
+        "ar": "ابنِ أنظمة إدارة رعاية صحية متوافقة ومنصات طب عن بُعد تحسن رعاية المرضى وتبسط العمليات."
+      },
+      "coverImage": "/blog/healthcare.jpg",
+      "readTime": {
+        "en": "11 min read",
+        "ar": "11 دقيقة قراءة"
+      },
+      "publishedAt": "2024-02-01",
+      "author": {
+        "name": "Future Solutions Team",
+        "avatar": "/team/avatar.png"
+      },
+      "content": {
+        "en": {
+          "introduction": "Healthcare technology is revolutionizing patient care worldwide. At Future Solutions, we develop compliant, secure, and user-friendly healthcare solutions that help medical professionals focus on what matters most—saving lives.",
+          "sections": [
+            {
+              "title": "The Digital Health Revolution",
+              "content": "The healthcare industry is rapidly embracing digital transformation, driven by the need for better patient outcomes and operational efficiency.",
+              "highlights": [
+                "Telemedicine adoption has increased 10x since 2020",
+                "AI diagnostics are improving accuracy and speed",
+                "Patient portals enhance engagement and satisfaction",
+                "Electronic Health Records (EHR) streamline documentation"
+              ]
+            },
+            {
+              "title": "Solutions We Develop",
+              "content": "We create comprehensive healthcare technology solutions.",
+              "features": [
+                {
+                  "name": "Hospital Management Systems",
+                  "description": "Complete hospital operations including patient registration, bed management, billing, and reporting."
+                },
+                {
+                  "name": "Telemedicine Platforms",
+                  "description": "Video consultations, appointment scheduling, prescription management, and secure messaging."
+                },
+                {
+                  "name": "Electronic Health Records (EHR)",
+                  "description": "Secure patient data management with interoperability and compliance."
+                },
+                {
+                  "name": "Laboratory Information Systems",
+                  "description": "Sample tracking, result management, and integration with medical devices."
+                },
+                {
+                  "name": "Pharmacy Management",
+                  "description": "Inventory control, prescription processing, and drug interaction alerts."
+                },
+                {
+                  "name": "Patient Portals",
+                  "description": "Self-service platforms for appointments, records access, and communication."
+                }
+              ]
+            },
+            {
+              "title": "Compliance & Security",
+              "content": "Healthcare data requires the highest level of protection. We ensure full compliance.",
+              "highlights": [
+                "HIPAA compliance for US healthcare",
+                "GDPR compliance for European data",
+                "End-to-end encryption",
+                "Role-based access control",
+                "Audit trails and logging",
+                "Regular security assessments"
+              ]
+            },
+            {
+              "title": "Integration Capabilities",
+              "content": "Our solutions integrate seamlessly with existing healthcare infrastructure.",
+              "technologies": [
+                "HL7 FHIR for healthcare data exchange",
+                "DICOM integration for medical imaging",
+                "Lab equipment interfaces",
+                "Insurance and billing systems",
+                "Government health registries"
+              ]
+            }
+          ],
+          "cta": {
+            "title": "Ready to Transform Healthcare Delivery?",
+            "description": "Partner with us to build healthcare solutions that improve patient outcomes and operational efficiency.",
+            "buttonText": "Start Your Project"
+          }
+        },
+        "ar": {
+          "introduction": "تكنولوجيا الرعاية الصحية تُحدث ثورة في رعاية المرضى حول العالم. في Future Solutions، نطور حلول رعاية صحية متوافقة وآمنة وسهلة الاستخدام تساعد المهنيين الطبيين على التركيز على ما يهم أكثر—إنقاذ الأرواح.",
+          "sections": [
+            {
+              "title": "ثورة الصحة الرقمية",
+              "content": "صناعة الرعاية الصحية تتبنى التحول الرقمي بسرعة، مدفوعة بالحاجة إلى نتائج أفضل للمرضى وكفاءة تشغيلية.",
+              "highlights": [
+                "زاد اعتماد الطب عن بُعد 10 أضعاف منذ 2020",
+                "تشخيصات الذكاء الاصطناعي تحسن الدقة والسرعة",
+                "بوابات المرضى تعزز المشاركة والرضا",
+                "السجلات الصحية الإلكترونية (EHR) تبسط التوثيق"
+              ]
+            },
+            {
+              "title": "الحلول التي نطورها",
+              "content": "نصنع حلول تكنولوجيا رعاية صحية شاملة.",
+              "features": [
+                {
+                  "name": "أنظمة إدارة المستشفيات",
+                  "description": "عمليات المستشفى الكاملة بما في ذلك تسجيل المرضى وإدارة الأسرة والفوترة والتقارير."
+                },
+                {
+                  "name": "منصات الطب عن بُعد",
+                  "description": "استشارات فيديو وجدولة المواعيد وإدارة الوصفات والرسائل الآمنة."
+                },
+                {
+                  "name": "السجلات الصحية الإلكترونية (EHR)",
+                  "description": "إدارة بيانات المرضى الآمنة مع التوافقية والامتثال."
+                },
+                {
+                  "name": "أنظمة معلومات المختبر",
+                  "description": "تتبع العينات وإدارة النتائج والتكامل مع الأجهزة الطبية."
+                },
+                {
+                  "name": "إدارة الصيدلية",
+                  "description": "مراقبة المخزون ومعالجة الوصفات وتنبيهات تفاعل الأدوية."
+                },
+                {
+                  "name": "بوابات المرضى",
+                  "description": "منصات الخدمة الذاتية للمواعيد والوصول للسجلات والتواصل."
+                }
+              ]
+            },
+            {
+              "title": "الامتثال والأمان",
+              "content": "بيانات الرعاية الصحية تتطلب أعلى مستوى من الحماية. نضمن الامتثال الكامل.",
+              "highlights": [
+                "الامتثال لـ HIPAA للرعاية الصحية الأمريكية",
+                "الامتثال لـ GDPR للبيانات الأوروبية",
+                "التشفير من طرف إلى طرف",
+                "التحكم في الوصول بناءً على الأدوار",
+                "مسارات التدقيق والتسجيل",
+                "تقييمات أمنية منتظمة"
+              ]
+            },
+            {
+              "title": "قدرات التكامل",
+              "content": "حلولنا تتكامل بسلاسة مع البنية التحتية للرعاية الصحية الحالية.",
+              "technologies": [
+                "HL7 FHIR لتبادل بيانات الرعاية الصحية",
+                "تكامل DICOM للتصوير الطبي",
+                "واجهات معدات المختبر",
+                "أنظمة التأمين والفوترة",
+                "السجلات الصحية الحكومية"
+              ]
+            }
+          ],
+          "cta": {
+            "title": "جاهز لتحويل تقديم الرعاية الصحية؟",
+            "description": "شاركنا لبناء حلول رعاية صحية تحسن نتائج المرضى والكفاءة التشغيلية.",
+            "buttonText": "ابدأ مشروعك"
+          }
+        }
+      },
+      "relatedSolutions": ["erp-solutions", "fintech-solutions"]
+    }
+  ]
+}

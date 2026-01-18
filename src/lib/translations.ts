@@ -9,6 +9,7 @@ export const translations = {
   "nav.about": { en: "About", ar: "من نحن" },
   "nav.contact": { en: "Contact", ar: "تواصل معنا" },
   "nav.getStarted": { en: "Get Started", ar: "ابدأ الآن" },
+  "nav.blog": { en: "Blog", ar: "المدونة" },
   // Hero
   "hero.badge": { en: "Future Solutions Dev", ar: "فيوتشر سوليوشنز للتطوير" },
   "hero.title.building": { en: "Building", ar: "نصنع" },

@@ -139,21 +139,25 @@ export const solutions = ({
 }) => [
         {
             icon: ShoppingCart,
+            slug: "e-commerce-solutions",
             title: t('solutions.ecommerce'),
             content: language === 'ar' ? 'حلول تجارة إلكترونية شاملة تشمل إدارة المخزون وبوابات الدفع.' : 'Comprehensive e-commerce solutions including inventory management, payment gateway integration.',
         },
         {
             icon: BarChart,
+            slug: "fintech-solutions",
             title: t('solutions.fintech'),
             content: language === 'ar' ? 'تطبيقات مالية آمنة للبنوك والتداول مع تصور للبيانات في الوقت الفعلي.' : 'Secure financial technology applications for banking, trading, and personal finance management.',
         },
         {
             icon: Server,
+            slug: "erp-solutions",
             title: t('solutions.erp'),
             content: language === 'ar' ? 'أنظمة تخطيط موارد المؤسسات المخصصة لإدارة العمليات من الموارد البشرية إلى التوريد.' : 'Custom Enterprise Resource Planning (ERP) systems to manage business processes.',
         },
         {
             icon: Layers,
+            slug: "healthcare-solutions",
             title: t('solutions.healthcare'),
             content: language === 'ar' ? 'أنظمة إدارة الرعاية الصحية المتوافقة ومنصات الطب عن بعد.' : 'HIPAA-compliant healthcare management systems, telemedicine platforms.',
         },

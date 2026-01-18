@@ -1,11 +1,15 @@
 "use client";
 import { motion } from 'framer-motion';
-import { ShoppingCart, BarChart, Server, Layers } from 'lucide-react';
+import Link from 'next/link';
+import { ShoppingCart, BarChart, Server, Layers, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { useLanguage } from '@/context/LanguageContext';
 import { solutions } from '@/lib/constants';
+
+
 export default function SolutionsPage() {
     const { t, language } = useLanguage();
+    const isRTL = language === 'ar';
     const solutionsData = solutions({
         language,
         t,
@@ -38,10 +42,10 @@ export default function SolutionsPage() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: i * 0.1 }}
                             viewport={{ once: true }}
-                            className="flex flex-col md:flex-row gap-6 p-8 rounded-2xl bg-surface-dark border border-white/5 hover:border-cyan-glow/30 transition-all duration-300"
+                            className="group flex flex-col md:flex-row gap-6 p-8 rounded-2xl bg-surface-dark border border-white/5 hover:border-cyan-glow/30 transition-all duration-300"
                         >
                             <div className="shrink-0">
-                                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary-blue/20 to-cyan-glow/20 flex items-center justify-center text-primary-blue">
+                                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary-blue/20 to-cyan-glow/20 flex items-center justify-center text-primary-blue group-hover:text-cyan-glow transition-colors">
                                     <sol.icon size={32} />
                                 </div>
                             </div>
@@ -50,9 +54,12 @@ export default function SolutionsPage() {
                                 <p className="text-text-muted mb-4 leading-relaxed">
                                     {sol.content}
                                 </p>
-                                <Button variant="outline" size="sm">
-                                    {language === 'ar' ? 'المزيد' : 'Learn More'}
-                                </Button>
+                                <Link href={`/blog/${sol.slug}`}>
+                                    <Button variant="outline" size="sm" className={`inline-flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                                        {language === 'ar' ? 'اقرأ المزيد' : 'Learn More'}
+                                        <ArrowRight size={16} className={isRTL ? 'rotate-180' : ''} />
+                                    </Button>
+                                </Link>
                             </div>
                         </motion.div>
                     ))}
