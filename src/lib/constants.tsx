@@ -9,7 +9,7 @@ export const description = `
   `
 export const Contact = {
     WhatsApp: "https://wa.me/201148371185",
-    Email: "contact@futuresolutions.dev",
+    Email: "info@futuresolutionsdev.com",
     Phone: "201015471713",
     Facebook: "https://www.facebook.com/futuresolutionsdev",
     LinkedIn: "https://www.linkedin.com/company/futuresolutionsdev",

@@ -1,11 +1,12 @@
 import { Contact } from "@/lib/constants";
-import { Facebook, Linkedin, Mail, MessageCircle, Phone } from "lucide-react";
+import { Facebook, Linkedin, Mail, Phone } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
     return (
         <footer className="bg-surface-dark border-t border-white/10  flex items-center justify-center h-[5rem] md:h-[3.5rem] py-4"
-        dir="ltr"
+            dir="ltr"
         >
             <div className="container mx-auto px-4 py-4 text-center flex flex-col-reverse md:flex-row gap-2 items-center justify-between">
                 <p className="text-text-muted text-sm">
@@ -18,7 +19,7 @@ export function Footer() {
                         <Link
                             href={`mailto:${Contact.Email}`}
                             target="_blank"
-                            className="text-gray-500 hover:text-gray-700 transition-all"
+                            className="text-gray hover:text-gray-700 transition-all"
                         >
                             <Mail size={20} />
                         </Link>
@@ -90,7 +91,7 @@ export function Footer() {
                             target="_blank"
                             className="text-[#25D366] hover:text-[#1EBE5D] transition-all"
                         >
-                            <MessageCircle size={20} />
+                            <Image src="/assets/whatsapp.svg" alt="WhatsApp" width={20} height={20} className="w-5 h-5 text-[#25D366] hover:text-[#1EBE5D]" />
                         </Link>
                         <span className="absolute -top-9 left-1/2 -translate-x-1/2 
             whitespace-nowrap rounded-md bg-black px-2 py-1 text-xs text-white

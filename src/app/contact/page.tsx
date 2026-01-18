@@ -35,13 +35,13 @@ export default function ContactPage() {
                                     <div className="w-10 h-10 rounded-full bg-primary-blue/10 flex items-center justify-center text-primary-blue">
                                         <Mail size={20} />
                                     </div>
-                                    <span className="text-text-muted">{Contact.Email || "contact@futuresolutions.dev"}</span>
+                                    <a href={`mailto:${Contact.Email}`} className="text-primary-blue">{Contact.Email || "info@futuresolutionsdev.com"}</a>
                                 </div>
                                 <div className="flex items-center space-x-4">
                                     <div className="w-10 h-10 rounded-full bg-primary-blue/10 flex items-center justify-center text-primary-blue">
                                         <Phone size={20} />
                                     </div>
-                                    <span className="text-text-muted">{Contact.Phone || "201015471713"}</span>
+                                    <a href={`tel:${Contact.Phone}`} className="text-primary-blue">{Contact.Phone || "201015471713"}</a>
                                 </div>
                                 <div className="flex items-center space-x-4">
                                     <div className="w-10 h-10 rounded-full bg-primary-blue/10 flex items-center justify-center text-primary-blue">
