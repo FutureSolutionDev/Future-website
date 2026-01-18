@@ -22,12 +22,10 @@ export default function RootLayout({
       <body className={cn(inter.variable, cairo.variable, "min-h-screen bg-bg-dark text-text-main antialiased flex flex-col")}>
         <LanguageProvider>
           <Navbar />
-          <main className="flex-grow"
-            style={{
-              minHeight: "calc(100dvh - 6rem)",
-              overflowY: "auto",
-              overflowX: "hidden",
-            }}
+          <main className="flex-grow
+          md:min-h-[calc(100dvh-8.6rem)] min-h-[calc(100dvh-9rem)]
+          overflow-y-auto overflow-x-hidden
+          "
           >
             {children}
           </main>

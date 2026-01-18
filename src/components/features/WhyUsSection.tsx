@@ -24,7 +24,7 @@ export function WhyUsSection() {
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="relative"
+                        className="relative hidden md:block"
                     >
                         <div className="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full" />
                         <Image

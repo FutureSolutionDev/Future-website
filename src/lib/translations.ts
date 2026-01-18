@@ -2,6 +2,7 @@ export type Language = "en" | "ar";
 
 export const translations = {
   // Navigation
+  "nav.home": { en: "Home", ar: "الرئيسية" },
   "nav.services": { en: "Services", ar: "خدماتنا" },
   "nav.solutions": { en: "Solutions", ar: "حلولنا" },
   "nav.portfolio": { en: "Portfolio", ar: "أعمالنا" },
@@ -11,7 +12,7 @@ export const translations = {
   "nav.getStarted": { en: "Get Started", ar: "ابدأ الآن" },
   "nav.blog": { en: "Blog", ar: "المدونة" },
   // Hero
-  "hero.badge": { en: "Future Solutions Dev", ar: "فيوتشر سوليوشنز للتطوير" },
+  "hero.badge": { en: "Future Solutions Dev", ar: "حلول المستقبل للتطوير" },
   "hero.title.building": { en: "Building", ar: "نصنع" },
   "hero.title.futureReady": { en: "Future-Ready", ar: "جاهزة للمستقبل" },
   "hero.title.solutions": { en: "Software Solutions", ar: "حلول برمجية" },

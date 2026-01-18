@@ -4,12 +4,10 @@ import Link from "next/link";
 
 export function Footer() {
     return (
-        <footer className="bg-surface-dark border-t border-white/10  flex items-center justify-center"
-            style={{
-                height: "3rem"
-            }}
+        <footer className="bg-surface-dark border-t border-white/10  flex items-center justify-center h-[5rem] md:h-[3.5rem] py-4"
+        dir="ltr"
         >
-            <div className="container mx-auto px-4 text-center flex items-center justify-between">
+            <div className="container mx-auto px-4 py-4 text-center flex flex-col-reverse md:flex-row gap-2 items-center justify-between">
                 <p className="text-text-muted text-sm">
                     © {new Date().getFullYear()} Future Solutions Dev. All rights reserved.
                 </p>
@@ -103,8 +101,6 @@ export function Footer() {
                         </span>
                     </div>
                 </div>
-
-
             </div>
         </footer>
     );

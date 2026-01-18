@@ -8,7 +8,7 @@ export default function AboutPage() {
     const { language } = useLanguage();
     const about = {
         title: language === 'ar' ? 'من' : 'Who We',
-        description: language === 'ar' ? 'فيوتشر سوليوشنز للتطوير هي وكالة برمجيات رائدة مكرسة لتحويل الأعمال من خلال التكنولوجيا. تأسست في عام 2024، وسرعان ما نمت لتصبح فريقًا من المهندسين والمصممين والاستراتيجيين الشغوفين.' : 'Future Solutions Dev is a premier software development agency dedicated to transforming businesses through technology. Founded in 2024, we have rapidly grown into a team of passionate engineers, designers, and strategists.',
+        description: language === 'ar' ? 'حلول المستقبل للتطوير هي وكالة برمجيات رائدة مكرسة لتحويل الأعمال من خلال التكنولوجيا. تأسست في عام 2024، وسرعان ما نمت لتصبح فريقًا من المهندسين والمصممين والاستراتيجيين الشغوفين.' : 'Future Solutions Dev is a premier software development agency dedicated to transforming businesses through technology. Founded in 2024, we have rapidly grown into a team of passionate engineers, designers, and strategists.',
     }
     return (
         <div className="pt-20">

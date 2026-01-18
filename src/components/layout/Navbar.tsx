@@ -5,6 +5,7 @@ import { Menu, X, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +16,7 @@ export function Navbar() {
         setTimeout(() => setHasMounted(true), 0);
     }, []);
     const navLinks = [
+        { href: '/', label: t('nav.home') },
         { href: '/services', label: t('nav.services') },
         { href: '/solutions', label: t('nav.solutions') },
         { href: '/portfolio', label: t('nav.portfolio') },
@@ -29,18 +31,20 @@ export function Navbar() {
     };
     return (
         <nav className="sticky w-full z-50 top-0 left-0 bg-bg-dark/80 backdrop-blur-md border-b border-white/10">
-            <div className="container mx-auto px-4 flex items-center justify-between"
-                style={{
-                    height: "3rem"
-                }}
-            >
+            <div className="container mx-auto px-4 flex items-center justify-between md:h-[5rem] h-[4rem]">
                 {/* Logo */}
                 <Link href="/" className="text-2xl font-bold text-white tracking-tighter">
-                    Future<span className="text-primary-blue"> Solutions</span> <span className="text-text-muted">{"Dev"}</span>
+                    <Image
+                        src="/favicon.png"
+                        alt="Logo"
+                        width={100}
+                        height={100}
+                        className='w-40 h-20'
+                    />
                 </Link>
 
                 {/* Desktop Nav */}
-                <div className="md:flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-8">
                     {navLinks.map((link) => (
                         <Link
                             key={`desc-nav-${link.href}`}

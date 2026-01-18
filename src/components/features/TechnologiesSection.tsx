@@ -43,7 +43,7 @@ export function TechnologiesSection() {
                         : 'We use the latest and most reliable technologies to build your digital products.'}</p>
                 </motion.div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                     {techsData.map((tech, i) => (
                         <motion.div
                             key={`tech-data-${i}`}

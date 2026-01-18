@@ -14,17 +14,21 @@ export function CTASection() {
             ">
                 <h2 className="text-3xl md:text-5xl font-bold mb-6">
                     {t('cta.title')}
-                    <span className="text-primary-blue">{t('cta.subtitle')}</span>
+                    <span className="text-primary-blue"> {t('cta.subtitle')}</span>
                 </h2>
                 <p className="text-xl text-text-muted max-w-2xl mx-auto mb-8">
                     {t('cta.description')}
                 </p>
                 <div className="flex justify-center gap-4">
                     <Link href={Contact.WhatsApp} target="_blank">
-                        <Button size="lg">{t('cta.button1')}</Button>
+                        <Button
+                            className='w-full md:w-auto text-md md:text-xl'
+                            size="lg">{t('cta.button1')}</Button>
                     </Link>
                     <Link href={"/contact"}>
-                        <Button variant="secondary" size="lg">{t('cta.button2')}</Button>
+                        <Button
+                            className='w-full md:w-auto text-md md:text-xl'
+                            variant="secondary" size="lg">{t('cta.button2')}</Button>
                     </Link>
                 </div>
             </div>
