@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+
+  // Fix turbopack root warning
+  turbopack: {
+    root: __dirname,
+  },
 };
 
 export default nextConfig;
