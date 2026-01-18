@@ -43,7 +43,7 @@ export function Navbar() {
                 <div className="md:flex items-center gap-8">
                     {navLinks.map((link) => (
                         <Link
-                            key={link.href}
+                            key={`desc-nav-${link.href}`}
                             href={link.href}
                             className={`hover:text-cyan-glow 
                                 transition-colors text-md
@@ -92,7 +92,7 @@ export function Navbar() {
                             {navLinks.map((link) => {
                                 return (
                                     <Link
-                                        key={link.href}
+                                        key={`mobile-nav-${link.href}`}
                                         href={link.href}
                                         className={`text-lg font-medium  hover:text-primary-blue ${PathName === link.href ? "text-cyan-glow" : "text-white"}`}
                                         onClick={() => setIsOpen(false)}

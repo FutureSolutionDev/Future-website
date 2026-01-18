@@ -135,7 +135,7 @@ export default function ArticleContent({
                 {/* Content Sections */}
                 {content.sections.map((section, index) => (
                     <motion.section
-                        key={index}
+                        key={`section-${index}`}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -155,7 +155,7 @@ export default function ArticleContent({
                             <div className="bg-surface-dark rounded-2xl p-6 border border-white/5">
                                 <ul className="space-y-3">
                                     {section.highlights.map((item, i) => (
-                                        <li key={i} className={`flex items-start gap-3 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                                        <li key={`section-${index}-highlight-${i}`} className={`flex items-start gap-3 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                                             <CheckCircle className="text-cyan-glow shrink-0 mt-0.5" size={20} />
                                             <span className="text-text-main/90">{item}</span>
                                         </li>
@@ -167,7 +167,7 @@ export default function ArticleContent({
                         {section.steps && (
                             <div className="space-y-4">
                                 {section.steps.map((step, i) => (
-                                    <div key={i} className={`flex items-start gap-4 p-5 bg-surface-dark rounded-xl border border-white/5 hover:border-cyan-glow/20 transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}>
+                                    <div key={`section-${index}-step-${i}`} className={`flex items-start gap-4 p-5 bg-surface-dark rounded-xl border border-white/5 hover:border-cyan-glow/20 transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}>
                                         <div className="shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-primary-blue to-cyan-glow flex items-center justify-center text-white font-bold">
                                             {i + 1}
                                         </div>
@@ -183,7 +183,7 @@ export default function ArticleContent({
                         {section.features && (
                             <div className="grid md:grid-cols-2 gap-4">
                                 {section.features.map((feature, i) => (
-                                    <div key={i} className="p-5 bg-surface-dark rounded-xl border border-white/5 hover:border-cyan-glow/20 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-glow/5">
+                                    <div key={`section-${index}-feature-${i}`} className="p-5 bg-surface-dark rounded-xl border border-white/5 hover:border-cyan-glow/20 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-glow/5">
                                         <div className={`flex items-center gap-3 mb-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                                             <Zap className="text-primary-blue" size={20} />
                                             <h4 className="font-bold">{feature.name}</h4>
@@ -198,7 +198,7 @@ export default function ArticleContent({
                             <div className="bg-surface-dark rounded-2xl p-6 border border-white/5">
                                 <ul className="space-y-3">
                                     {section.technologies.map((tech, i) => (
-                                        <li key={i} className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                                        <li key={`section-${index}-tech-${i}`} className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                                             <ChevronRight className="text-cyan-glow shrink-0" size={18} />
                                             <span className="text-text-main/90">{tech}</span>
                                         </li>
@@ -210,7 +210,7 @@ export default function ArticleContent({
                         {section.stats && (
                             <div className="grid grid-cols-3 gap-4">
                                 {section.stats.map((stat, i) => (
-                                    <div key={i} className="text-center p-6 bg-surface-dark rounded-xl border border-white/5">
+                                    <div key={`section-${index}-stat-${i}`} className="text-center p-6 bg-surface-dark rounded-xl border border-white/5">
                                         <div className="text-3xl md:text-4xl font-bold text-cyan-glow mb-2">{stat.value}</div>
                                         <div className="text-text-muted text-sm">{stat.label}</div>
                                     </div>
@@ -250,7 +250,7 @@ export default function ArticleContent({
                             {relatedArticles.map((related) => {
                                 const RelatedIcon = iconMap[related.icon as keyof typeof iconMap];
                                 return (
-                                    <Link key={related.slug} href={`/blog/${related.slug}`}>
+                                    <Link key={`related-${related.slug}`} href={`/blog/${related.slug}`}>
                                         <div className={`flex items-start gap-4 p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-cyan-glow/30 transition-all duration-300 ${isRTL ? 'flex-row-reverse' : ''}`}>
                                             <div className="shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary-blue/20 to-cyan-glow/20 flex items-center justify-center text-primary-blue">
                                                 {RelatedIcon && <RelatedIcon size={24} />}

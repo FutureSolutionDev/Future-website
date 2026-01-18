@@ -54,7 +54,7 @@ export function WhyUsSection() {
 
                         <div className="grid sm:grid-cols-2 gap-6">
                             {featuresData.map((feature, i) => (
-                                <div key={i} className="flex items-start space-x-4">
+                                <div key={`why-us-${i}`} className="flex items-start space-x-4">
                                     <div className="p-2 rounded-lg bg-surface-dark text-cyan-glow">
                                         <feature.icon size={24} />
                                     </div>

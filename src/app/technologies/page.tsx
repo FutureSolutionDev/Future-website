@@ -23,7 +23,7 @@ export default function TechnologiesPage() {
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {technologies.map((cat, i) => (
                         <motion.div
-                            key={i}
+                            key={`tech-${i}`}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1 }}
@@ -33,7 +33,7 @@ export default function TechnologiesPage() {
                             <h3 className="text-xl font-bold mb-6 border-b border-white/10 pb-4">{cat.name}</h3>
                             <div className="flex flex-wrap gap-2">
                                 {cat.items.map(item => (
-                                    <span key={item} className="px-3 py-1.5 rounded-lg bg-white/5 text-sm text-text-muted hover:bg-white/10 hover:text-white transition-colors cursor-default">
+                                    <span key={`tech-${i}-item-${item}`} className="px-3 py-1.5 rounded-lg bg-white/5 text-sm text-text-muted hover:bg-white/10 hover:text-white transition-colors cursor-default">
                                         {item}
                                     </span>
                                 ))}

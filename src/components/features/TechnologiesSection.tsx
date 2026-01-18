@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 
 export function TechnologiesSection() {
-    const { t, language } = useLanguage();
+    const {language } = useLanguage();
 
     const techsData = techs({
         Atom,
@@ -46,7 +46,7 @@ export function TechnologiesSection() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {techsData.map((tech, i) => (
                         <motion.div
-                            key={i}
+                            key={`tech-data-${i}`}
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: i * 0.05 }}

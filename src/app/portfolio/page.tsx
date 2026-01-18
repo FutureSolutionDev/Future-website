@@ -60,7 +60,7 @@ export default function PortfolioPage() {
                 <div className="grid md:grid-cols-2 gap-8">
                     {projectsData.map((project, i) => (
                         <motion.div
-                            key={i}
+                            key={`project-${i}`}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -97,7 +97,7 @@ export default function PortfolioPage() {
                                     </p>
                                     <div className="flex flex-wrap gap-2">
                                         {project.tech.map(t => (
-                                            <span key={t} className="px-2 py-1 bg-surface-dark text-xs text-text-muted rounded-md border border-white/5">
+                                            <span key={`tech-${t}`} className="px-2 py-1 bg-surface-dark text-xs text-text-muted rounded-md border border-white/5">
                                                 {t}
                                             </span>
                                         ))}

@@ -41,7 +41,7 @@ export default function ServicesPage() {
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {servicesData.map((service, i) => (
                             <motion.div
-                                key={i}
+                                key={`service-${i}`}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: i * 0.1 }}
@@ -55,7 +55,7 @@ export default function ServicesPage() {
                                 <p className="text-text-muted mb-6">{service.description}</p>
                                 <ul className="space-y-2">
                                     {service.features.map(feature => (
-                                        <li key={feature} className="flex items-center text-sm text-text-muted">
+                                        <li key={`service-${i}-feature-${feature}`} className="flex items-center text-sm text-text-muted">
                                             <CheckCircle size={14} className="text-cyan-glow mr-2 rtl:ml-2 rtl:mr-0" />
                                             {feature}
                                         </li>

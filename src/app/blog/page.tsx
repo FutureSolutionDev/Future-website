@@ -43,7 +43,6 @@ export default function BlogPage() {
                 <div className="grid md:grid-cols-2 gap-8">
                     {articlesData.articles.map((article, index) => {
                         const IconComponent = iconMap[article.icon as keyof typeof iconMap];
-
                         return (
                             <motion.article
                                 key={article.slug}

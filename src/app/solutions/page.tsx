@@ -37,7 +37,7 @@ export default function SolutionsPage() {
                 <div className="grid md:grid-cols-2 gap-8">
                     {solutionsData.map((sol, i) => (
                         <motion.div
-                            key={i}
+                            key={`sol-${i}`}
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: i * 0.1 }}
