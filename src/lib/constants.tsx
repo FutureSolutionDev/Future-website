@@ -31,9 +31,13 @@ export const MetaConfig = {
     robots: {
         index: true,
         follow: true,
-        "max-image-preview": "large",
-        "max-video-preview": -1,
-        "max-snippet": -1,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large" as const,
+            "max-video-preview": -1,
+            "max-snippet": -1,
+        },
     },
     keywords: [
         "Future Solutions",
@@ -104,9 +108,8 @@ export const MetaConfig = {
     },
     metadataBase: new URL("https://futuresolutionsdev.com"),
     publisher: title,
-    referrer: "origin",
+    referrer: "origin" as const,
     manifest: "/manifest.json",
-    classification: "SaaS",
 };
 
 
@@ -129,6 +132,9 @@ export const technologies = [
     }
 ];
 
+type IconComponent = React.ComponentType<{ size?: number }>;
+type TranslateFunction = (key: string) => string;
+
 export const solutions = ({
     language,
     t,
@@ -136,6 +142,13 @@ export const solutions = ({
     BarChart,
     Server,
     Layers,
+}: {
+    language: string;
+    t: TranslateFunction;
+    ShoppingCart: IconComponent;
+    BarChart: IconComponent;
+    Server: IconComponent;
+    Layers: IconComponent;
 }) => [
         {
             icon: ShoppingCart,
@@ -171,6 +184,14 @@ export const services = ({
     Brain,
     Database,
     Shield,
+}: {
+    t: TranslateFunction;
+    Code: IconComponent;
+    Smartphone: IconComponent;
+    Cloud: IconComponent;
+    Brain: IconComponent;
+    Database: IconComponent;
+    Shield: IconComponent;
 }) => [
         {
             icon: Code,
@@ -209,7 +230,7 @@ export const services = ({
             features: ['PenTest', 'Compliance', 'Audit', 'Guard']
         }
     ];
-export const projects = ({ language }) => [
+export const projects = ({ language }: { language: string }) => [
     {
         title: 'FinDash System',
         image: '/Projects/FinDash.png',
@@ -269,6 +290,15 @@ export const techs = ({
     Cloud,
     Database,
     Container,
+}: {
+    Atom: IconComponent;
+    Server: IconComponent;
+    Triangle: IconComponent;
+    FileCode2: IconComponent;
+    Braces: IconComponent;
+    Cloud: IconComponent;
+    Database: IconComponent;
+    Container: IconComponent;
 }) => [
         {
             name: 'React',
@@ -343,7 +373,19 @@ export const techs = ({
             },
         },
     ];
-export const features = ({ language, ShieldCheck, Zap, Globe, Users }) => [
+export const features = ({
+    language,
+    ShieldCheck,
+    Zap,
+    Globe,
+    Users,
+}: {
+    language: string;
+    ShieldCheck: IconComponent;
+    Zap: IconComponent;
+    Globe: IconComponent;
+    Users: IconComponent;
+}) => [
     {
         icon: ShieldCheck,
         title: language === 'ar' ? 'آمن وموثوق' : 'Secure & Reliable',

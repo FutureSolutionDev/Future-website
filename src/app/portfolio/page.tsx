@@ -7,7 +7,17 @@ import { projects } from '@/lib/constants';
 import Image from 'next/image';
 import { useState } from "react";
 
-export function ProjectImage({ project }) {
+type Project = {
+    title: string;
+    image: string;
+    category: string;
+    description: string;
+    tech: string[];
+    color: string;
+    links: { Github: string; Live: string };
+};
+
+export function ProjectImage({ project }: { project: Project }) {
     const fallbackImage = "/assets/hero-illustration.png";
     const [imgSrc, setImgSrc] = useState(
         project?.image || fallbackImage
