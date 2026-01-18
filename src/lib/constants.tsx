@@ -120,15 +120,15 @@ export const technologies = [
     },
     {
         name: "Backend",
-        items: ["Node.js", "Express", "Python", "Django", "FastAPI", "Go"]
+        items: ["Node.js", "Nestjs", "Fastify", "Hono", "Express", "Python", "Django", "FastAPI", "Go"]
     },
     {
         name: "Database",
-        items: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Supabase", "Firebase"]
+        items: ["PostgreSQL", "MongoDB", "MySQL", "MariaDB", "Redis", "Supabase", "Firebase"]
     },
     {
         name: "DevOps & Cloud",
-        items: ["AWS", "Google Cloud", "Docker", "Kubernetes", "Vercel", "GitHub Actions"]
+        items: ["AWS", "Google Cloud", "Docker", "Kubernetes", "Vercel", "GitHub Actions", "GitLab", "Bitbucket", "Azure", "DigitalOcean", "Nginx", "Apache"]
     }
 ];
 
@@ -386,25 +386,25 @@ export const features = ({
     Globe: IconComponent;
     Users: IconComponent;
 }) => [
-    {
-        icon: ShieldCheck,
-        title: language === 'ar' ? 'آمن وموثوق' : 'Secure & Reliable',
-        description: language === 'ar' ? 'معايير أمان على مستوى المؤسسات.' : 'Enterprise-grade security standards.',
+        {
+            icon: ShieldCheck,
+            title: language === 'ar' ? 'آمن وموثوق' : 'Secure & Reliable',
+            description: language === 'ar' ? 'معايير أمان على مستوى المؤسسات.' : 'Enterprise-grade security standards.',
 
-    },
-    {
-        icon: Zap,
-        title: language === 'ar' ? 'أداء عالي' : 'High Performance',
-        description: language === 'ar' ? 'تحسين السرعة والكفاءة.' : 'Optimized for speed and efficiency.',
-    },
-    {
-        icon: Globe,
-        title: language === 'ar' ? 'قابلية التوسع' : 'Global Scale',
-        description: language === 'ar' ? 'بنية تحتية تنمو معك.' : 'Infrastructure that grows with you.',
-    },
-    {
-        icon: Users,
-        title: language === 'ar' ? 'فريق خبير' : 'Expert Team',
-        description: language === 'ar' ? 'مهندسين ذوي خبرة عالية.' : 'Dedicated senior engineers.',
-    },
-];
+        },
+        {
+            icon: Zap,
+            title: language === 'ar' ? 'أداء عالي' : 'High Performance',
+            description: language === 'ar' ? 'تحسين السرعة والكفاءة.' : 'Optimized for speed and efficiency.',
+        },
+        {
+            icon: Globe,
+            title: language === 'ar' ? 'قابلية التوسع' : 'Global Scale',
+            description: language === 'ar' ? 'بنية تحتية تنمو معك.' : 'Infrastructure that grows with you.',
+        },
+        {
+            icon: Users,
+            title: language === 'ar' ? 'فريق خبير' : 'Expert Team',
+            description: language === 'ar' ? 'مهندسين ذوي خبرة عالية.' : 'Dedicated senior engineers.',
+        },
+    ];
