@@ -1,23 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Enable React strict mode for better development
+  // Static HTML export - no server needed!
+  output: 'export',
+
+  // Enable React strict mode
   reactStrictMode: true,
 
-  // Image optimization
+  // Images must be unoptimized for static export
   images: {
-    formats: ['image/avif', 'image/webp'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
-  },
-
-  // Experimental features for better performance
-  experimental: {
-    optimizeCss: true,
+    unoptimized: true,
   },
 };
 
