@@ -231,54 +231,54 @@ export const services = ({
         }
     ];
 export const projects = ({ language }: { language: string }) => [
-    {
-        title: 'FinDash System',
-        image: '/Projects/FinDash.png',
-        category: 'SaaS / FinTech',
-        description: language === 'ar' ? 'لوحة تحكم مالية شاملة للشركات الصغيرة والمتوسطة لتتبع النفقات والإيرادات.' : 'A comprehensive financial dashboard for SMEs to track expenses, revenue, and forecasts in real-time.',
-        tech: ['Next.js', 'TypeScript', 'Tailwind', 'Recharts'],
-        color: 'from-blue-500 to-indigo-600',
-        links: {
-            Github: "",
-            Live: "https://futuresolutionsdev.com"
-        }
-    },
-    {
-        title: 'HealthConnect',
-        image: '/Projects/HealthConnect.png',
-        category: 'Healthcare App',
-        description: language === 'ar' ? 'تطبيق جوال للتطبب عن بعد يربط المرضى بالأطباء للاستشارات الافتراضية.' : 'Telemedicine mobile application connecting patients with doctors for virtual consultations.',
-        tech: ['React Native', 'Node.js', 'WebRTC'],
-        color: 'from-emerald-500 to-teal-600',
-        links: {
-            Github: "",
-            Live: "https://futuresolutionsdev.com"
-        }
-    },
-    {
-        title: 'ShopifyPlus Theme',
-        category: 'E-commerce',
-        image: '/Projects/ShopifyPlus.png',
-        description: language === 'ar' ? 'ثيم Shopify مخصص عالي التحويل يركز على السرعة وتجربة المستخدم.' : 'High-conversion custom Shopify theme focusing on speed and user experience.',
-        tech: ['Liquid', 'JavaScript', 'Tailwind'],
-        color: 'from-purple-500 to-pink-600',
-        links: {
-            Github: "",
-            Live: "https://futuresolutionsdev.com"
-        }
-    },
-    {
-        title: 'AI Content Gen',
-        category: 'AI Tool',
-        image: '/Projects/AIContentGen.png',
-        description: language === 'ar' ? 'أداة توليد محتوى تستخدم OpenAI API لمساعدة المسوقين.' : 'Content generation tool leveraging OpenAI API to help marketers create seo-optimized posts.',
-        tech: ['Next.js', 'OpenAI API', 'Stripe'],
-        color: 'from-orange-500 to-red-600',
-        links: {
-            Github: "",
-            Live: "https://futuresolutionsdev.com"
-        }
-    }
+    // {
+    //     title: 'FinDash System',
+    //     image: '/Projects/FinDash.png',
+    //     category: 'SaaS / FinTech',
+    //     description: language === 'ar' ? 'لوحة تحكم مالية شاملة للشركات الصغيرة والمتوسطة لتتبع النفقات والإيرادات.' : 'A comprehensive financial dashboard for SMEs to track expenses, revenue, and forecasts in real-time.',
+    //     tech: ['Next.js', 'TypeScript', 'Tailwind', 'Recharts'],
+    //     color: 'from-blue-500 to-indigo-600',
+    //     links: {
+    //         Github: "",
+    //         Live: "https://futuresolutionsdev.com"
+    //     }
+    // },
+    // {
+    //     title: 'HealthConnect',
+    //     image: '/Projects/HealthConnect.png',
+    //     category: 'Healthcare App',
+    //     description: language === 'ar' ? 'تطبيق جوال للتطبب عن بعد يربط المرضى بالأطباء للاستشارات الافتراضية.' : 'Telemedicine mobile application connecting patients with doctors for virtual consultations.',
+    //     tech: ['React Native', 'Node.js', 'WebRTC'],
+    //     color: 'from-emerald-500 to-teal-600',
+    //     links: {
+    //         Github: "",
+    //         Live: "https://futuresolutionsdev.com"
+    //     }
+    // },
+    // {
+    //     title: 'ShopifyPlus Theme',
+    //     category: 'E-commerce',
+    //     image: '/Projects/ShopifyPlus.png',
+    //     description: language === 'ar' ? 'ثيم Shopify مخصص عالي التحويل يركز على السرعة وتجربة المستخدم.' : 'High-conversion custom Shopify theme focusing on speed and user experience.',
+    //     tech: ['Liquid', 'JavaScript', 'Tailwind'],
+    //     color: 'from-purple-500 to-pink-600',
+    //     links: {
+    //         Github: "",
+    //         Live: "https://futuresolutionsdev.com"
+    //     }
+    // },
+    // {
+    //     title: 'AI Content Gen',
+    //     category: 'AI Tool',
+    //     image: '/Projects/AIContentGen.png',
+    //     description: language === 'ar' ? 'أداة توليد محتوى تستخدم OpenAI API لمساعدة المسوقين.' : 'Content generation tool leveraging OpenAI API to help marketers create seo-optimized posts.',
+    //     tech: ['Next.js', 'OpenAI API', 'Stripe'],
+    //     color: 'from-orange-500 to-red-600',
+    //     links: {
+    //         Github: "",
+    //         Live: "https://futuresolutionsdev.com"
+    //     }
+    // }
 ];
 
 export const techs = ({
