@@ -59,7 +59,7 @@ export default function PortfolioPage() {
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-8">
-          {projectsData.map((project, i) => {
+          {projectsData.map((project: Project, i: number) => {
             if (!project) return null;
             return (
               <motion.div

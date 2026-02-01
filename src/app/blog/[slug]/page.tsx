@@ -23,6 +23,8 @@ export async function generateMetadata({
         return { title: 'Article Not Found | Future Solutions' };
     }
 
+    const imageUrl = `https://futuresolutionsdev.com${article.coverImage}`;
+
     return {
         title: `${article.title.en} | Future Solutions`,
         description: article.excerpt.en,
@@ -34,11 +36,21 @@ export async function generateMetadata({
             publishedTime: article.publishedAt,
             authors: [article.author.name],
             siteName: 'Future Solutions Dev',
+            url: `https://futuresolutionsdev.com/blog/${slug}`,
+            images: [
+                {
+                    url: imageUrl,
+                    width: 1200,
+                    height: 630,
+                    alt: article.title.en,
+                },
+            ],
         },
         twitter: {
             card: 'summary_large_image',
             title: article.title.en,
             description: article.excerpt.en,
+            images: [imageUrl],
         },
         alternates: {
             canonical: `https://futuresolutionsdev.com/blog/${slug}`,
