@@ -19,12 +19,12 @@ export const MetaConfig = {
     title,
     description,
     icons: {
-        icon: "/favicon.png",
-        apple: "/favicon.png",
-        shortcut: "/favicon.png",
+        icon: "/favico.png",
+        apple: "/favico.png",
+        shortcut: "/favico.png",
         other: {
             rel: "icon",
-            url: "/favicon.png",
+            url: "/favico.png",
         },
     },
     alternates: { canonical: "https://futuresolutionsdev.com" },
@@ -89,7 +89,7 @@ export const MetaConfig = {
         creator: "@Future Solutions Dev",
         title,
         description,
-        images: ["/favicon.png", "/Icons/512.png"],
+        images: ["/favico.png", "/Icons/512.png"],
     },
     openGraph: {
         type: "website",
@@ -102,7 +102,7 @@ export const MetaConfig = {
                 url: "/Icons/512.png",
             },
             {
-                url: "/favicon.png",
+                url: "/favico.png",
             },
         ],
     },
@@ -230,7 +230,7 @@ export const services = ({
             features: ['PenTest', 'Compliance', 'Audit', 'Guard']
         }
     ];
-export const projects = ({ language }: { language: string }) => [
+export const projects = ({ language }: { language?: string }) => [
     // {
     //     title: 'FinDash System',
     //     image: '/Projects/FinDash.png',
