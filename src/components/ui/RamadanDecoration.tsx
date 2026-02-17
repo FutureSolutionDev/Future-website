@@ -63,8 +63,12 @@ export default function RamadanDecoration() {
 
     // Lantern configurations
     const lanterns = [
+        // 2 from starts
         { id: 1, position: 70, delay: 0, size: 80, chainLength: 0 },
-        { id: 2, position: 88, delay: 0.3, size: 65, chainLength: 6 },
+        { id: 2, position: 88, delay: 0, size: 65, chainLength: 6 },
+        // 2 from bottom
+        { id: 3, position: 30, delay: 0, size: 80, chainLength: 0 },
+        { id: 4, position: 8, delay: 0, size: 65, chainLength: 6 },
     ];
 
     // Hanging stars
@@ -72,6 +76,9 @@ export default function RamadanDecoration() {
         { id: 1, position: 62, top: 0 },
         { id: 2, position: 80, top: 5 },
         { id: 3, position: 95, top: 2 },
+        { id: 4, position: 5, top: 2 },
+        { id: 5, position: 20, top: 5 },
+        { id: 6, position: 38, top: 2 },
     ];
 
     // Twinkling stars
@@ -115,7 +122,7 @@ export default function RamadanDecoration() {
                 </motion.div>
             ))}
 
-            {/* Lanterns using SVG file */}
+            {/* Lanterns using SVG file - swinging from top center pivot */}
             {lanterns.map((lantern) => (
                 <motion.div
                     key={lantern.id}
@@ -123,23 +130,23 @@ export default function RamadanDecoration() {
                     style={{
                         left: `${lantern.position}%`,
                         top: `${lantern.chainLength}px`,
-                        transform: 'translateX(-50%)',
                         width: lantern.size,
                         height: lantern.size * 1.5,
+                        transformOrigin: 'top center', // Pivot point at top center
                     }}
                     animate={{
-                        y: hoveredLantern === lantern.id ? [-2, 2, -2] : [0, 4, 0],
-                        rotate: hoveredLantern === lantern.id ? [-1, 1, -1] : [-2, 2, -2],
+                        rotate: hoveredLantern === lantern.id
+                            ? [-8, 8, -8] // Wider swing on hover
+                            : [-4, 4, -4], // Normal pendulum swing
                     }}
                     transition={{
-                        duration: hoveredLantern === lantern.id ? 0.4 : 3.5,
+                        duration: hoveredLantern === lantern.id ? 0.6 : 3,
                         delay: lantern.delay,
                         repeat: Infinity,
                         ease: 'easeInOut',
                     }}
                     onMouseEnter={() => setHoveredLantern(lantern.id)}
                     onMouseLeave={() => setHoveredLantern(null)}
-                    whileHover={{ scale: 1.1 }}
                 >
                     <Image
                         src="/Ramadan/Lantern.svg"
@@ -149,14 +156,14 @@ export default function RamadanDecoration() {
                         className="w-full h-full object-contain transition-all duration-300"
                         style={{
                             filter: hoveredLantern === lantern.id
-                                ? 'drop-shadow(0 0 20px rgba(255,180,80,0.9)) brightness(1.2)'
+                                ? 'drop-shadow(0 0 25px rgba(255,180,80,1)) brightness(1.3)'
                                 : 'drop-shadow(0 0 10px rgba(255,180,80,0.5))',
                         }}
                     />
                 </motion.div>
             ))}
 
-            {/* Crescent Moon using SVG file */}
+            {/* Crescent Moon using SVG file - only glow effect on hover */}
             <motion.div
                 className="absolute left-[50%] md:left-[55%] -top-3 cursor-pointer pointer-events-auto"
                 style={{
@@ -164,13 +171,11 @@ export default function RamadanDecoration() {
                     height: 70,
                 }}
                 animate={{
-                    y: moonHovered ? [0, -2, 0] : [0, -5, 0],
-                    scale: moonHovered ? 1.15 : 1,
-                    rotate: moonHovered ? [0, 5, 0] : [0, 3, 0],
+                    y: [0, -4, 0], // Gentle floating
                 }}
                 transition={{
-                    duration: moonHovered ? 0.3 : 4,
-                    repeat: moonHovered ? 0 : Infinity,
+                    duration: 4,
+                    repeat: Infinity,
                     ease: 'easeInOut',
                 }}
                 onMouseEnter={() => setMoonHovered(true)}
@@ -181,16 +186,17 @@ export default function RamadanDecoration() {
                     alt="Crescent Moon"
                     width={70}
                     height={70}
-                    className="w-full h-full object-contain transition-all duration-300"
+                    className="w-full h-full object-contain"
                     style={{
                         filter: moonHovered
-                            ? 'drop-shadow(0 0 30px rgba(255,200,100,1)) brightness(1.3)'
-                            : 'drop-shadow(0 0 15px rgba(255,200,100,0.7))',
+                            ? 'drop-shadow(0 0 40px rgba(255,200,100,1)) drop-shadow(0 0 60px rgba(255,180,80,0.8)) brightness(1.4)'
+                            : 'drop-shadow(0 0 15px rgba(255,200,100,0.6))',
+                        transition: 'filter 0.3s ease',
                     }}
                 />
             </motion.div>
 
-            {/* Twinkling Stars */}
+            {/* Twinkling Stars - scale up + glow on hover */}
             {twinkleStars.map((star) => (
                 <motion.div
                     key={star.id}
@@ -200,13 +206,14 @@ export default function RamadanDecoration() {
                         top: `${star.top}px`,
                         color: hoveredStar === star.id ? '#FFFFFF' : '#FFD700',
                         filter: hoveredStar === star.id
-                            ? 'drop-shadow(0 0 10px rgba(255,255,255,0.9))'
-                            : 'drop-shadow(0 0 4px rgba(255,215,0,0.6))',
-                        transition: 'color 0.2s ease, filter 0.2s ease'
+                            ? 'drop-shadow(0 0 15px rgba(255,255,255,1)) drop-shadow(0 0 25px rgba(255,215,0,0.8))'
+                            : 'drop-shadow(0 0 4px rgba(255,215,0,0.5))',
+                        transition: 'color 0.2s ease, filter 0.3s ease, transform 0.3s ease',
+                        transform: hoveredStar === star.id ? 'scale(2)' : 'scale(1)',
                     }}
                     animate={{
                         opacity: hoveredStar === star.id ? 1 : [0.5, 1, 0.5],
-                        scale: hoveredStar === star.id ? 1.5 : [0.9, 1.1, 0.9],
+                        scale: hoveredStar === star.id ? 2 : [0.9, 1.1, 0.9],
                     }}
                     transition={{
                         duration: hoveredStar === star.id ? 0.2 : 2,

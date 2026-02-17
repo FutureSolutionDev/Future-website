@@ -156,7 +156,7 @@ export default function RamadanGreeting() {
                         ))}
                     </div>
 
-                    {/* Floating Lanterns using SVG file */}
+                    {/* Floating Lanterns using SVG file - pendulum swing from top */}
                     <div className="absolute inset-0 overflow-hidden pointer-events-auto">
                         {lanterns.map((lantern) => (
                             <motion.div
@@ -167,48 +167,48 @@ export default function RamadanGreeting() {
                                     top: lantern.top,
                                     width: lantern.size,
                                     height: lantern.size * 1.5,
+                                    transformOrigin: 'top center', // Pivot point at top
                                 }}
                                 animate={{
-                                    y: hoveredLantern === lantern.id ? [-5, 5, -5] : [0, -15, 0],
-                                    rotate: hoveredLantern === lantern.id ? [-2, 2, -2] : [-3, 3, -3],
+                                    rotate: hoveredLantern === lantern.id
+                                        ? [-12, 12, -12] // Wider swing on hover
+                                        : [-5, 5, -5], // Normal pendulum swing
                                 }}
                                 transition={{
-                                    duration: hoveredLantern === lantern.id ? 0.5 : 4,
+                                    duration: hoveredLantern === lantern.id ? 0.5 : 3.5,
                                     delay: lantern.delay,
                                     repeat: Infinity,
                                     ease: 'easeInOut',
                                 }}
                                 onMouseEnter={() => setHoveredLantern(lantern.id)}
                                 onMouseLeave={() => setHoveredLantern(null)}
-                                whileHover={{ scale: 1.15 }}
                             >
                                 <Image
                                     src="/Ramadan/Lantern.svg"
                                     alt="Lantern"
                                     width={lantern.size}
                                     height={lantern.size * 1.5}
-                                    className="w-full h-full object-contain transition-all duration-300"
+                                    className="w-full h-full object-contain"
                                     style={{
                                         filter: hoveredLantern === lantern.id
-                                            ? 'drop-shadow(0 0 25px rgba(255,180,80,1)) brightness(1.3)'
+                                            ? 'drop-shadow(0 0 30px rgba(255,180,80,1)) drop-shadow(0 0 50px rgba(255,150,50,0.7)) brightness(1.4)'
                                             : 'drop-shadow(0 0 12px rgba(255,180,80,0.6))',
+                                        transition: 'filter 0.3s ease',
                                     }}
                                 />
                             </motion.div>
                         ))}
                     </div>
 
-                    {/* Crescent Moon using SVG file */}
+                    {/* Crescent Moon using SVG file - only glow on hover */}
                     <motion.div
                         className="absolute top-8 right-8 md:top-12 md:right-16 w-24 h-24 md:w-32 md:h-32 cursor-pointer"
                         animate={{
-                            y: moonHovered ? [0, -5, 0] : [0, -8, 0],
-                            rotate: moonHovered ? [0, 5, 0] : [0, 3, 0],
-                            scale: moonHovered ? 1.15 : 1,
+                            y: [0, -6, 0], // Gentle floating only
                         }}
                         transition={{
-                            duration: moonHovered ? 0.4 : 4,
-                            repeat: moonHovered ? 0 : Infinity,
+                            duration: 4,
+                            repeat: Infinity,
                             ease: 'easeInOut',
                         }}
                         onMouseEnter={() => setMoonHovered(true)}
@@ -219,11 +219,12 @@ export default function RamadanGreeting() {
                             alt="Crescent Moon"
                             width={128}
                             height={128}
-                            className="w-full h-full object-contain transition-all duration-300"
+                            className="w-full h-full object-contain"
                             style={{
                                 filter: moonHovered
-                                    ? 'drop-shadow(0 0 40px rgba(255,200,100,1)) brightness(1.3)'
-                                    : 'drop-shadow(0 0 20px rgba(255,200,100,0.7))',
+                                    ? 'drop-shadow(0 0 50px rgba(255,200,100,1)) drop-shadow(0 0 80px rgba(255,180,80,0.8)) brightness(1.5)'
+                                    : 'drop-shadow(0 0 20px rgba(255,200,100,0.6))',
+                                transition: 'filter 0.4s ease',
                             }}
                         />
                     </motion.div>
