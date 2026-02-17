@@ -3,6 +3,7 @@ import { Inter, Cairo } from 'next/font/google';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { LanguageProvider } from '@/context/LanguageContext';
+import RamadanGreeting from '@/components/ui/RamadanGreeting';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { MetaConfig } from '@/lib/constants';
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={cn(inter.variable, cairo.variable, "min-h-screen bg-bg-dark text-text-main antialiased flex flex-col")}>
         <LanguageProvider>
+          <RamadanGreeting />
           <Navbar />
           <main className="flex-grow
           md:min-h-[calc(100dvh-8.6rem)] min-h-[calc(100dvh-9rem)]
