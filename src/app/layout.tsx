@@ -4,6 +4,8 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { LanguageProvider } from '@/context/LanguageContext';
 import RamadanGreeting from '@/components/ui/RamadanGreeting';
+import EidAlFitrGreeting from '@/components/ui/EidAlFitrGreeting';
+import EidAlAdhaGreeting from '@/components/ui/EidAlAdhaGreeting';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { MetaConfig } from '@/lib/constants';
@@ -23,6 +25,8 @@ export default function RootLayout({
       <body className={cn(inter.variable, cairo.variable, "min-h-screen bg-bg-dark text-text-main antialiased flex flex-col")}>
         <LanguageProvider>
           <RamadanGreeting />
+          <EidAlFitrGreeting />
+          <EidAlAdhaGreeting />
           <Navbar />
           <main className="flex-grow
           md:min-h-[calc(100dvh-8.6rem)] min-h-[calc(100dvh-9rem)]

@@ -7,6 +7,9 @@ import { useLanguage } from '@/context/LanguageContext';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import RamadanDecoration from '@/components/ui/RamadanDecoration';
+import EidAlFitrDecoration from '@/components/ui/EidAlFitrDecoration';
+import EidAlAdhaDecoration from '@/components/ui/EidAlAdhaDecoration';
+import { ActiveGreeting } from '@/lib/constants';
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,13 +35,15 @@ export function Navbar() {
     };
     return (
         <nav className="sticky w-full z-50 top-0 left-0 bg-bg-dark/80 backdrop-blur-md border-b border-white/10">
-            {/* Ramadan Decoration hanging from navbar */}
+            {/* Occasion Decorations hanging from navbar */}
             <RamadanDecoration Mode="Desktop" />
+            <EidAlFitrDecoration Mode="Desktop" />
+            <EidAlAdhaDecoration Mode="Desktop" />
             <div className="container mx-auto px-4 flex items-center justify-between md:h-[5rem] h-[4rem]">
                 {/* Logo */}
                 <Link href="/" className="text-2xl font-bold text-white tracking-tighter">
                     <Image
-                        src="/favico.png"
+                        src={ActiveGreeting?.Favicon || "/favico.png"}
                         alt="Logo"
                         width={100}
                         height={100}
@@ -96,8 +101,10 @@ export function Navbar() {
                     >
                         <div className="container px-4 py-8 flex flex-col space-y-4"
                         >
-                            {/* Ramadan Mini Decoration for Mobile */}
+                            {/* Occasion Mini Decorations for Mobile */}
                             <RamadanDecoration Mode="Mobile" />
+                            <EidAlFitrDecoration Mode="Mobile" />
+                            <EidAlAdhaDecoration Mode="Mobile" />
                             {navLinks.map((link) => {
                                 return (
                                     <Link

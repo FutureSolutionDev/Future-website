@@ -257,7 +257,8 @@ export const services = ({
             features: ['PenTest', 'Compliance', 'Audit', 'Guard']
         }
     ];
-export const projects = ({ _language }: { language?: string }) => [
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const projects = ({ language }: { language?: string }) => [
     // {
     //     title: 'FinDash System',
     //     image: '/Projects/FinDash.png',
