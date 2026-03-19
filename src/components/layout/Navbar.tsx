@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import RamadanDecoration, { RamadanDecorationMini } from '@/components/ui/RamadanDecoration';
+import RamadanDecoration from '@/components/ui/RamadanDecoration';
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +33,7 @@ export function Navbar() {
     return (
         <nav className="sticky w-full z-50 top-0 left-0 bg-bg-dark/80 backdrop-blur-md border-b border-white/10">
             {/* Ramadan Decoration hanging from navbar */}
-            <RamadanDecoration />
+            <RamadanDecoration Mode="Desktop" />
             <div className="container mx-auto px-4 flex items-center justify-between md:h-[5rem] h-[4rem]">
                 {/* Logo */}
                 <Link href="/" className="text-2xl font-bold text-white tracking-tighter">
@@ -97,7 +97,7 @@ export function Navbar() {
                         <div className="container px-4 py-8 flex flex-col space-y-4"
                         >
                             {/* Ramadan Mini Decoration for Mobile */}
-                            <RamadanDecorationMini />
+                            <RamadanDecoration Mode="Mobile" />
                             {navLinks.map((link) => {
                                 return (
                                     <Link

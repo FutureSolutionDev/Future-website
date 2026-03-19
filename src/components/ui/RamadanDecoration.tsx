@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
+import { Greetings } from '@/lib/constants';
 
 // Twinkling Star (4-point and 5-point)
 const TwinkleStar = ({
@@ -56,7 +57,7 @@ const HangingStar = ({ className = '' }: { className?: string }) => (
     </svg>
 );
 
-export default function RamadanDecoration() {
+export function RamadanDecorationDesktop() {
     const [hoveredLantern, setHoveredLantern] = useState<number | null>(null);
     const [moonHovered, setMoonHovered] = useState(false);
     const [hoveredStar, setHoveredStar] = useState<number | null>(null);
@@ -354,3 +355,11 @@ export function RamadanDecorationMini() {
         </div>
     );
 }
+
+export default function RamadanDecoration({
+    Mode = "Desktop"
+}) {
+    if (!Greetings.Ramadan.Active) return null;
+    if (Mode === "Desktop") return <RamadanDecorationDesktop />;
+    return <RamadanDecorationMini />;
+};

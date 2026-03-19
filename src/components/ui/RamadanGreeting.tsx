@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { Greetings } from '@/lib/constants';
 
 // Star SVG Component
 const Star = ({ className = '', size = 'md' }: { className?: string; size?: 'sm' | 'md' | 'lg' }) => {
@@ -51,7 +52,7 @@ const Mosque = ({ className = '' }: { className?: string }) => (
     </svg>
 );
 
-export default function RamadanGreeting() {
+export function RamadanGreetingView() {
     const [isVisible, setIsVisible] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
     const [moonHovered, setMoonHovered] = useState(false);
@@ -340,4 +341,9 @@ export default function RamadanGreeting() {
             )}
         </AnimatePresence>
     );
+}
+
+export default function RamadanGreeting() {
+    if (!Greetings.Ramadan.Active) return null;
+    return <RamadanGreetingView />;
 }

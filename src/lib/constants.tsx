@@ -15,16 +15,43 @@ export const Contact = {
     LinkedIn: "https://www.linkedin.com/company/futuresolutionsdev",
     Address: "Cairo, Egypt"
 }
+export const Greetings: Record<string, { Active: boolean; Favicon: string; Title: string; Description: string }> = {
+    Default: {
+        Active: false,
+        Favicon: "/favico/favico.png",
+        Title: title,
+        Description: description,
+    },
+    Ramadan: {
+        Active: false,
+        Favicon: "/favico/favico.Ramadan.png",
+        Title: title,
+        Description: description,
+    },
+    EidAlFitr: {
+        Active: true,
+        Favicon: "/favico/favico.EidAlFitr.png",
+        Title: title,
+        Description: description,
+    },
+    EidAlAdha: {
+        Active: false,
+        Favicon: "/favico/favico.EidAlAdha.png",
+        Title: title,
+        Description: description,
+    }
+}
+export const ActiveGreeting = Object.values(Greetings).find(g => g.Active)
 export const MetaConfig = {
-    title,
-    description,
+    title: ActiveGreeting?.Title || title,
+    description: ActiveGreeting?.Description || description,
     icons: {
-        icon: "/favico.png",
-        apple: "/favico.png",
-        shortcut: "/favico.png",
+        icon: ActiveGreeting?.Favicon || "/favico/favico.png",
+        apple: ActiveGreeting?.Favicon || "/favico/favico.png",
+        shortcut: ActiveGreeting?.Favicon || "/favico/favico.png",
         other: {
             rel: "icon",
-            url: "/favico.png",
+            url: ActiveGreeting?.Favicon || "/favico/favico.png",
         },
     },
     alternates: { canonical: "https://futuresolutionsdev.com" },
@@ -87,22 +114,22 @@ export const MetaConfig = {
     twitter: {
         card: "summary_large_image",
         creator: "@Future Solutions Dev",
-        title,
-        description,
-        images: ["/favico.png", "/Icons/512.png"],
+        title: ActiveGreeting?.Title || title,
+        description: ActiveGreeting?.Description || description,
+        images: [ActiveGreeting?.Favicon || "/favico/favico.png", "/Icons/512.png"],
     },
     openGraph: {
         type: "website",
         url: "https://futuresolutionsdev.com",
-        title,
-        description,
+        title: ActiveGreeting?.Title || title,
+        description: ActiveGreeting?.Description || description,
         siteName: title,
         images: [
             {
-                url: "/Icons/512.png",
+                url: ActiveGreeting?.Favicon || "/favico/favico.png",
             },
             {
-                url: "/favico.png",
+                url: ActiveGreeting?.Favicon || "/favico/favico.png",
             },
         ],
     },
@@ -230,7 +257,7 @@ export const services = ({
             features: ['PenTest', 'Compliance', 'Audit', 'Guard']
         }
     ];
-export const projects = ({ language }: { language?: string }) => [
+export const projects = ({ _language }: { language?: string }) => [
     // {
     //     title: 'FinDash System',
     //     image: '/Projects/FinDash.png',
