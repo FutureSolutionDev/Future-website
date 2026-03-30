@@ -41,7 +41,7 @@ export const Greetings: Record<string, { Active: boolean; Favicon: string; Title
         Description: description,
     }
 }
-export const ActiveGreeting = Object.values(Greetings).find(g => g.Active)
+export const ActiveGreeting = Object.values(Greetings).find(g => g.Active) || Greetings.Default
 export const MetaConfig = {
     title: ActiveGreeting?.Title || title,
     description: ActiveGreeting?.Description || description,

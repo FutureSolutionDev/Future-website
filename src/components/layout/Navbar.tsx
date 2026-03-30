@@ -43,7 +43,7 @@ export function Navbar() {
                 {/* Logo */}
                 <Link href="/" className="text-2xl font-bold text-white tracking-tighter">
                     <Image
-                        src={ActiveGreeting?.Favicon || "/favico.png"}
+                        src={ActiveGreeting?.Favicon || "/favico/favico.png"}
                         alt="Logo"
                         width={100}
                         height={100}
