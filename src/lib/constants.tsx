@@ -29,7 +29,7 @@ export const Greetings: Record<string, { Active: boolean; Favicon: string; Title
         Description: description,
     },
     EidAlFitr: {
-        Active: true,
+        Active: false,
         Favicon: "/favico/favico.EidAlFitr.png",
         Title: title,
         Description: description,
