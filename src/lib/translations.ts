@@ -17,8 +17,8 @@ export const translations = {
   "hero.title.futureReady": { en: "Future-Ready", ar: "جاهزة للمستقبل" },
   "hero.title.solutions": { en: "Software Solutions", ar: "حلول برمجية" },
   "hero.desc": {
-    en: "We design, develop, and scale web, mobile, SaaS, and AI-powered systems for modern businesses.",
-    ar: "نطوّر ونبني أنظمة ويب، موبايل، SaaS، وحلول ذكية AI تساعد الشركات على النمو والتوسع.",
+    en: "Custom platforms that win you customers, automate your operations, and grow with your business — web, mobile, and SaaS.",
+    ar: "منصات مخصصة تكسبك عملاء جدد، تؤتمت عملياتك، وتنمو مع أعمالك — ويب وموبايل وSaaS.",
   },
   "hero.cta.primary": { en: "Get Started", ar: "ابدأ الآن" },
   "hero.cta.secondary": {
@@ -29,38 +29,38 @@ export const translations = {
   // Services Page
   "services.title": { en: "Our Services", ar: "خدماتنا" },
   "services.subtitle": {
-    en: "We deliver valid, scalable, and secure software solutions customized for your industry.",
-    ar: "نقدم حلولاً برمجية موثوقة، قابلة للتوسع، وآمنة، مصممة خصيصاً لتناسب مجال عملك.",
+    en: "Every service is built around one question: what will it add to your business?",
+    ar: "كل خدمة عندنا مبنية على سؤال واحد: هتضيف إيه لأعمالك؟",
   },
   "services.web.title": { en: "Web Development", ar: "تطوير الويب" },
   "services.web.desc": {
-    en: "High-performance websites and web applications.",
-    ar: "مواقع وتطبيقات ويب عالية الأداء.",
+    en: "Websites that load fast, rank on Google, and turn visitors into paying customers.",
+    ar: "مواقع سريعة تتصدر نتائج البحث وتحوّل الزوار إلى عملاء يدفعون.",
   },
   "services.mobile.title": { en: "Mobile Apps", ar: "تطبيقات الجوال" },
   "services.mobile.desc": {
-    en: "Native and cross-platform mobile solutions.",
-    ar: "تطبيقات جوال أصلية ومتعددة المنصات.",
+    en: "Apps your customers keep coming back to — on iPhone and Android alike.",
+    ar: "تطبيقات يرجع لها عملاؤك كل يوم — على iPhone وAndroid معاً.",
   },
-  "services.saas.title": { en: "SaaS Solutions", ar: "أنظمة SaaS" },
+  "services.saas.title": { en: "SaaS Platforms", ar: "منصات SaaS" },
   "services.saas.desc": {
-    en: "Scalable Software-as-a-Service platforms.",
-    ar: "منصات برمجية قابلة للتوسع كخدمة.",
+    en: "Launch a subscription product that scales smoothly from 10 users to 10,000.",
+    ar: "أطلق منتجك الاشتراكي ليتوسع بسلاسة من 10 مستخدمين إلى 10 آلاف.",
   },
-  "services.ai.title": { en: "AI Integration", ar: "الذكاء الاصطناعي" },
+  "services.ai.title": { en: "AI Solutions", ar: "حلول الذكاء الاصطناعي" },
   "services.ai.desc": {
-    en: "Smart algorithms and AI features.",
-    ar: "خوارزميات ذكية وميزات الذكاء الاصطناعي.",
+    en: "Automate the busywork and unlock the insights hiding in your data.",
+    ar: "أتمتة الشغل المتكرر واستخراج الرؤى المخفية في بياناتك.",
   },
-  "services.devops.title": { en: "DevOps & Cloud", ar: "الحوسبة السحابية" },
+  "services.devops.title": { en: "Hosting & Operations", ar: "الاستضافة والتشغيل" },
   "services.devops.desc": {
-    en: "Streamlined deployment and infrastructure.",
-    ar: "نشر وإدارة بنية تحتية سحابية.",
+    en: "Your platform online around the clock — updates ship in minutes, not weekends.",
+    ar: "منصتك شغالة على مدار الساعة — والتحديثات تنزل في دقائق مش عطلات.",
   },
   "services.security.title": { en: "Cybersecurity", ar: "الأمن السيبراني" },
   "services.security.desc": {
-    en: "Protecting your digital assets.",
-    ar: "حماية أصولك الرقمية.",
+    en: "Protect your customers' data and your reputation — before incidents happen.",
+    ar: "احمِ بيانات عملائك وسمعتك — قبل وقوع الحوادث مش بعدها.",
   },
   "services.cta.title": {
     en: "Need something custom?",

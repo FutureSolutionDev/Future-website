@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Hero } from '@/components/features/Hero';
 import { ServicesSection } from '@/components/features/ServicesSection';
+import { FeaturedWorkSection } from '@/components/features/FeaturedWorkSection';
 import { WhyUsSection } from '@/components/features/WhyUsSection';
 import { TechnologiesSection } from '@/components/features/TechnologiesSection';
 import { CTASection } from '@/components/features/CTASection';
@@ -16,6 +17,7 @@ export default function Home() {
     <>
       <Hero />
       <ServicesSection />
+      <FeaturedWorkSection />
       <WhyUsSection />
       <TechnologiesSection />
       <CTASection />

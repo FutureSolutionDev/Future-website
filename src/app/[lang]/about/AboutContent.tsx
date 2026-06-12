@@ -1,55 +1,186 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { Handshake, LineChart, PackageCheck, Eye, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import QuoteCanvas from './QuoteCanvas';
+import { Contact } from '@/lib/constants';
+
+const VALUES = [
+    {
+        icon: LineChart,
+        title: { en: 'Results you can measure', ar: 'نتائج تقاس بالأرقام' },
+        text: {
+            en: 'Every project starts from a business goal — more sales, faster operations, lower costs — not from a technology wishlist.',
+            ar: 'كل مشروع يبدأ من هدف تجاري واضح — مبيعات أكثر، عمليات أسرع، تكلفة أقل — مش من قائمة تقنيات.',
+        },
+    },
+    {
+        icon: PackageCheck,
+        title: { en: 'A working product, not just code', ar: 'منتج كامل، مش مجرد كود' },
+        text: {
+            en: 'You receive a running platform: design, development, hosting, and training — ready to take customers from day one.',
+            ar: 'تستلم منصة شغالة: تصميم وتطوير واستضافة وتدريب — جاهزة تستقبل عملاءك من أول يوم.',
+        },
+    },
+    {
+        icon: Eye,
+        title: { en: 'Full transparency', ar: 'شفافية كاملة' },
+        text: {
+            en: 'A clear plan, weekly progress you can see for yourself, and one price with no surprises.',
+            ar: 'خطة واضحة، وتقدم أسبوعي تشوفه بنفسك، وسعر واحد بدون مفاجآت.',
+        },
+    },
+    {
+        icon: Handshake,
+        title: { en: 'A partner after launch', ar: 'شريك بعد الإطلاق' },
+        text: {
+            en: 'Launch is the beginning, not the end — we stay for support, improvements, and the next growth step.',
+            ar: 'الإطلاق بداية الشغل مش نهايته — بنفضل معاك للدعم والتحسين وخطوة النمو الجاية.',
+        },
+    },
+];
+
+const STATS = [
+    { value: '2024', label: { en: 'Founded in Cairo', ar: 'تأسست في القاهرة' } },
+    { value: '100%', label: { en: 'You own the code', ar: 'الكود ملكك بالكامل' } },
+    { value: '24/7', label: { en: 'Platforms live in production', ar: 'منصات حية تعمل دائماً' } },
+    { value: '2', label: { en: 'Languages: Arabic & English', ar: 'لغتان: عربي وإنجليزي' } },
+];
 
 export default function AboutContent() {
     const { language } = useLanguage();
-    const about = {
-        title: language === 'ar' ? 'من' : 'Who We',
-        description: language === 'ar' ? 'حلول المستقبل للتطوير هي وكالة برمجيات رائدة مكرسة لتحويل الأعمال من خلال التكنولوجيا. تأسست في عام 2024، وسرعان ما نمت لتصبح فريقًا من المهندسين والمصممين والاستراتيجيين الشغوفين.' : 'Future Solutions Dev is a premier software development agency dedicated to transforming businesses through technology. Founded in 2024, we have rapidly grown into a team of passionate engineers, designers, and strategists.',
-    }
+    const isRTL = language === 'ar';
+
     return (
-        <div className="pt-20">
-            <section className="py-20 bg-bg-dark">
+        <div className="bg-bg-dark">
+            {/* Positioning statement */}
+            <section className="pt-24 pb-16 relative overflow-hidden">
+                <div className="absolute inset-0 bg-primary-blue/5 blur-3xl pointer-events-none" />
+                <div className="container mx-auto px-4 text-center relative z-10 max-w-3xl">
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-4xl md:text-5xl font-bold leading-tight mb-6"
+                    >
+                        {isRTL ? (
+                            <>بنحوّل أفكار الأعمال إلى <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">منصات تكسب</span></>
+                        ) : (
+                            <>We turn business ideas into <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">platforms that win</span></>
+                        )}
+                    </motion.h1>
+                    <p className="text-lg md:text-xl text-text-muted leading-relaxed">
+                        {isRTL
+                            ? 'Future Solutions وكالة برمجيات تأسست في 2024 في القاهرة. بنصمم ونبني ونشغّل منصات ويب وموبايل وSaaS لأصحاب الأعمال اللي عايزين نتيجة — مش مشروع تقني معلّق.'
+                            : 'Future Solutions is a software agency founded in Cairo in 2024. We design, build, and run web, mobile, and SaaS platforms for business owners who want an outcome — not a stalled tech project.'}
+                    </p>
+                </div>
+            </section>
+
+            {/* Story */}
+            <section className="py-12">
+                <div className="container mx-auto px-4 max-w-3xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="space-y-5 text-text-muted leading-relaxed text-lg"
+                    >
+                        <p>
+                            {isRTL
+                                ? 'بدأنا من ملاحظة بسيطة: معظم أصحاب الأعمال مش محتاجين "موقع" — محتاجين نظام يبيع بدالهم، ينظم شغلهم، ويكبر معاهم. وعشان كده بنسلّم منصات كاملة: متجر يستقبل المدفوعات، لوحة تحكم تدير كل حاجة، وأدوات تسويق مدمجة.'
+                                : 'We started from a simple observation: most business owners don’t need a "website" — they need a system that sells for them, organizes their work, and grows with them. So we deliver complete platforms: a store that takes payments, a dashboard that runs everything, and marketing tools built in.'}
+                        </p>
+                        <p>
+                            {isRTL
+                                ? 'فريقنا يجمع مهندسين ومصممين واستراتيجيين اشتغلوا على أنظمة حقيقية تخدم عملاء حقيقيين كل يوم — من التجارة الإلكترونية للأنظمة المالية والرعاية الصحية. بنشتغل بالعربي والإنجليزي، ونفهم السوق المصري والخليجي زي ما بنفهم الكود.'
+                                : 'Our team combines engineers, designers, and strategists who have shipped real systems serving real customers every day — from e-commerce to FinTech and healthcare. We work in Arabic and English, and we understand the Egyptian and Gulf markets as well as we understand code.'}
+                        </p>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Stats — honest, no invented numbers */}
+            <section className="py-12">
+                <div className="container mx-auto px-4 max-w-4xl">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {STATS.map((stat, i) => (
+                            <motion.div
+                                key={`stat-${i}`}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.08 }}
+                                className="text-center p-6 rounded-2xl bg-surface-dark border border-white/5"
+                            >
+                                <div className="text-3xl md:text-4xl font-bold text-cyan-glow mb-2">{stat.value}</div>
+                                <div className="text-text-muted text-sm">{isRTL ? stat.label.ar : stat.label.en}</div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* What makes us different */}
+            <section className="py-16 bg-surface-dark/30">
                 <div className="container mx-auto px-4">
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <motion.div
-                            initial={{ opacity: 0, x: language === 'ar' ? 50 : -50 }}
-                            animate={{ opacity: 1, x: 0 }}
+                    <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+                        {isRTL ? (
+                            <>ليه أصحاب الأعمال <span className="text-primary-blue">بيختارونا</span></>
+                        ) : (
+                            <>Why business owners <span className="text-primary-blue">choose us</span></>
+                        )}
+                    </h2>
+                    <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                        {VALUES.map((value, i) => (
+                            <motion.div
+                                key={`value-${i}`}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.08 }}
+                                className="p-7 rounded-2xl bg-surface-dark border border-white/5 hover:border-cyan-glow/25 transition-colors"
+                            >
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-blue/20 to-cyan-glow/20 flex items-center justify-center text-cyan-glow mb-4">
+                                    <value.icon size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold mb-2">{isRTL ? value.title.ar : value.title.en}</h3>
+                                <p className="text-text-muted leading-relaxed text-sm">
+                                    {isRTL ? value.text.ar : value.text.en}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA */}
+            <section className="py-20 text-center">
+                <div className="container mx-auto px-4 max-w-2xl">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                        {isRTL ? 'احكِ لنا عن مشروعك — الاستشارة الأولى مجانية' : 'Tell us about your project — the first consultation is free'}
+                    </h2>
+                    <p className="text-text-muted mb-8">
+                        {isRTL
+                            ? 'في مكالمة واحدة هتعرف إيه الممكن، بكام، وفي قد إيه.'
+                            : 'In one call you’ll know what’s possible, what it costs, and how long it takes.'}
+                    </p>
+                    <div className="flex flex-wrap items-center justify-center gap-4">
+                        <a
+                            href={Contact.WhatsApp}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-primary-blue text-white text-lg font-bold hover:bg-blue-600 transition-colors shadow-[0_0_20px_rgba(29,161,242,0.5)]"
                         >
-                            <h1 className="text-4xl font-bold mb-6">
-                                {about.title} <span className="text-primary-blue">{language === 'ar' ? 'نحن' : 'Are'}</span>
-                            </h1>
-                            <div className="prose prose-invert text-text-muted">
-                                <p className="mb-4">
-                                    {about.description}
-                                </p>
-                                <p className="mb-4">
-                                    {language === 'ar'
-                                        ? 'مهمتنا بسيطة: بناء برمجيات ليست مجرد وظيفية، بل استثنائية. نؤمن بقوة البرمجة في حل مشاكل العالم الحقيقي وخلق فرص جديدة للنمو.'
-                                        : 'Our mission is simple: to build software that is not just functional, but exceptional. We believe in the power of code to solve real-world problems and create new opportunities for growth.'}
-                                </p>
-                                <p>
-                                    {language === 'ar'
-                                        ? 'سواء كنت شركة ناشئة تتطلع لإطلاق منتجك الأول أو مؤسسة تسعى لتحسين عملياتها، لدينا الخبرة والرؤية للوصول بك إلى هدفك.'
-                                        : 'Whether you are a startup looking to launch your first MVP or an enterprise seeking to optimize your operations, we have the expertise and the vision to get you there.'}
-                                </p>
-                            </div>
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="relative h-[400px] rounded-2xl overflow-hidden bg-surface-dark border border-white/10 flex items-center justify-center p-8 text-center"
+                            {isRTL ? 'احجز استشارة مجانية' : 'Book a Free Consultation'}
+                        </a>
+                        <Link
+                            href={`/${language}/portfolio`}
+                            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-primary-blue/50 text-primary-blue text-lg font-bold hover:bg-primary-blue/10 transition-colors"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/10 to-purple-500/10" />
-                            {/* <QuoteCanvas lang={language} /> */}
-                            <QuoteCanvas
-                                lang={language}
-                                text={language === 'ar' ? 'الابتكار في قلب كل شيء نقوم به' : 'Innovation is at the core of everything we do'}
-                            />
-                        </motion.div>
+                            {isRTL ? 'شوف أعمالنا' : 'See Our Work'}
+                            <ArrowRight size={18} className="rtl:rotate-180" />
+                        </Link>
                     </div>
                 </div>
             </section>

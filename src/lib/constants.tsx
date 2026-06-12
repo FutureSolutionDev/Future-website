@@ -18,7 +18,7 @@ export const SiteKeys = {
   Web3FormsKey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "1f7339db-d8e0-4a1b-a2ff-9861770fd9a5",
   GaId: process.env.NEXT_PUBLIC_GA_ID || "",
   GoogleSiteVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "KZqsk3oGtcDsiEFbH2SDUbaSsBA238c42ShrLfsmv2g",
-  BingSiteVerification: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || "",
+  BingSiteVerification: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || "314B6D037027F4B4D7C73C663ECF08DA",
   FbDomainVerification: process.env.NEXT_PUBLIC_FB_DOMAIN_VERIFICATION || "",
 };
 export const Greetings: Record<

@@ -5,7 +5,8 @@ import type { Lang } from "@/lib/seo";
 
 export type TProject = {
   title: string;
-  image: string;
+  /** Gallery screenshots (1200px wide WebP, 16:10) — first one is the cover */
+  images: string[];
   category: Record<Lang, string>;
   description: Record<Lang, string>;
   /** One concrete, measurable outcome — results sell better than tech lists */
@@ -22,7 +23,11 @@ export type TProject = {
 export const Projects: TProject[] = [
   {
     title: "Imtithal — امتثال",
-    image: "/Projects/Imtithal.webp",
+    images: [
+      "/Projects/Imtithal/Imtithal.webp",
+      "/Projects/Imtithal/Imtithal-packs.webp",
+      "/Projects/Imtithal/Imtithal-ar.webp",
+    ],
     category: {
       en: "E-Commerce Platform",
       ar: "منصة تجارة إلكترونية",
