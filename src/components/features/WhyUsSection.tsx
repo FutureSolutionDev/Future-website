@@ -4,7 +4,6 @@ import { useLanguage } from '@/context/LanguageContext';
 import { features } from '@/lib/constants';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Zap, Globe, Users } from 'lucide-react';
-import Image from 'next/image';
 
 
 export function WhyUsSection() {
@@ -27,13 +26,18 @@ export function WhyUsSection() {
                         className="relative hidden md:block"
                     >
                         <div className="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full" />
-                        <Image
-                            src="/assets/hero-illustration.png"
-                            alt="Why Us"
-                            width={500}
-                            height={500}
-                            className="relative z-10 w-full h-auto drop-shadow-2xl"
-                        />
+                        {/* Desktop-only illustration: <picture> media query keeps phones from fetching it */}
+                        <picture>
+                            <source media="(min-width: 768px)" srcSet="/assets/hero-illustration.webp" />
+                            <img
+                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                alt="Why Us"
+                                width={1000}
+                                height={1000}
+                                loading="lazy"
+                                className="relative z-10 w-full h-auto drop-shadow-2xl"
+                            />
+                        </picture>
                     </motion.div>
 
                     <motion.div

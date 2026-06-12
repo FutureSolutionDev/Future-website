@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Future Solutions Dev</title>
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://futuresolutionsdev.com/en">
+    <script>
+        // Fallback root redirect (nginx already 302s "/" to /en).
+        // Honours a previously chosen language, else the browser language.
+        var lang = 'en';
+        try {
+            var saved = localStorage.getItem('language');
+            if (saved === 'ar') lang = 'ar';
+            else if (!saved && navigator.language && navigator.language.indexOf('ar') === 0) lang = 'ar';
+        } catch (e) { }
+        location.replace('/' + lang);
+    </script>
+    <meta http-equiv="refresh" content="0;url=/en">
+</head>
+<body>
+    <a href="/en">Future Solutions Dev</a>
+</body>
+</html>

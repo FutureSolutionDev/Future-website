@@ -42,3 +42,6 @@ next-env.d.ts
 .Eid
 .claude
 audit-report.md
+.env
+.env.production
+.env.local

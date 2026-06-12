@@ -1,44 +1,46 @@
 "use client";
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { translations } from '@/lib/translations';
+
 type Language = 'en' | 'ar';
+
 interface LanguageContextType {
     language: Language;
+    /** Navigates to the same page in the other locale (language lives in the URL). */
     setLanguage: (lang: Language) => void;
     t: (key: string) => string;
     dir: 'ltr' | 'rtl';
 }
+
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-    const [language, setLanguage] = useState<Language>('en');
-    useEffect(() => {
-        const savedLang = typeof window !== 'undefined' ? localStorage.getItem('language') as Language : 'en';
-        // Persist language preference
-        if (savedLang) {
-            setTimeout(() => {
-                setLanguage(savedLang);
-                document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
-                document.documentElement.lang = savedLang;
-            }, 0);
+
+export function LanguageProvider({ lang, children }: { lang: Language; children: React.ReactNode }) {
+    const router = useRouter();
+    const pathname = usePathname();
+
+    const setLanguage = (next: Language) => {
+        if (next === lang) return;
+        // Remember the preference so the root redirect can honour it later
+        try {
+            localStorage.setItem('language', next);
+        } catch {
+            // Storage unavailable (private mode) — switching still works via the URL
         }
-    }, [setLanguage]);
-    const handleSetLanguage = (lang: Language) => {
-        setLanguage(lang);
-        localStorage.setItem('language', lang);
-        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-        document.documentElement.lang = lang;
+        const pathWithoutLang = pathname.replace(/^\/(en|ar)(?=\/|$)/, '');
+        router.push(`/${next}${pathWithoutLang || ''}`);
     };
-    // Translation dictionary imported from lib
+
     const t = (key: string) => {
         const trans = translations[key as keyof typeof translations];
-        return trans ? trans[language] : key;
+        return trans ? trans[lang] : key;
     };
-    const dir = language === 'ar' ? 'rtl' : 'ltr';
+
+    const dir = lang === 'ar' ? 'rtl' : 'ltr';
+
     return (
-        <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t, dir }}>
-            <div dir={dir} className={language === 'ar' ? 'font-arabic' : 'font-sans'}>
-                {children}
-            </div>
+        <LanguageContext.Provider value={{ language: lang, setLanguage, t, dir }}>
+            {children}
         </LanguageContext.Provider>
     );
 }

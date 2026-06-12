@@ -6,7 +6,7 @@ import { Contact } from '@/lib/constants';
 import Link from 'next/link';
 
 export function CTASection() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     return (
         <section className="py-24 relative overflow-hidden overflow-hidden">
             <div className="container mx-auto px-4 relative z-10 text-center
@@ -25,7 +25,7 @@ export function CTASection() {
                             className='w-full md:w-auto text-md md:text-xl'
                             size="lg">{t('cta.button1')}</Button>
                     </Link>
-                    <Link href={"/contact"}>
+                    <Link href={`/${language}/contact`}>
                         <Button
                             className='w-full md:w-auto text-md md:text-xl'
                             variant="secondary" size="lg">{t('cta.button2')}</Button>

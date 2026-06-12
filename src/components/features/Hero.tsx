@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { useLanguage } from '@/context/LanguageContext';
-import Image from 'next/image';
 import { Contact } from '@/lib/constants';
 import Link from 'next/link';
 
@@ -16,7 +15,6 @@ export function Hero() {
                 never download it (display:none alone does not prevent the fetch) */}
             <picture>
                 <source media="(min-width: 768px)" srcSet="/assets/hero.webp" />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                     alt="Future Solutions Technology"

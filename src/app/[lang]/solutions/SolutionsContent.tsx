@@ -1,0 +1,70 @@
+"use client";
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { ShoppingCart, BarChart, Server, Layers, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
+import { useLanguage } from '@/context/LanguageContext';
+import { solutions } from '@/lib/constants';
+
+
+export default function SolutionsContent() {
+    const { t, language } = useLanguage();
+    const isRTL = language === 'ar';
+    const solutionsData = solutions({
+        language,
+        t,
+        ShoppingCart,
+        BarChart,
+        Server,
+        Layers,
+    })
+    return (
+        <section className="py-20 bg-bg-dark">
+            <div className="container mx-auto px-4">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-center mb-16"
+                >
+                    <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                        {t('solutions.title')} <span className="text-cyan-glow"></span>
+                    </h1>
+                    <p className="text-text-muted max-w-2xl mx-auto">
+                        {t('solutions.subtitle')}
+                    </p>
+                </motion.div>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                    {solutionsData.map((sol, i) => (
+                        <motion.div
+                            key={`sol-${i}`}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: i * 0.1 }}
+                            viewport={{ once: true }}
+                            className="group flex flex-col md:flex-row gap-6 p-8 rounded-2xl bg-surface-dark border border-white/5 hover:border-cyan-glow/30 transition-all duration-300"
+                        >
+                            <div className="shrink-0">
+                                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary-blue/20 to-cyan-glow/20 flex items-center justify-center text-primary-blue group-hover:text-cyan-glow transition-colors">
+                                    <sol.icon size={32} />
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-2xl font-bold mb-3">{sol.title}</h3>
+                                <p className="text-text-muted mb-4 leading-relaxed">
+                                    {sol.content}
+                                </p>
+                                <Link href={`/${language}/blog/${sol.slug}`}>
+                                    <Button variant="outline" size="sm" className={`inline-flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                                        {language === 'ar' ? 'اقرأ المزيد' : 'Learn More'}
+                                        <ArrowRight size={16} className={isRTL ? 'rotate-180' : ''} />
+                                    </Button>
+                                </Link>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}

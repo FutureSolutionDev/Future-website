@@ -73,7 +73,7 @@ export function RamadanGreetingView() {
         setIsAnimating(false);
         setTimeout(() => {
             setIsVisible(false);
-            // sessionStorage.setItem('ramadanGreetingSeen', 'true');
+            sessionStorage.setItem('ramadanGreetingSeen', 'true');
         }, 500);
     };
 

@@ -1,12 +1,6 @@
 
 export const title = "Future Solutions Dev"
-export const description = `
-  At ${title}, we specialize in creating bespoke software solutions that perfectly align with your
-                business needs. Our team of experienced developers works closely with you to understand your
-                requirements and deliver high-quality software that enhances your operational efficiency and drives
-                growth. Whether you need a web application, a mobile app, or a desktop application, we have the
-                expertise to bring your vision to life.
-  `
+export const description = `${title} builds custom web, mobile and SaaS software for businesses in Egypt and MENA — from e-commerce and ERP to AI-powered systems.`
 export const Contact = {
     WhatsApp: "https://wa.me/201148371185",
     Email: "info@futuresolutionsdev.com",
@@ -15,129 +9,41 @@ export const Contact = {
     LinkedIn: "https://www.linkedin.com/company/futuresolutionsdev",
     Address: "Cairo, Egypt"
 }
-export const Greetings: Record<string, { Active: boolean; Favicon: string; Title: string; Description: string }> = {
+export const Greetings: Record<string, { Active: boolean; Favicon: string; Logo: string; Title: string; Description: string }> = {
     Default: {
         Active: false,
         Favicon: "/favico/favico.png",
+        Logo: "/favico/logo.webp",
         Title: title,
         Description: description,
     },
     Ramadan: {
         Active: false,
         Favicon: "/favico/favico.Ramadan.png",
+        Logo: "/favico/logo.Ramadan.webp",
         Title: title,
         Description: description,
     },
     EidAlFitr: {
         Active: false,
         Favicon: "/favico/favico.EidAlFitr.png",
+        Logo: "/favico/logo.EidAlFitr.webp",
         Title: title,
         Description: description,
     },
     EidAlAdha: {
         Active: false,
         Favicon: "/favico/favico.EidAlAdha.png",
+        Logo: "/favico/logo.EidAlAdha.webp",
         Title: title,
         Description: description,
     }
 }
 export const ActiveGreeting = Object.values(Greetings).find(g => g.Active) || Greetings.Default
-export const MetaConfig = {
-    title: ActiveGreeting?.Title || title,
-    description: ActiveGreeting?.Description || description,
-    icons: {
-        icon: ActiveGreeting?.Favicon || "/favico/favico.png",
-        apple: ActiveGreeting?.Favicon || "/favico/favico.png",
-        shortcut: ActiveGreeting?.Favicon || "/favico/favico.png",
-        other: {
-            rel: "icon",
-            url: ActiveGreeting?.Favicon || "/favico/favico.png",
-        },
-    },
-    alternates: { canonical: "https://futuresolutionsdev.com" },
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-            index: true,
-            follow: true,
-            "max-image-preview": "large" as const,
-            "max-video-preview": -1,
-            "max-snippet": -1,
-        },
-    },
-    keywords: [
-        "Future Solutions",
-        title,
-        "Software Solutions",
-        "Software Development",
-        "Software Company",
-        "React",
-        "Next.js",
-        "Node.js",
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "Tailwind",
-        "Bootstrap",
-        "Material UI",
-        "Figma",
-        "Adobe XD",
-        "Git",
-        "GitHub",
-        "GitLab",
-        "Bitbucket",
-        "Jira",
-        "Trello",
-        "Agile",
-        "Scrum",
-        "Kanban",
-        "Jira",
-        "Php",
-        "Laravel",
-        "Python",
-        "Django",
-        "Flask",
-        "MySQL",
-        "MongoDB",
-        "PostgreSQL",
-        "Redis",
-        "C#",
-        "C++",
-        "C",
-        "Java",
-        "Cypress",
-        "Jest",
-        "Selenium",
-        "Cucumber",
-    ],
-    twitter: {
-        card: "summary_large_image",
-        creator: "@Future Solutions Dev",
-        title: ActiveGreeting?.Title || title,
-        description: ActiveGreeting?.Description || description,
-        images: [ActiveGreeting?.Favicon || "/favico/favico.png", "/Icons/512.png"],
-    },
-    openGraph: {
-        type: "website",
-        url: "https://futuresolutionsdev.com",
-        title: ActiveGreeting?.Title || title,
-        description: ActiveGreeting?.Description || description,
-        siteName: title,
-        images: [
-            {
-                url: ActiveGreeting?.Favicon || "/favico/favico.png",
-            },
-            {
-                url: ActiveGreeting?.Favicon || "/favico/favico.png",
-            },
-        ],
-    },
-    metadataBase: new URL("https://futuresolutionsdev.com"),
-    publisher: title,
-    referrer: "origin" as const,
-    manifest: "/manifest.json",
-};
+
+export type SeasonName = 'Ramadan' | 'EidAlFitr' | 'EidAlAdha';
+export const ActiveSeasonName: SeasonName | null =
+    (Object.entries(Greetings).find(([name, g]) => g.Active && name !== 'Default')?.[0] as SeasonName | undefined) ?? null;
 
 
 export const technologies = [
@@ -257,57 +163,6 @@ export const services = ({
             features: ['PenTest', 'Compliance', 'Audit', 'Guard']
         }
     ];
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const projects = ({ language }: { language?: string }) => [
-    // {
-    //     title: 'FinDash System',
-    //     image: '/Projects/FinDash.png',
-    //     category: 'SaaS / FinTech',
-    //     description: language === 'ar' ? 'لوحة تحكم مالية شاملة للشركات الصغيرة والمتوسطة لتتبع النفقات والإيرادات.' : 'A comprehensive financial dashboard for SMEs to track expenses, revenue, and forecasts in real-time.',
-    //     tech: ['Next.js', 'TypeScript', 'Tailwind', 'Recharts'],
-    //     color: 'from-blue-500 to-indigo-600',
-    //     links: {
-    //         Github: "",
-    //         Live: "https://futuresolutionsdev.com"
-    //     }
-    // },
-    // {
-    //     title: 'HealthConnect',
-    //     image: '/Projects/HealthConnect.png',
-    //     category: 'Healthcare App',
-    //     description: language === 'ar' ? 'تطبيق جوال للتطبب عن بعد يربط المرضى بالأطباء للاستشارات الافتراضية.' : 'Telemedicine mobile application connecting patients with doctors for virtual consultations.',
-    //     tech: ['React Native', 'Node.js', 'WebRTC'],
-    //     color: 'from-emerald-500 to-teal-600',
-    //     links: {
-    //         Github: "",
-    //         Live: "https://futuresolutionsdev.com"
-    //     }
-    // },
-    // {
-    //     title: 'ShopifyPlus Theme',
-    //     category: 'E-commerce',
-    //     image: '/Projects/ShopifyPlus.png',
-    //     description: language === 'ar' ? 'ثيم Shopify مخصص عالي التحويل يركز على السرعة وتجربة المستخدم.' : 'High-conversion custom Shopify theme focusing on speed and user experience.',
-    //     tech: ['Liquid', 'JavaScript', 'Tailwind'],
-    //     color: 'from-purple-500 to-pink-600',
-    //     links: {
-    //         Github: "",
-    //         Live: "https://futuresolutionsdev.com"
-    //     }
-    // },
-    // {
-    //     title: 'AI Content Gen',
-    //     category: 'AI Tool',
-    //     image: '/Projects/AIContentGen.png',
-    //     description: language === 'ar' ? 'أداة توليد محتوى تستخدم OpenAI API لمساعدة المسوقين.' : 'Content generation tool leveraging OpenAI API to help marketers create seo-optimized posts.',
-    //     tech: ['Next.js', 'OpenAI API', 'Stripe'],
-    //     color: 'from-orange-500 to-red-600',
-    //     links: {
-    //         Github: "",
-    //         Live: "https://futuresolutionsdev.com"
-    //     }
-    // }
-];
 
 export const techs = ({
     Atom,

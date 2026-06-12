@@ -80,7 +80,8 @@ function fireConfetti() {
     }, 500);
 }
 
-// Floating balloon component
+// Floating balloon component — drift derived deterministically from `delay`
+// (random values during render break React purity rules and hydration)
 const Balloon = ({ color, delay, left }: { color: string; delay: number; left: string }) => (
     <motion.div
         className="absolute bottom-0"
@@ -89,10 +90,10 @@ const Balloon = ({ color, delay, left }: { color: string; delay: number; left: s
         animate={{
             y: [100, -800],
             opacity: [0, 1, 1, 0],
-            x: [0, Math.random() * 40 - 20, Math.random() * 60 - 30],
+            x: [0, ((delay * 53) % 40) - 20, ((delay * 89) % 60) - 30],
         }}
         transition={{
-            duration: 8 + Math.random() * 4,
+            duration: 8 + ((delay * 31) % 4),
             delay: delay,
             repeat: Infinity,
             ease: 'easeOut',

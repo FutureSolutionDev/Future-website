@@ -1,33 +1,27 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import RamadanDecoration from '@/components/ui/RamadanDecoration';
-import EidAlFitrDecoration from '@/components/ui/EidAlFitrDecoration';
-import EidAlAdhaDecoration from '@/components/ui/EidAlAdhaDecoration';
+import SeasonalDecorations from '@/components/ui/SeasonalDecorations';
 import { ActiveGreeting } from '@/lib/constants';
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const { language, setLanguage, t } = useLanguage();
-    const [hasMounted, setHasMounted] = useState(false);
     const PathName = usePathname();
-    useEffect(() => {
-        setTimeout(() => setHasMounted(true), 0);
-    }, []);
     const navLinks = [
-        { href: '/', label: t('nav.home') },
-        { href: '/services', label: t('nav.services') },
-        { href: '/solutions', label: t('nav.solutions') },
-        { href: '/portfolio', label: t('nav.portfolio') },
-        { href: '/technologies', label: t('nav.technologies') },
-        { href: '/about', label: t('nav.about') },
-        { href: '/contact', label: t('nav.contact') },
-        { href: '/blog', label: t('nav.blog') },
+        { href: `/${language}`, label: t('nav.home') },
+        { href: `/${language}/services`, label: t('nav.services') },
+        { href: `/${language}/solutions`, label: t('nav.solutions') },
+        { href: `/${language}/portfolio`, label: t('nav.portfolio') },
+        { href: `/${language}/technologies`, label: t('nav.technologies') },
+        { href: `/${language}/about`, label: t('nav.about') },
+        { href: `/${language}/contact`, label: t('nav.contact') },
+        { href: `/${language}/blog`, label: t('nav.blog') },
     ];
 
     const toggleLanguage = () => {
@@ -36,18 +30,17 @@ export function Navbar() {
     return (
         <nav className="sticky w-full z-50 top-0 left-0 bg-bg-dark/80 backdrop-blur-md border-b border-white/10">
             {/* Occasion Decorations hanging from navbar */}
-            <RamadanDecoration Mode="Desktop" />
-            <EidAlFitrDecoration Mode="Desktop" />
-            <EidAlAdhaDecoration Mode="Desktop" />
+            <SeasonalDecorations Mode="Desktop" />
             <div className="container mx-auto px-4 flex items-center justify-between md:h-[5rem] h-[4rem]">
                 {/* Logo */}
-                <Link href="/" className="text-2xl font-bold text-white tracking-tighter">
+                <Link href={`/${language}`} className="text-2xl font-bold text-white tracking-tighter">
                     <Image
-                        src={ActiveGreeting?.Favicon || "/favico/favico.png"}
-                        alt="Logo"
-                        width={100}
-                        height={100}
-                        className='w-40 h-20'
+                        src={ActiveGreeting?.Logo || "/favico/logo.webp"}
+                        alt="Future Solutions Dev"
+                        width={252}
+                        height={160}
+                        priority
+                        className='h-14 md:h-16 w-auto'
                     />
                 </Link>
 
@@ -76,7 +69,7 @@ export function Navbar() {
                     >
                         <Globe size={16} />
                         <span className="text-xs font-bold">
-                            {hasMounted ? (language === 'en' ? 'العربية' : 'English') : '...'}
+                            {language === 'en' ? 'العربية' : 'English'}
                         </span>
                     </button>
                 </div>
@@ -102,9 +95,7 @@ export function Navbar() {
                         <div className="container px-4 py-8 flex flex-col space-y-4"
                         >
                             {/* Occasion Mini Decorations for Mobile */}
-                            <RamadanDecoration Mode="Mobile" />
-                            <EidAlFitrDecoration Mode="Mobile" />
-                            <EidAlAdhaDecoration Mode="Mobile" />
+                            <SeasonalDecorations Mode="Mobile" />
                             {navLinks.map((link) => {
                                 return (
                                     <Link

@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Future Solutions — Company Website
 
-## Getting Started
+Next.js 16 (App Router, **static export**) + React 19 + Tailwind CSS 3.
+Bilingual: every page exists at `/en/...` and `/ar/...` (full SSG for both, with hreflang).
 
-First, run the development server:
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000/en  (root / redirects)
+npm run build      # static export → out/
+npm run typecheck
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Environment variables: copy `.env.example` → `.env.local` (form key, GA id, search-console verification tokens). In CI they come from GitHub repository **Variables**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✍️ Adding a blog article (the whole workflow)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create two files in `content/blog/`:
+   - `my-article-slug.en.mdx`
+   - `my-article-slug.ar.mdx`
+2. Each file = YAML frontmatter + Markdown body. Required frontmatter:
 
-## Learn More
+   ```yaml
+   ---
+   title: "Article title"
+   excerpt: "One-two sentences shown in listings and search results."
+   category: "E-Commerce"
+   readTime: "8 min read"
+   publishedAt: "2026-06-12"
+   icon: ShoppingCart        # ShoppingCart | BarChart | Server | Layers
+   ---
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+   Optional: `coverImage`, `relatedSolutions: [other-slugs]`, `cta: {title, description, buttonText}`.
+3. Body is normal Markdown. Rich blocks are available as components:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```mdx
+   <Highlights items={["Point one", "Point two"]} />
+   <Steps items={[{"title":"Step","description":"..."}]} />
+   <Features items={[{"name":"Feature","description":"..."}]} />
+   <Tech items={["Next.js", "PostgreSQL"]} />
+   <Stats items={[{"value":"40%","label":"Faster"}]} />
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. `git push` → GitHub Action builds and deploys. The article appears in the blog listing, gets its own metadata/OG tags, and is added to `sitemap.xml` automatically. Nothing else to do.
 
-## Deploy on Vercel
+If the Arabic file is missing the English version is served at `/ar/...` as a fallback (build does not break). Invalid frontmatter fails the build with a clear error.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🪔 Seasonal decorations (Ramadan / Eid)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Toggle manually in [src/lib/constants.tsx](src/lib/constants.tsx): set `Active: true` on exactly one entry in `Greetings`, then push (rebuild + deploy). Components and artwork are lazy-loaded — inactive seasons cost visitors zero bytes.
+
+## 💼 Portfolio
+
+Fill [src/data/projects.ts](src/data/projects.ts) with real projects (template included in the file). While the list is empty the page stays hidden from the navbar and the sitemap. After adding projects, re-add the nav link in `Navbar.tsx` and `/portfolio` in `app/sitemap.ts`.
+
+## 🚀 Deployment
+
+- **CI:** [.github/workflows/deploy.yml](.github/workflows/deploy.yml) — on push to `master`: build + rsync `out/` to the VPS. Requires secrets `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`, `VPS_PATH`.
+- **nginx:** [deploy/nginx.conf](deploy/nginx.conf) — caching, www→non-www, `/` → `/en`, legacy `/about`→`/en/about` 301s, real 404s. Apply once on the server (`nginx -t && systemctl reload nginx`).
+
+## 🔍 SEO notes
+
+- Per-page titles/descriptions (both languages) live in [src/lib/seo.ts](src/lib/seo.ts) — `PAGE_SEO`.
+- Canonical + hreflang are generated per page; `sitemap.xml` is generated at build from real content (`src/app/sitemap.ts`).
+- Organization JSON-LD is in the layout; Article JSON-LD on every blog post.
+- OG image: `public/og/default.png` (regenerate with `node scripts/generate-og.mjs`).
+
+## 📦 Asset rules
+
+No file over ~300KB enters `public/`. Compress first (`scripts/optimize-assets.mjs` shows the sharp recipes — WebP, quality 80).
