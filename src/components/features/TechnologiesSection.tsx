@@ -56,8 +56,8 @@ export function TechnologiesSection() {
                                 {tech.icon}
                             </div>
                             <span className="font-semibold text-xl text-white/90">{tech.name}</span>
-                            {tech.description?.[language] && <p className="text-blue-200/60 mb-8 leading-relaxed text-sm">
-                                {tech.description[language]}
+                            {tech?.description?.[language] && <p className="text-blue-200/60 mb-8 leading-relaxed text-sm">
+                                {tech?.description[language]}
                             </p>}
                         </motion.div>
                     ))}

@@ -43,5 +43,6 @@ next-env.d.ts
 .claude
 audit-report.md
 .env
-.env.production
-.env.local
+
+.playwright-mcp
+imt-products.png

@@ -1,8 +1,10 @@
 // Contact form delivery via Web3Forms (https://web3forms.com).
 // Kept separate from the UI component on purpose.
 
+import { SiteKeys } from '@/lib/constants';
+
 const ENDPOINT = 'https://api.web3forms.com/submit';
-const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? '';
+const ACCESS_KEY = SiteKeys.Web3FormsKey;
 
 export type TContactMessage = {
     name: string;

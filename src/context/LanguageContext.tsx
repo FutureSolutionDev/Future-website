@@ -28,7 +28,8 @@ export function LanguageProvider({ lang, children }: { lang: Language; children:
             // Storage unavailable (private mode) — switching still works via the URL
         }
         const pathWithoutLang = pathname.replace(/^\/(en|ar)(?=\/|$)/, '');
-        router.push(`/${next}${pathWithoutLang || ''}`);
+        // scroll: false — keep the reader exactly where they were when switching language
+        router.push(`/${next}${pathWithoutLang || ''}`, { scroll: false });
     };
 
     const t = (key: string) => {

@@ -8,13 +8,13 @@ import { LanguageProvider } from '@/context/LanguageContext';
 import SeasonalGreetings from '@/components/ui/SeasonalGreetings';
 import '../globals.css';
 import { cn } from '@/lib/utils';
-import { ActiveGreeting, Contact, title as SiteTitle } from '@/lib/constants';
+import { ActiveGreeting, Contact, SiteKeys, title as SiteTitle } from '@/lib/constants';
 import { IsLang, LANGS, SITE_DESCRIPTION, SITE_NAME, SITE_URL, type Lang } from '@/lib/seo';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const cairo = Cairo({ subsets: ['arabic'], variable: '--font-cairo' });
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const GA_ID = SiteKeys.GaId;
 
 export function generateStaticParams() {
     return LANGS.map((lang) => ({ lang }));
@@ -29,15 +29,15 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     const language: Lang = IsLang(lang) ? lang : 'en';
 
     const verification: NonNullable<Metadata['verification']> = {};
-    if (process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION) {
-        verification.google = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+    if (SiteKeys.GoogleSiteVerification) {
+        verification.google = SiteKeys.GoogleSiteVerification;
     }
     const otherVerification: Record<string, string> = {};
-    if (process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION) {
-        otherVerification['msvalidate.01'] = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
+    if (SiteKeys.BingSiteVerification) {
+        otherVerification['msvalidate.01'] = SiteKeys.BingSiteVerification;
     }
-    if (process.env.NEXT_PUBLIC_FB_DOMAIN_VERIFICATION) {
-        otherVerification['facebook-domain-verification'] = process.env.NEXT_PUBLIC_FB_DOMAIN_VERIFICATION;
+    if (SiteKeys.FbDomainVerification) {
+        otherVerification['facebook-domain-verification'] = SiteKeys.FbDomainVerification;
     }
     if (Object.keys(otherVerification).length > 0) {
         verification.other = otherVerification;

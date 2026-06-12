@@ -4,8 +4,7 @@ import { LANGS, SITE_URL } from '@/lib/seo';
 
 export const dynamic = 'force-static';
 
-// NOTE: '/portfolio' is intentionally excluded until it has real projects.
-const STATIC_PATHS = ['', '/services', '/solutions', '/technologies', '/about', '/contact', '/blog'];
+const STATIC_PATHS = ['', '/services', '/solutions', '/portfolio', '/technologies', '/about', '/contact', '/blog'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const buildDate = new Date().toISOString().split('T')[0];

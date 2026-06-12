@@ -4,6 +4,11 @@ const nextConfig: NextConfig = {
   // Static HTML export - no server needed!
   output: 'export',
 
+  // Custom branded 404 (src/app/global-not-found.tsx) exported as 404.html
+  experimental: {
+    globalNotFound: true,
+  },
+
   // Enable React strict mode
   reactStrictMode: true,
 

@@ -1,60 +1,75 @@
-// Portfolio projects — fill this in and the Portfolio page goes live automatically.
-// While the list is empty the page is hidden from the navbar and the sitemap
-// (see Navbar.tsx and app/sitemap.ts).
+// Portfolio projects — marketing-first: client-facing features and outcomes
+// lead the card; the tech stack is a secondary detail.
+// Images live under public/Projects/ (WebP, compressed — nothing over ~300KB).
 import type { Lang } from "@/lib/seo";
 
 export type TProject = {
   title: string;
-  /** Image under public/Projects/, e.g. '/Projects/FinDash.webp' (compress before adding!) */
   image: string;
-  category: string;
+  category: Record<Lang, string>;
   description: Record<Lang, string>;
   /** One concrete, measurable outcome — results sell better than tech lists */
   result?: Record<Lang, string>;
+  /** Client-facing capabilities, shown prominently on the card */
+  features: { en: string; ar: string }[];
+  /** Secondary detail — rendered small and muted */
   tech: string[];
-  features?: string[];
   /** Tailwind gradient classes for the card accent */
   color: string;
   links: { Github?: string; Live?: string };
 };
 
 export const Projects: TProject[] = [
-  // Template — copy, fill with a REAL project, and delete this comment:
   {
-    title: " Imtithal",
-    image: "/Projects/Imtithal.png",
-    category: "E-Commerce",
+    title: "Imtithal — امتثال",
+    image: "/Projects/Imtithal.webp",
+    category: {
+      en: "E-Commerce Platform",
+      ar: "منصة تجارة إلكترونية",
+    },
     description: {
-      en: "ISO compliance documentation packs for B2B teams — structured, priced clearly, and ready to download.",
-      ar: "حزم وثائق امتثال ISO لفرق B2B — منظمة وواضحة الأسعار وجاهزة للتحميل الفوري.",
+      en: "A complete bilingual digital-products store selling ready-to-use ISO compliance documentation packs. Customers browse by ISO standard, preview documents right in the browser, pay, and download instantly — while the owner runs the entire business from one dashboard.",
+      ar: "متجر رقمي متكامل ثنائي اللغة لبيع حزم وثائق امتثال ISO الجاهزة. العميل يتصفح حسب المعيار، يعاين المستندات داخل المتصفح، يدفع ويحمّل فوراً — وصاحب المتجر يدير أعماله بالكامل من لوحة تحكم واحدة.",
     },
     result: {
-      en: "ISO compliance documentation packs for B2B teams — structured, priced clearly, and ready to download.",
-      ar: "حزم وثائق امتثال ISO لفرق B2B — منظمة وواضحة الأسعار وجاهزة للتحميل الفوري.",
+      en: "500+ digital files sold and 50+ B2B teams served — store, admin panel, and marketing automation shipped as one platform.",
+      ar: "أكثر من 500 ملف رقمي مُباع وأكثر من 50 فريق أعمال — متجر ولوحة تحكم وأتمتة تسويق في منصة واحدة.",
     },
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS", "Cms"],
     features: [
-      "Invoice Management",
-      "Payment Gateway Integration",
-      "Order Management System",
-      "Analytics Dashboard",
-      "Multi-Language Support",
-      "Mobile-First Design",
-      "SEO Optimization",
-      "User-Friendly Interface",
-      "Customer Support",
-      "Secure Payment Processing",
-      "API Integration",
-      "CMS",
-      "Email Marking System",
-      "Full Admin Moderation Control",
-      "Advanced Reporting",
-      "Advanced Import Packs",
-      "Multi-Warehouse Support",
-      "Belt-In Contact Tickets Support",
-      "Belt-In Live Chat Support",
-
+      {
+        en: "Secure payments: Stripe cards + bank transfer with proof review",
+        ar: "دفع آمن: بطاقات عبر Stripe + تحويل بنكي بمراجعة إثبات الدفع",
+      },
+      {
+        en: "Instant delivery: time-limited secure download links + automatic PDF invoices",
+        ar: "تسليم فوري: روابط تحميل آمنة مؤقتة + فواتير PDF تلقائية",
+      },
+      {
+        en: "In-browser document preview and free samples before purchase",
+        ar: "معاينة المستندات داخل المتصفح وعينات مجانية قبل الشراء",
+      },
+      {
+        en: "Smart cart that suggests upgrading to the full bundle when it saves money",
+        ar: "سلة ذكية تقترح الترقية للباقة الكاملة عندما توفّر على العميل",
+      },
+      {
+        en: "Email marketing campaigns with a drag-and-drop builder + automatic abandoned-cart recovery",
+        ar: "حملات بريدية بمحرر سحب-وإفلات + استرجاع تلقائي للسلات المتروكة",
+      },
+      {
+        en: "Built-in live chat and support inbox — guests included, no third-party widget",
+        ar: "شات مباشر وصندوق دعم مدمجان — حتى للزوار، بدون أدوات خارجية",
+      },
+      {
+        en: "Admin dashboard: daily sales analytics, reviews moderation, coupons, and granular team permissions",
+        ar: "لوحة تحكم شاملة: تحليلات مبيعات يومية، إدارة التقييمات، كوبونات، وصلاحيات دقيقة لفريق العمل",
+      },
+      {
+        en: "Full Arabic/English storefront and admin with RTL + admin-managed SEO",
+        ar: "واجهة ولوحة تحكم بالعربية والإنجليزية بالكامل مع RTL وSEO مُدار من اللوحة",
+      },
     ],
+    tech: ["Next.js", "React", "TypeScript", "GraphQL", "Hono", "PostgreSQL", "Redis", "Stripe"],
     color: "from-blue-500 to-indigo-600",
     links: { Live: "https://imtithal.store" },
   },
