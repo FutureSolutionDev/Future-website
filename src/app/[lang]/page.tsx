@@ -3,6 +3,7 @@ import { Hero } from '@/components/features/Hero';
 import { ServicesSection } from '@/components/features/ServicesSection';
 import { FeaturedWorkSection } from '@/components/features/FeaturedWorkSection';
 import { ProcessSection } from '@/components/features/ProcessSection';
+import { TestimonialsSection } from '@/components/features/TestimonialsSection';
 import { WhyUsSection } from '@/components/features/WhyUsSection';
 import { TechnologiesSection } from '@/components/features/TechnologiesSection';
 import { FAQSection } from '@/components/features/FAQSection';
@@ -23,6 +24,7 @@ export default function Home() {
       <Hero />
       <ServicesSection />
       <FeaturedWorkSection initialImages={featuredImages} />
+      <TestimonialsSection />
       <ProcessSection />
       <WhyUsSection />
       <TechnologiesSection />

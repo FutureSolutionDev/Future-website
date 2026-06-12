@@ -22,7 +22,13 @@ export type TProject = {
   tech: string[];
   /** Tailwind gradient classes for the card accent */
   color: string;
-  links: { Github?: string; Live?: string };
+  /** A project can ship on several channels — add whichever links exist */
+  links: {
+    Live?: string;
+    AppStore?: string;
+    GooglePlay?: string;
+    Github?: string;
+  };
 };
 
 export const Projects: TProject[] = [

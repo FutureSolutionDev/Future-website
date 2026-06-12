@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle, ExternalLink, Github, TrendingUp } from "lucide-react";
+import { CheckCircle, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Projects, type TProject } from "@/data/projects";
 import { Contact } from "@/lib/constants";
 import { UseProjectImages } from "@/lib/useProjectImages";
+import { ProjectLinks } from "@/components/features/ProjectLinks";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -94,30 +95,7 @@ function ProjectCard({
           </span>
           <h2 className="text-2xl md:text-3xl font-bold mt-1">{project.title}</h2>
         </div>
-        <div className="flex items-center gap-2">
-          {project.links.Github && (
-            <a
-              href={project.links.Github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${project.title} on GitHub`}
-              className="p-2.5 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-            >
-              <Github size={18} />
-            </a>
-          )}
-          {project.links.Live && (
-            <a
-              href={project.links.Live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-blue text-white text-sm font-bold hover:bg-blue-600 transition-colors shadow-[0_0_20px_rgba(29,161,242,0.35)]"
-            >
-              <ExternalLink size={16} />
-              {isRTL ? "زيارة الموقع" : "Visit Live Site"}
-            </a>
-          )}
-        </div>
+        <ProjectLinks links={project.links} title={project.title} />
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">

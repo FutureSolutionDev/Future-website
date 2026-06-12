@@ -9,8 +9,8 @@ export const SITE_NAME = 'Future Solutions Dev';
 export const DEFAULT_OG_IMAGE = '/og/default.png';
 
 export const SITE_DESCRIPTION: Record<Lang, string> = {
-    en: 'Future Solutions builds custom web, mobile and SaaS software for businesses in Egypt and MENA — from e-commerce and ERP to AI-powered systems.',
-    ar: 'نبني برمجيات مخصصة — ويب وموبايل وSaaS — للشركات في مصر والشرق الأوسط: من التجارة الإلكترونية وأنظمة ERP إلى الحلول المدعومة بالذكاء الاصطناعي.',
+    en: 'Future Solutions builds custom web, mobile and SaaS software for businesses across the Arab world and worldwide — from e-commerce and ERP to AI-powered systems.',
+    ar: 'نبني برمجيات مخصصة — ويب وموبايل وSaaS — للشركات في الوطن العربي وحول العالم: من التجارة الإلكترونية وأنظمة ERP إلى الحلول المدعومة بالذكاء الاصطناعي.',
 };
 
 type PageCopy = { title: string; description: string };
@@ -19,12 +19,12 @@ type PageCopy = { title: string; description: string };
 export const PAGE_SEO: Record<string, Record<Lang, PageCopy>> = {
     home: {
         en: {
-            title: 'Future Solutions — Custom Software Development Company in Egypt',
-            description: 'We design, build and scale web, mobile, SaaS and AI-powered software for businesses in Egypt and MENA. Book a free consultation today.',
+            title: 'Future Solutions — Custom Software Development Company | MENA & Worldwide',
+            description: 'We design, build and scale web, mobile, SaaS and AI-powered software for businesses across the Arab world and beyond. Book a free consultation today.',
         },
         ar: {
-            title: 'Future Solutions — شركة تطوير برمجيات وحلول رقمية في مصر',
-            description: 'نصمم ونطور أنظمة ويب وتطبيقات موبايل وحلول SaaS وذكاء اصطناعي للشركات في مصر والشرق الأوسط. احجز استشارة مجانية اليوم.',
+            title: 'Future Solutions — شركة تطوير برمجيات وحلول رقمية | الوطن العربي والعالم',
+            description: 'نصمم ونطور أنظمة ويب وتطبيقات موبايل وحلول SaaS وذكاء اصطناعي للشركات في الوطن العربي وحول العالم. احجز استشارة مجانية اليوم.',
         },
     },
     services: {
@@ -70,11 +70,11 @@ export const PAGE_SEO: Record<string, Record<Lang, PageCopy>> = {
     about: {
         en: {
             title: 'About Us — Who We Are',
-            description: 'Future Solutions Dev is a software agency founded in 2024 — engineers, designers and strategists transforming businesses through technology.',
+            description: 'Future Solutions Dev is a software agency founded in 2024, serving clients across the Arab world and worldwide — engineers, designers and strategists transforming businesses.',
         },
         ar: {
             title: 'من نحن — تعرف على فريقنا',
-            description: 'Future Solutions Dev وكالة برمجيات تأسست 2024 — مهندسون ومصممون واستراتيجيون يحوّلون الأعمال من خلال التكنولوجيا.',
+            description: 'Future Solutions Dev وكالة برمجيات تأسست 2024 وتخدم عملاء في الوطن العربي وحول العالم — مهندسون ومصممون واستراتيجيون يحوّلون الأعمال.',
         },
     },
     contact: {

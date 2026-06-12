@@ -1,4 +1,5 @@
 "use client";
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ShoppingCart, BarChart, Server, Layers, Clock, ArrowRight } from 'lucide-react';
@@ -20,9 +21,21 @@ export type TArticleListItem = {
     icon: keyof typeof iconMap;
 };
 
+const ALL_CATEGORY = '__all__';
+
 export default function BlogContent({ articles }: { articles: TArticleListItem[] }) {
     const { language } = useLanguage();
     const isRTL = language === 'ar';
+    const [activeCategory, setActiveCategory] = useState(ALL_CATEGORY);
+
+    const categories = useMemo(
+        () => [...new Set(articles.map((article) => article.category))],
+        [articles]
+    );
+    const visibleArticles =
+        activeCategory === ALL_CATEGORY
+            ? articles
+            : articles.filter((article) => article.category === activeCategory);
 
     return (
         <section className="py-20 bg-bg-dark min-h-screen">
@@ -47,9 +60,34 @@ export default function BlogContent({ articles }: { articles: TArticleListItem[]
                     </p>
                 </motion.div>
 
+                {/* Category filter */}
+                <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+                    <button
+                        type="button"
+                        onClick={() => setActiveCategory(ALL_CATEGORY)}
+                        className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${activeCategory === ALL_CATEGORY
+                            ? 'bg-primary-blue text-white border-primary-blue'
+                            : 'border-white/10 text-text-muted hover:border-cyan-glow/40 hover:text-white'}`}
+                    >
+                        {isRTL ? 'الكل' : 'All'}
+                    </button>
+                    {categories.map((category) => (
+                        <button
+                            key={category}
+                            type="button"
+                            onClick={() => setActiveCategory(category)}
+                            className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${activeCategory === category
+                                ? 'bg-primary-blue text-white border-primary-blue'
+                                : 'border-white/10 text-text-muted hover:border-cyan-glow/40 hover:text-white'}`}
+                        >
+                            {category}
+                        </button>
+                    ))}
+                </div>
+
                 {/* Articles Grid */}
                 <div className="grid md:grid-cols-2 gap-8">
-                    {articles.map((article, index) => {
+                    {visibleArticles.map((article, index) => {
                         const IconComponent = iconMap[article.icon];
                         return (
                             <motion.article

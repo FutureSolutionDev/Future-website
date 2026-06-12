@@ -32,7 +32,7 @@ const background = Buffer.from(`
   </text>
   <text x="600" y="568" text-anchor="middle"
         font-family="Segoe UI, Arial, sans-serif" font-size="26" fill="#7FB3D5">
-    Web &#183; Mobile &#183; SaaS &#183; AI — Cairo, Egypt
+    Web &#183; Mobile &#183; SaaS &#183; AI — Serving MENA &amp; Worldwide
   </text>
 </svg>
 `);

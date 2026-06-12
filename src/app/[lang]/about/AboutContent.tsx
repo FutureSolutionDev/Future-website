@@ -42,7 +42,7 @@ const VALUES = [
 ];
 
 const STATS = [
-    { value: '2024', label: { en: 'Founded in Cairo', ar: 'تأسست في القاهرة' } },
+    { value: '2024', label: { en: 'Founded — serving worldwide', ar: 'تأسست — نخدم العالم كله' } },
     { value: '100%', label: { en: 'You own the code', ar: 'الكود ملكك بالكامل' } },
     { value: '24/7', label: { en: 'Platforms live in production', ar: 'منصات حية تعمل دائماً' } },
     { value: '2', label: { en: 'Languages: Arabic & English', ar: 'لغتان: عربي وإنجليزي' } },
@@ -71,8 +71,8 @@ export default function AboutContent() {
                     </motion.h1>
                     <p className="text-lg md:text-xl text-text-muted leading-relaxed">
                         {isRTL
-                            ? 'Future Solutions وكالة برمجيات تأسست في 2024 في القاهرة. بنصمم ونبني ونشغّل منصات ويب وموبايل وSaaS لأصحاب الأعمال اللي عايزين نتيجة — مش مشروع تقني معلّق.'
-                            : 'Future Solutions is a software agency founded in Cairo in 2024. We design, build, and run web, mobile, and SaaS platforms for business owners who want an outcome — not a stalled tech project.'}
+                            ? 'Future Solutions وكالة برمجيات تأسست 2024 وتخدم عملاء في الوطن العربي وحول العالم. بنصمم ونبني ونشغّل منصات ويب وموبايل وSaaS لأصحاب الأعمال اللي عايزين نتيجة — مش مشروع تقني معلّق.'
+                            : 'Future Solutions is a software agency founded in 2024, serving clients across the Arab world and beyond. We design, build, and run web, mobile, and SaaS platforms for business owners who want an outcome — not a stalled tech project.'}
                     </p>
                 </div>
             </section>
@@ -93,8 +93,8 @@ export default function AboutContent() {
                         </p>
                         <p>
                             {isRTL
-                                ? 'فريقنا يجمع مهندسين ومصممين واستراتيجيين اشتغلوا على أنظمة حقيقية تخدم عملاء حقيقيين كل يوم — من التجارة الإلكترونية للأنظمة المالية والرعاية الصحية. بنشتغل بالعربي والإنجليزي، ونفهم السوق المصري والخليجي زي ما بنفهم الكود.'
-                                : 'Our team combines engineers, designers, and strategists who have shipped real systems serving real customers every day — from e-commerce to FinTech and healthcare. We work in Arabic and English, and we understand the Egyptian and Gulf markets as well as we understand code.'}
+                                ? 'فريقنا يجمع مهندسين ومصممين واستراتيجيين اشتغلوا على أنظمة حقيقية تخدم عملاء حقيقيين كل يوم — من التجارة الإلكترونية للأنظمة المالية والرعاية الصحية. بنشتغل بالعربي والإنجليزي عن بعد بالكامل، ونفهم أسواق الوطن العربي زي ما بنفهم الكود — ومنصاتنا بتخدم عملاء في أي مكان في العالم.'
+                                : 'Our team combines engineers, designers, and strategists who have shipped real systems serving real customers every day — from e-commerce to FinTech and healthcare. We work in Arabic and English, fully remotely, and we understand Arab markets as well as we understand code — with platforms serving clients anywhere in the world.'}
                         </p>
                     </motion.div>
                 </div>

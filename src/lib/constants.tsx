@@ -1,7 +1,7 @@
 import { Bird } from "lucide-react";
 
 export const title = "Future Solutions Dev";
-export const description = `${title} builds custom web, mobile and SaaS software for businesses in Egypt and MENA — from e-commerce and ERP to AI-powered systems.`;
+export const description = `${title} builds custom web, mobile and SaaS software for businesses across the Arab world and worldwide — from e-commerce and ERP to AI-powered systems.`;
 export const Contact = {
   WhatsApp: "https://wa.me/201148371185",
   Email: "info@futuresolutionsdev.com",
