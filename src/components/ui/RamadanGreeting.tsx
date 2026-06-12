@@ -185,7 +185,7 @@ export function RamadanGreetingView() {
                                 onMouseLeave={() => setHoveredLantern(null)}
                             >
                                 <Image
-                                    src="/Ramadan/Lantern.svg"
+                                    src="/Ramadan/Lantern.webp"
                                     alt="Lantern"
                                     width={lantern.size}
                                     height={lantern.size * 1.5}
@@ -216,7 +216,7 @@ export function RamadanGreetingView() {
                         onMouseLeave={() => setMoonHovered(false)}
                     >
                         <Image
-                            src="/Ramadan/Helal.svg"
+                            src="/Ramadan/Helal.webp"
                             alt="Crescent Moon"
                             width={128}
                             height={128}

@@ -12,13 +12,20 @@ export function Hero() {
     return (
         <div className="relative w-full aspect-square h-auto md:h-[55rem] mb-4">
             <div className="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full" />
-            <Image
-                src="/assets/hero.png"
-                alt="Future Solutions Technology"
-                width={650}
-                height={650}
-                className="hidden md:block relative z-10 w-full h-full drop-shadow-2xl"
-            />
+            {/* Desktop-only LCP image: <picture> with a media query so phones
+                never download it (display:none alone does not prevent the fetch) */}
+            <picture>
+                <source media="(min-width: 768px)" srcSet="/assets/hero.webp" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                    alt="Future Solutions Technology"
+                    width={1300}
+                    height={1300}
+                    fetchPriority="high"
+                    className="hidden md:block relative z-10 w-full h-full drop-shadow-2xl"
+                />
+            </picture>
             <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}

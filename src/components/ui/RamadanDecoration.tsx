@@ -150,7 +150,7 @@ export function RamadanDecorationDesktop() {
                     onMouseLeave={() => setHoveredLantern(null)}
                 >
                     <Image
-                        src="/Ramadan/Lantern.svg"
+                        src="/Ramadan/Lantern.webp"
                         alt="Ramadan Lantern"
                         width={lantern.size}
                         height={lantern.size * 1.5}
@@ -183,7 +183,7 @@ export function RamadanDecorationDesktop() {
                 onMouseLeave={() => setMoonHovered(false)}
             >
                 <Image
-                    src="/Ramadan/Helal.svg"
+                    src="/Ramadan/Helal.webp"
                     alt="Crescent Moon"
                     width={70}
                     height={70}
@@ -271,7 +271,7 @@ export function RamadanDecorationMini() {
                 whileHover={{ scale: 1.2 }}
             >
                 <Image
-                    src="/Ramadan/Helal.svg"
+                    src="/Ramadan/Helal.webp"
                     alt="Moon"
                     width={32}
                     height={32}
@@ -294,7 +294,7 @@ export function RamadanDecorationMini() {
                 whileHover={{ scale: 1.1 }}
             >
                 <Image
-                    src="/Ramadan/Lantern.svg"
+                    src="/Ramadan/Lantern.webp"
                     alt="Lantern"
                     width={28}
                     height={42}
@@ -325,7 +325,7 @@ export function RamadanDecorationMini() {
                 whileHover={{ scale: 1.1 }}
             >
                 <Image
-                    src="/Ramadan/Lantern.svg"
+                    src="/Ramadan/Lantern.webp"
                     alt="Lantern"
                     width={28}
                     height={42}
@@ -343,7 +343,7 @@ export function RamadanDecorationMini() {
                 whileHover={{ scale: 1.2 }}
             >
                 <Image
-                    src="/Ramadan/Helal.svg"
+                    src="/Ramadan/Helal.webp"
                     alt="Moon"
                     width={32}
                     height={32}

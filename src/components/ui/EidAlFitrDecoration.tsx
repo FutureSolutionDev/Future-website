@@ -144,7 +144,7 @@ export function EidAlFitrDecorationDesktop() {
                     onMouseLeave={() => setHoveredLantern(null)}
                 >
                     <Image
-                        src="/EidAlFitr/Lantern.svg"
+                        src="/EidAlFitr/Lantern.webp"
                         alt="Eid Lantern"
                         width={lantern.size}
                         height={lantern.size * 1.5}
@@ -234,7 +234,7 @@ export function EidAlFitrDecorationMini() {
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             >
                 <Image
-                    src="/EidAlFitr/Lantern.svg"
+                    src="/EidAlFitr/Lantern.webp"
                     alt="Lantern"
                     width={22}
                     height={33}
@@ -258,7 +258,7 @@ export function EidAlFitrDecorationMini() {
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             >
                 <Image
-                    src="/EidAlFitr/Dates.svg"
+                    src="/EidAlFitr/Dates.webp"
                     alt="Dates"
                     width={30}
                     height={25}

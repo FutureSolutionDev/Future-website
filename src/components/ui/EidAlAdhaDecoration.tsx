@@ -148,7 +148,7 @@ export function EidAlAdhaDecorationDesktop() {
                     onMouseLeave={() => setHoveredItem(null)}
                 >
                     <Image
-                        src="/EidAlAdha/Mosque.svg"
+                        src="/EidAlAdha/Mosque.webp"
                         alt="Mosque"
                         width={mosque.size}
                         height={mosque.size * 0.65}
@@ -274,7 +274,7 @@ export function EidAlAdhaDecorationMini() {
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             >
                 <Image
-                    src="/EidAlAdha/Mosque.svg"
+                    src="/EidAlAdha/Mosque.webp"
                     alt="Mosque"
                     width={35}
                     height={22}

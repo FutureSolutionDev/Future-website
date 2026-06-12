@@ -331,7 +331,7 @@ export function EidAlFitrGreetingView() {
                             }}
                         >
                             <Image
-                                src="/EidAlFitr/Lantern.svg"
+                                src="/EidAlFitr/Lantern.webp"
                                 alt="Eid Lantern"
                                 width={lantern.size}
                                 height={lantern.size * 1.5}
@@ -362,7 +362,7 @@ export function EidAlFitrGreetingView() {
                             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
                         >
                             <Image
-                                src="/EidAlFitr/PrayerMat.svg"
+                                src="/EidAlFitr/PrayerMat.webp"
                                 alt="Prayer Mat"
                                 width={160}
                                 height={100}
@@ -387,7 +387,7 @@ export function EidAlFitrGreetingView() {
                             }}
                         >
                             <Image
-                                src="/EidAlFitr/Dates.svg"
+                                src="/EidAlFitr/Dates.webp"
                                 alt="Dates"
                                 width={140}
                                 height={120}

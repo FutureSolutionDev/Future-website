@@ -40,3 +40,5 @@ next-env.d.ts
 
 # Eid
 .Eid
+.claude
+audit-report.md

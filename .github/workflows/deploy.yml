@@ -1,0 +1,57 @@
+# Build & deploy the static site to the VPS on every push to master.
+#
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   VPS_HOST      e.g. 203.0.113.10  (or a hostname)
+#   VPS_USER      SSH user, e.g. deploy
+#   VPS_SSH_KEY   private key for that user (use a dedicated deploy key)
+#   VPS_PATH      absolute site path, e.g. /var/www/futuresolutions/out
+#
+# Optional repository variables (Settings → Secrets and variables → Actions → Variables):
+#   NEXT_PUBLIC_WEB3FORMS_KEY   Web3Forms access key for the contact form
+#   NEXT_PUBLIC_GA_ID           GA4 measurement id (G-XXXXXXXXXX)
+
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ vars.NEXT_PUBLIC_WEB3FORMS_KEY }}
+          NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy (rsync out/ → VPS)
+        run: |
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/id_deploy" \
+            out/ "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ secrets.VPS_PATH }}/"

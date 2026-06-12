@@ -453,7 +453,7 @@ export function EidAlAdhaGreetingView() {
                             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                         >
                             <Image
-                                src="/EidAlAdha/Kaaba.svg"
+                                src="/EidAlAdha/Kaaba.webp"
                                 alt="Kaaba"
                                 width={100}
                                 height={100}
