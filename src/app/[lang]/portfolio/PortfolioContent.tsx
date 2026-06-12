@@ -6,7 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { Projects, type TProject } from "@/data/projects";
 import { Contact } from "@/lib/constants";
 import { UseProjectImages } from "@/lib/useProjectImages";
-import { ProjectLinks } from "@/components/features/ProjectLinks";
+import { LinkButtons } from "@/components/features/LinkButtons";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -95,7 +95,7 @@ function ProjectCard({
           </span>
           <h2 className="text-2xl md:text-3xl font-bold mt-1">{project.title}</h2>
         </div>
-        <ProjectLinks links={project.links} title={project.title} />
+        <LinkButtons links={project.links} />
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">

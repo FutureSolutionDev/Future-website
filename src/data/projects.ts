@@ -2,6 +2,7 @@
 // lead the card; the tech stack is a secondary detail.
 // Images live under public/Projects/ (WebP, compressed — nothing over ~300KB).
 import type { Lang } from "@/lib/seo";
+import type { TLinkItem } from "@/data/links";
 
 export type TProject = {
   title: string;
@@ -22,13 +23,8 @@ export type TProject = {
   tech: string[];
   /** Tailwind gradient classes for the card accent */
   color: string;
-  /** A project can ship on several channels — add whichever links exist */
-  links: {
-    Live?: string;
-    AppStore?: string;
-    GooglePlay?: string;
-    Github?: string;
-  };
+  /** Any number of channels: {key, url, label?} — key resolves to icon+label (see data/links.ts) */
+  links: TLinkItem[];
 };
 
 export const Projects: TProject[] = [
@@ -83,6 +79,6 @@ export const Projects: TProject[] = [
     ],
     tech: ["Next.js", "React", "TypeScript", "GraphQL", "Hono", "PostgreSQL", "Redis", "Stripe"],
     color: "from-blue-500 to-indigo-600",
-    links: { Live: "https://imtithal.store" },
+    links: [{ key: "website", url: "https://imtithal.store" }],
   },
 ];

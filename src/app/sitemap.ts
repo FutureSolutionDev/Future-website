@@ -1,10 +1,11 @@
 import type { MetadataRoute } from 'next';
 import { GetAllArticleMetas } from '@/lib/blog';
+import { Products } from '@/data/products';
 import { LANGS, SITE_URL } from '@/lib/seo';
 
 export const dynamic = 'force-static';
 
-const STATIC_PATHS = ['', '/services', '/solutions', '/portfolio', '/technologies', '/about', '/contact', '/blog'];
+const STATIC_PATHS = ['', '/services', '/solutions', '/products', '/portfolio', '/technologies', '/about', '/contact', '/blog'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const buildDate = new Date().toISOString().split('T')[0];
@@ -29,5 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         }))
     );
 
-    return [...staticEntries, ...articleEntries];
+    const productEntries: MetadataRoute.Sitemap = LANGS.flatMap((lang) =>
+        Products.map((product) => ({
+            url: `${SITE_URL}/${lang}/products/${product.slug}`,
+            lastModified: buildDate,
+            alternates: LanguageAlternates(`/products/${product.slug}`),
+        }))
+    );
+
+    return [...staticEntries, ...productEntries, ...articleEntries];
 }

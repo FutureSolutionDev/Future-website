@@ -47,6 +47,16 @@ export const PAGE_SEO: Record<string, Record<Lang, PageCopy>> = {
             description: 'حلول برمجية جاهزة للتخصيص لقطاعات التجارة الإلكترونية والتقنية المالية وأنظمة تخطيط الموارد والرعاية الصحية.',
         },
     },
+    products: {
+        en: {
+            title: 'Our Products — Live Platforms & Upcoming Launches',
+            description: 'SaaS products we build and operate: real estate intelligence, CRM platforms, and AI assistants — live in production and launching soon.',
+        },
+        ar: {
+            title: 'منتجاتنا — منصات تعمل الآن وإطلاقات قادمة',
+            description: 'منتجات SaaS نبنيها ونشغّلها: بيانات عقارية ذكية ومنصات CRM ومساعدات ذكاء اصطناعي — تعمل في الإنتاج الآن وأخرى تُطلق قريباً.',
+        },
+    },
     portfolio: {
         en: {
             title: 'Our Work — Software Projects & Case Studies',

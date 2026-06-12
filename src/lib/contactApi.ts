@@ -33,3 +33,26 @@ export async function SubmitContactMessage(data: TContactMessage): Promise<boole
         return false;
     }
 }
+
+/**
+ * Product waitlist signup ("notify me at launch"). Arrives in the same inbox
+ * with a [Waitlist] subject per product, so launch lists are easy to collect.
+ */
+export async function SubmitWaitlistSignup(product: string, email: string): Promise<boolean> {
+    try {
+        const response = await fetch(ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+                access_key: ACCESS_KEY,
+                email,
+                subject: `[Waitlist] ${product}`,
+                message: `New waitlist signup for ${product}: ${email}`,
+                from_name: 'Future Solutions Website',
+            }),
+        });
+        return response.ok;
+    } catch {
+        return false;
+    }
+}

@@ -11,6 +11,7 @@ export const translations = {
   "nav.contact": { en: "Contact", ar: "تواصل معنا" },
   "nav.getStarted": { en: "Get Started", ar: "ابدأ الآن" },
   "nav.blog": { en: "Blog", ar: "المدونة" },
+  "nav.products": { en: "Products", ar: "منتجاتنا" },
   // Hero
   "hero.badge": { en: "Future Solutions Dev", ar: "حلول المستقبل للتطوير" },
   "hero.title.building": { en: "Building", ar: "نصنع" },

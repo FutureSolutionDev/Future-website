@@ -14,6 +14,7 @@ export function FeaturedWorkSection({ initialImages }: { initialImages: string[]
     const isRTL = language === "ar";
     const project = Projects[0];
     const images = UseProjectImages(project?.imagesFolder ?? "/Projects", initialImages);
+    const liveUrl = project?.links.find((link) => link.key === "website")?.url;
 
     if (!project || images.length === 0) return null;
 
@@ -47,7 +48,7 @@ export function FeaturedWorkSection({ initialImages }: { initialImages: string[]
                 >
                     {/* Screenshot */}
                     <a
-                        href={project.links.Live}
+                        href={liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block group relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 hover:border-cyan-glow/40 transition-colors"
@@ -89,7 +90,7 @@ export function FeaturedWorkSection({ initialImages }: { initialImages: string[]
 
                         <div className="flex flex-wrap gap-4">
                             <a
-                                href={project.links.Live}
+                                href={liveUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary-blue text-white font-bold hover:bg-blue-600 transition-colors shadow-[0_0_20px_rgba(29,161,242,0.4)]"

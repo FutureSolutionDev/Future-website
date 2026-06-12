@@ -17,6 +17,7 @@ export function Navbar() {
         { href: `/${language}`, label: t('nav.home') },
         { href: `/${language}/services`, label: t('nav.services') },
         { href: `/${language}/solutions`, label: t('nav.solutions') },
+        { href: `/${language}/products`, label: t('nav.products') },
         { href: `/${language}/portfolio`, label: t('nav.portfolio') },
         { href: `/${language}/technologies`, label: t('nav.technologies') },
         { href: `/${language}/about`, label: t('nav.about') },
