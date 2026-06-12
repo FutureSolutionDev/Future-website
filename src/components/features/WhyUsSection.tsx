@@ -4,6 +4,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { features } from '@/lib/constants';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Zap, Globe, Users } from 'lucide-react';
+import { ASSET_VERSION } from '@/lib/constants';
 
 
 export function WhyUsSection() {
@@ -28,7 +29,7 @@ export function WhyUsSection() {
                         <div className="absolute inset-0 bg-blue-600/20 blur-[100px] rounded-full" />
                         {/* Desktop-only illustration: <picture> media query keeps phones from fetching it */}
                         <picture>
-                            <source media="(min-width: 768px)" srcSet="/assets/hero-illustration.webp" />
+                            <source media="(min-width: 768px)" srcSet={`/assets/hero-illustration.webp?v=${ASSET_VERSION}`} />
                             <img
                                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                 alt="Why Us"

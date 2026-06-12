@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { useLanguage } from '@/context/LanguageContext';
-import { Contact } from '@/lib/constants';
+import { ASSET_VERSION, Contact } from '@/lib/constants';
 import Link from 'next/link';
 
 export function Hero() {
@@ -81,7 +81,7 @@ export function Hero() {
                         className="hidden md:block"
                     >
                         <picture>
-                            <source media="(min-width: 768px)" srcSet="/assets/hero.webp" />
+                            <source media="(min-width: 768px)" srcSet={`/assets/hero.webp?v=${ASSET_VERSION}`} />
                             <img
                                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                 alt="Future Solutions Technology"

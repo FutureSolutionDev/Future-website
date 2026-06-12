@@ -1,6 +1,11 @@
 import { Bird } from "lucide-react";
 
 export const title = "Future Solutions Dev";
+
+// Cache-buster for static images replaced in-place (same filename, new content).
+// Bump this number whenever an asset under public/assets changes — old browser
+// caches refetch exactly once, then cache normally again.
+export const ASSET_VERSION = "1_0_0";
 export const description = `${title} builds custom web, mobile and SaaS software for businesses across the Arab world and worldwide — from e-commerce and ERP to AI-powered systems.`;
 export const Contact = {
   WhatsApp: "https://wa.me/201148371185",

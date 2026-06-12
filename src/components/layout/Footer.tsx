@@ -1,4 +1,4 @@
-import { Contact } from "@/lib/constants";
+import { ASSET_VERSION, Contact } from "@/lib/constants";
 import { Facebook, Linkedin, Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -91,7 +91,7 @@ export function Footer() {
                             target="_blank"
                             className="text-[#25D366] hover:text-[#1EBE5D] transition-all"
                         >
-                            <Image src="/assets/whatsapp.svg" alt="WhatsApp" width={20} height={20} className="w-5 h-5 text-[#25D366] hover:text-[#1EBE5D]" />
+                            <Image src={`/assets/whatsapp.svg?v=${ASSET_VERSION}`} alt="WhatsApp" width={20} height={20} className="w-5 h-5 text-[#25D366] hover:text-[#1EBE5D]" />
                         </Link>
                         <span className="absolute -top-9 left-1/2 -translate-x-1/2 
             whitespace-nowrap rounded-md bg-black px-2 py-1 text-xs text-white
