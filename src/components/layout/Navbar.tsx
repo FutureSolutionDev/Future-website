@@ -12,7 +12,9 @@ import { ActiveGreeting } from '@/lib/constants';
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const { language, setLanguage, t } = useLanguage();
-    const PathName = usePathname();
+    const RawPathName = usePathname();
+    // nginx serves the English homepage at '/' — treat it as the home route
+    const PathName = RawPathName === '/' ? `/${language}` : RawPathName;
     const navLinks = [
         { href: `/${language}`, label: t('nav.home') },
         { href: `/${language}/services`, label: t('nav.services') },

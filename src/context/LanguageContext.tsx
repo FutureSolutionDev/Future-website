@@ -27,7 +27,8 @@ export function LanguageProvider({ lang, children }: { lang: Language; children:
         } catch {
             // Storage unavailable (private mode) — switching still works via the URL
         }
-        const pathWithoutLang = pathname.replace(/^\/(en|ar)(?=\/|$)/, '');
+        // '/' happens when nginx serves the English homepage at the domain root
+        const pathWithoutLang = pathname === '/' ? '' : pathname.replace(/^\/(en|ar)(?=\/|$)/, '');
         // scroll: false — keep the reader exactly where they were when switching language
         router.push(`/${next}${pathWithoutLang || ''}`, { scroll: false });
     };
