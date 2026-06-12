@@ -7,16 +7,19 @@
     <link rel="canonical" href="https://futuresolutionsdev.com/en">
     <script>
         // Fallback root redirect (nginx already 302s "/" to /en).
-        // Honours a previously chosen language, else the browser language.
-        var lang = 'en';
-        try {
-            var saved = localStorage.getItem('language');
-            if (saved === 'ar') lang = 'ar';
-            else if (!saved && navigator.language && navigator.language.indexOf('ar') === 0) lang = 'ar';
-        } catch (e) { }
-        location.replace('/' + lang);
+        // Rule: a previously chosen language wins; otherwise the default is en.
+        // GUARD: only ever redirect from the actual root — if a server config
+        // serves this file under any other path (e.g. /ar/), do nothing,
+        // otherwise replace() loops forever against a 403/redirect.
+        (function () {
+            if (location.pathname !== '/' && location.pathname !== '/index.html') return;
+            var lang = 'en';
+            try {
+                if (localStorage.getItem('language') === 'ar') lang = 'ar';
+            } catch (e) { }
+            location.replace('/' + lang);
+        })();
     </script>
-    <meta http-equiv="refresh" content="0;url=/en">
 </head>
 <body>
     <a href="/en">Future Solutions Dev</a>

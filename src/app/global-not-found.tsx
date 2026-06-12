@@ -22,9 +22,7 @@ const NORMALIZE_SCRIPT = `
     if (/^\\/(en|ar)(\\/|$)/.test(path)) return;
     var lang = 'en';
     try {
-        var saved = localStorage.getItem('language');
-        if (saved === 'ar') lang = 'ar';
-        else if (!saved && navigator.language && navigator.language.indexOf('ar') === 0) lang = 'ar';
+        if (localStorage.getItem('language') === 'ar') lang = 'ar';
     } catch (e) { }
     document.documentElement.style.visibility = 'hidden';
     location.replace('/' + lang + (path === '/' ? '' : path) + location.search);
