@@ -43,30 +43,51 @@ export function Hero() {
                     "
             >
                 <div className="space-y-4">
-                    <h1 className="text-4xl md:text-3xl font-bold leading-tight tracking-tight">
-                        {language === 'ar' ? 'نصنع حلولاً برمجية' : 'Building Future-Ready'} <br />
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-primary-blue/10 border border-primary-blue/25 text-primary-blue text-sm font-medium">
+                        {language === 'ar' ? 'شركة تطوير برمجيات — القاهرة' : 'Software Development Company — Cairo'}
+                    </span>
+                    <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+                        {language === 'ar' ? 'عندك فكرة أو مشكلة؟' : 'Your business deserves'} <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-                            {language === 'ar' ? 'جاهزة للمستقبل' : 'Software Solutions'}
+                            {language === 'ar' ? 'إحنا بنبنيها منصة تكسب' : 'a platform that wins'}
                         </span>
                     </h1>
 
                     <p className="text-lg md:text-xl text-blue-200/60 max-w-lg leading-relaxed">
-                        {language === 'ar'
-                            ? 'نصمم ونطور ونوسع نطاق أنظمة الويب، الجوال، SaaS، والأنظمة المدعومة بالذكاء الاصطناعي للأعمال الحديثة.'
-                            : 'We design, develop, and scale web, mobile, SaaS, and AI-powered systems for modern businesses.'}
+                        {t('hero.desc')}
                     </p>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-4">
                     <Link href={Contact.WhatsApp} target="_blank" referrerPolicy="no-referrer">
+                        <Button size="lg">
+                            {t('hero.cta.secondary')}
+                        </Button>
+                    </Link>
+                    <Link href={`/${language}/portfolio`}>
                         <Button
                             variant="outline"
                             size="lg"
                             className="bg-transparent border-blue-500/30 text-blue-100 hover:bg-blue-500/10"
                         >
-                            {t('hero.cta.secondary')}
+                            {language === 'ar' ? 'شوف أعمالنا' : 'See Our Work'}
                         </Button>
                     </Link>
                 </div>
+                {/* Trust line — quick answers to "can I trust these people?" */}
+                <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-blue-200/50">
+                    <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-glow" />
+                        {language === 'ar' ? 'منصات حية في الإنتاج' : 'Platforms live in production'}
+                    </li>
+                    <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-glow" />
+                        {language === 'ar' ? 'الكود ملكك 100%' : 'You own the code 100%'}
+                    </li>
+                    <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-glow" />
+                        {language === 'ar' ? 'عرض سعر ثابت — بلا مفاجآت' : 'Fixed quotes — no surprises'}
+                    </li>
+                </ul>
             </motion.div>
         </div>
 

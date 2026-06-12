@@ -15,12 +15,12 @@ export default function TechnologiesContent() {
                     </h1>
                     <p className="text-text-muted max-w-2xl mx-auto">
                         {language === 'ar'
-                            ? 'نستخدم أحدث التقنيات وأكثرها موثوقية لبناء منتجاتك الرقمية.'
-                            : 'We use the latest and most reliable technologies to build your digital products.'}
+                            ? 'بنختار الأداة اللي تخدم هدفك — مش العكس. كل فئة هنا بتترجم لحاجة بتهمك فعلاً: سرعة، استقرار، وتكلفة تحت السيطرة.'
+                            : "We pick the tool that serves your goal — not the other way around. Every category here translates to something you actually care about: speed, stability, and costs under control."}
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {technologies.map((cat, i) => (
                         <motion.div
                             key={`tech-${i}`}
@@ -30,7 +30,10 @@ export default function TechnologiesContent() {
                             viewport={{ once: true }}
                             className="bg-surface-dark border border-white/5 rounded-2xl p-6"
                         >
-                            <h3 className="text-xl font-bold mb-6 border-b border-white/10 pb-4">{cat.name}</h3>
+                            <h3 className="text-xl font-bold border-b border-white/10 pb-4">{cat.name}</h3>
+                            <p className="text-text-muted text-sm leading-relaxed my-4">
+                                {language === 'ar' ? cat.benefit.ar : cat.benefit.en}
+                            </p>
                             <div className="flex flex-wrap gap-2">
                                 {cat.items.map(item => (
                                     <span key={`tech-${i}-item-${item}`} className="px-3 py-1.5 rounded-lg bg-white/5 text-sm text-text-muted hover:bg-white/10 hover:text-white transition-colors cursor-default">

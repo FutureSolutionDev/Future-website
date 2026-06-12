@@ -1,10 +1,10 @@
 "use client";
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ShoppingCart, BarChart, Server, Layers, ArrowRight } from 'lucide-react';
+import { ShoppingCart, BarChart, Server, Layers, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { useLanguage } from '@/context/LanguageContext';
-import { solutions } from '@/lib/constants';
+import { Contact, solutions } from '@/lib/constants';
 
 
 export default function SolutionsContent() {
@@ -54,15 +54,40 @@ export default function SolutionsContent() {
                                 <p className="text-text-muted mb-4 leading-relaxed">
                                     {sol.content}
                                 </p>
+                                <ul className="space-y-2 mb-5">
+                                    {sol.points.map((point) => (
+                                        <li key={point} className="flex items-start gap-2.5 text-sm text-text-main/90">
+                                            <CheckCircle size={15} className="text-cyan-glow shrink-0 mt-0.5" />
+                                            {point}
+                                        </li>
+                                    ))}
+                                </ul>
                                 <Link href={`/${language}/blog/${sol.slug}`}>
-                                    <Button variant="outline" size="sm" className={`inline-flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                                        {language === 'ar' ? 'اقرأ المزيد' : 'Learn More'}
-                                        <ArrowRight size={16} className={isRTL ? 'rotate-180' : ''} />
+                                    <Button variant="outline" size="sm" className="inline-flex items-center gap-2">
+                                        {language === 'ar' ? 'اعرف أكثر عن الحل ده' : 'Learn more about this solution'}
+                                        <ArrowRight size={16} className="rtl:rotate-180" />
                                     </Button>
                                 </Link>
                             </div>
                         </motion.div>
                     ))}
+                </div>
+
+                {/* Page CTA — every solution page visit should have a next step */}
+                <div className="text-center mt-16">
+                    <p className="text-text-muted mb-4">
+                        {isRTL
+                            ? 'مجالك مش في القائمة؟ احكيلنا عن شغلك — كل منصاتنا بتتفصل على المقاس.'
+                            : "Don't see your industry? Tell us about your business — every platform we build is tailored."}
+                    </p>
+                    <a
+                        href={Contact.WhatsApp}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-primary-blue text-white text-lg font-bold hover:bg-blue-600 transition-colors shadow-[0_0_20px_rgba(29,161,242,0.5)]"
+                    >
+                        {isRTL ? 'احجز استشارة مجانية' : 'Book a Free Consultation'}
+                    </a>
                 </div>
             </div>
         </section>

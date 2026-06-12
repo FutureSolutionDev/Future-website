@@ -5,8 +5,13 @@ import type { Lang } from "@/lib/seo";
 
 export type TProject = {
   title: string;
-  /** Gallery screenshots (1200px wide WebP, 16:10) — first one is the cover */
-  images: string[];
+  /**
+   * Gallery folder under public/, e.g. '/Projects/Imtithal'.
+   * Drop WebP/PNG screenshots in it (named 01-x.webp, 02-y.webp for order) and
+   * they appear in the gallery automatically — in production WITHOUT a rebuild
+   * (nginx serves the folder listing as JSON; see deploy/nginx.conf).
+   */
+  imagesFolder: string;
   category: Record<Lang, string>;
   description: Record<Lang, string>;
   /** One concrete, measurable outcome — results sell better than tech lists */
@@ -23,11 +28,7 @@ export type TProject = {
 export const Projects: TProject[] = [
   {
     title: "Imtithal — امتثال",
-    images: [
-      "/Projects/Imtithal/Imtithal.webp",
-      "/Projects/Imtithal/Imtithal-packs.webp",
-      "/Projects/Imtithal/Imtithal-ar.webp",
-    ],
+    imagesFolder: "/Projects/Imtithal",
     category: {
       en: "E-Commerce Platform",
       ar: "منصة تجارة إلكترونية",

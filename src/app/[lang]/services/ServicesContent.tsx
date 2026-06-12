@@ -3,11 +3,12 @@
 import { motion } from 'framer-motion';
 import { Code, Smartphone, Cloud, Brain, Database, Shield, CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import { services } from '@/lib/constants';
+import { Contact, services } from '@/lib/constants';
 import Link from 'next/link';
 export default function ServicesContent() {
     const { t, language } = useLanguage();
     const servicesData = services({
+        language,
         t,
         Code,
         Smartphone,
@@ -68,15 +69,30 @@ export default function ServicesContent() {
             </section>
 
             {/* CTA */}
-            <section className="pb-10 bg-bg-dark text-center">
-                <div className="container mx-auto px-4">
-                    <h2 className="text-3xl font-bold mb-6">{t('services.cta.title')}</h2>
-
-                    <Link
-                        href={`/${language}/contact`}
-                        className="relative inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 active:scale-95 bg-primary-blue text-white hover:bg-blue-600 shadow-[0_0_20px_rgba(29,161,242,0.5)] px-8 py-4 text-lg"
-                    >
-                        {t('services.cta.btn')}</Link>
+            <section className="py-16 bg-bg-dark text-center">
+                <div className="container mx-auto px-4 max-w-2xl">
+                    <h2 className="text-3xl font-bold mb-3">{t('services.cta.title')}</h2>
+                    <p className="text-text-muted mb-8">
+                        {language === 'ar'
+                            ? 'مش لازم تكون عارف بالظبط محتاج إيه — احكيلنا المشكلة وإحنا نقترح الحل. الاستشارة الأولى مجانية وبدون أي التزام.'
+                            : "You don't need to know exactly what you need — describe the problem and we'll propose the solution. The first consultation is free, no strings attached."}
+                    </p>
+                    <div className="flex flex-wrap items-center justify-center gap-4">
+                        <a
+                            href={Contact.WhatsApp}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative inline-flex items-center justify-center rounded-lg font-bold transition-all duration-300 active:scale-95 bg-primary-blue text-white hover:bg-blue-600 shadow-[0_0_20px_rgba(29,161,242,0.5)] px-8 py-4 text-lg"
+                        >
+                            {language === 'ar' ? 'احجز استشارة مجانية' : 'Book a Free Consultation'}
+                        </a>
+                        <Link
+                            href={`/${language}/portfolio`}
+                            className="inline-flex items-center justify-center rounded-lg border border-primary-blue/50 text-primary-blue font-bold hover:bg-primary-blue/10 transition-colors px-8 py-4 text-lg"
+                        >
+                            {language === 'ar' ? 'شوف شغلنا الأول' : 'See our work first'}
+                        </Link>
+                    </div>
                 </div>
             </section>
         </>

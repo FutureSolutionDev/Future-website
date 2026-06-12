@@ -6,14 +6,16 @@ import Image from "next/image";
 import { ArrowRight, CheckCircle, ExternalLink, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Projects } from "@/data/projects";
+import { UseProjectImages } from "@/lib/useProjectImages";
 
 /** Homepage proof section: the latest shipped project, framed as a result — not a tech demo */
-export function FeaturedWorkSection() {
+export function FeaturedWorkSection({ initialImages }: { initialImages: string[] }) {
     const { language } = useLanguage();
     const isRTL = language === "ar";
     const project = Projects[0];
+    const images = UseProjectImages(project?.imagesFolder ?? "/Projects", initialImages);
 
-    if (!project) return null;
+    if (!project || images.length === 0) return null;
 
     return (
         <section className="py-24 bg-surface-dark/30">
@@ -51,7 +53,7 @@ export function FeaturedWorkSection() {
                         className="block group relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 hover:border-cyan-glow/40 transition-colors"
                     >
                         <Image
-                            src={project.images[0]}
+                            src={images[0]}
                             alt={`${project.title} screenshot`}
                             width={1200}
                             height={750}

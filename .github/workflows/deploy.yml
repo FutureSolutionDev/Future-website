@@ -51,7 +51,10 @@ jobs:
           ssh-keyscan -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
 
       - name: Deploy (rsync out/ → VPS)
+        # 'P Projects/***' protects gallery screenshots uploaded directly to the
+        # server from being deleted by --delete (new local images still sync up)
         run: |
           rsync -az --delete \
+            --filter='P Projects/***' \
             -e "ssh -i ~/.ssh/id_deploy" \
             out/ "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ secrets.VPS_PATH }}/"

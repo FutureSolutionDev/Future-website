@@ -4,8 +4,9 @@ import { Code, Smartphone, Cloud, Brain, Database, Shield, CheckCircle } from 'l
 import { useLanguage } from '@/context/LanguageContext';
 import { services } from '@/lib/constants';
 export function ServicesSection() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const servicesData = services({
+        language,
         t,
         Code,
         Smartphone,

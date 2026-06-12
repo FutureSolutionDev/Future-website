@@ -54,7 +54,14 @@ Toggle manually in [src/lib/constants.tsx](src/lib/constants.tsx): set `Active: 
 
 ## 💼 Portfolio
 
-Fill [src/data/projects.ts](src/data/projects.ts) with real projects (template included in the file). While the list is empty the page stays hidden from the navbar and the sitemap. After adding projects, re-add the nav link in `Navbar.tsx` and `/portfolio` in `app/sitemap.ts`.
+Project data lives in [src/data/projects.ts](src/data/projects.ts) — marketing-first: client-facing `features` and a measurable `result` lead the card; `tech` renders small and muted.
+
+**Gallery screenshots are dynamic.** Each project points at a folder (`imagesFolder: "/Projects/Imtithal"`). Drop WebP/PNG files into that folder — named `01-x.webp`, `02-y.webp`… for display order — and they appear in the gallery:
+
+- **In production:** upload straight into `out/Projects/<Name>/` on the VPS — the site picks them up on the next page load, **no rebuild needed** (nginx serves the folder listing as JSON; see `deploy/nginx.conf`). The deploy workflow protects these server-side uploads from `rsync --delete`.
+- **Locally/dev:** files under `public/Projects/<Name>/` are read from disk on each reload.
+
+Keep images ≤1200px wide WebP (~30-60KB). `node scripts/optimize-assets.mjs` has the sharp recipes.
 
 ## 🚀 Deployment
 

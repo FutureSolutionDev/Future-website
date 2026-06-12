@@ -5,28 +5,37 @@ import { CheckCircle, ExternalLink, Github, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Projects, type TProject } from "@/data/projects";
 import { Contact } from "@/lib/constants";
+import { UseProjectImages } from "@/lib/useProjectImages";
 import Image from "next/image";
 import { useState } from "react";
 
-/** Screenshot gallery — main image keeps the screenshots' own 16:10 ratio (no cropping) */
-function ProjectGallery({ project }: { project: TProject }) {
+/**
+ * Screenshot gallery — the list refreshes at runtime from the server's folder
+ * listing (drop a new image in public/Projects/<Name>/ and it just shows up).
+ * The main image keeps the screenshots' own 16:10 ratio — no cropping.
+ */
+function ProjectGallery({ project, initialImages }: { project: TProject; initialImages: string[] }) {
+  const images = UseProjectImages(project.imagesFolder, initialImages);
   const [activeIndex, setActiveIndex] = useState(0);
   const { language } = useLanguage();
+
+  if (images.length === 0) return null;
+  const safeIndex = Math.min(activeIndex, images.length - 1);
 
   return (
     <div className="space-y-3">
       <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-white/10 bg-bg-dark">
         <Image
-          src={project.images[activeIndex]}
-          alt={`${project.title} — screenshot ${activeIndex + 1}`}
+          src={images[safeIndex]}
+          alt={`${project.title} — screenshot ${safeIndex + 1}`}
           width={1200}
           height={750}
           className="w-full h-full object-contain"
         />
       </div>
-      {project.images.length > 1 && (
-        <div className="flex gap-2">
-          {project.images.map((image, i) => (
+      {images.length > 1 && (
+        <div className="flex gap-2 flex-wrap">
+          {images.map((image, i) => (
             <button
               key={image}
               type="button"
@@ -37,7 +46,7 @@ function ProjectGallery({ project }: { project: TProject }) {
                   : `Show screenshot ${i + 1} of ${project.title}`
               }
               className={`relative aspect-[16/10] w-24 md:w-28 rounded-lg overflow-hidden border-2 transition-all ${
-                i === activeIndex
+                i === safeIndex
                   ? "border-cyan-glow shadow-[0_0_12px_rgba(0,229,255,0.25)]"
                   : "border-white/10 opacity-60 hover:opacity-100"
               }`}
@@ -57,7 +66,15 @@ function ProjectGallery({ project }: { project: TProject }) {
   );
 }
 
-function ProjectCard({ project, index }: { project: TProject; index: number }) {
+function ProjectCard({
+  project,
+  index,
+  initialImages,
+}: {
+  project: TProject;
+  index: number;
+  initialImages: string[];
+}) {
   const { language } = useLanguage();
   const isRTL = language === "ar";
 
@@ -105,7 +122,7 @@ function ProjectCard({ project, index }: { project: TProject; index: number }) {
 
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
         {/* Gallery */}
-        <ProjectGallery project={project} />
+        <ProjectGallery project={project} initialImages={initialImages} />
 
         {/* Story: what it does + the outcome */}
         <div>
@@ -152,7 +169,11 @@ function ProjectCard({ project, index }: { project: TProject; index: number }) {
   );
 }
 
-export default function PortfolioContent() {
+export default function PortfolioContent({
+  initialImagesByFolder,
+}: {
+  initialImagesByFolder: Record<string, string[]>;
+}) {
   const { language } = useLanguage();
   const isRTL = language === "ar";
 
@@ -176,7 +197,12 @@ export default function PortfolioContent() {
 
         <div className="flex flex-col gap-10 max-w-6xl mx-auto">
           {Projects.map((project, i) => (
-            <ProjectCard key={`project-${project.title}`} project={project} index={i} />
+            <ProjectCard
+              key={`project-${i}-${project.title}`}
+              project={project}
+              index={i}
+              initialImages={initialImagesByFolder[project.imagesFolder] ?? []}
+            />
           ))}
         </div>
 
