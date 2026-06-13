@@ -18,12 +18,15 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 }
 
 export default function Home() {
-  const featuredImages = Projects[0] ? GetProjectImages(Projects[0].imagesFolder) : [];
+  // Build-time images for every project; the carousel refreshes the active one at runtime
+  const featuredImagesByFolder = Object.fromEntries(
+    Projects.map((p) => [p.imagesFolder, GetProjectImages(p.imagesFolder)])
+  );
   return (
     <>
       <Hero />
       <ServicesSection />
-      <FeaturedWorkSection initialImages={featuredImages} />
+      <FeaturedWorkSection initialImagesByFolder={featuredImagesByFolder} />
       <TestimonialsSection />
       <ProcessSection />
       <WhyUsSection />

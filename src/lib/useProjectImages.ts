@@ -12,6 +12,11 @@ export function UseProjectImages(imagesFolder: string, initialImages: string[]):
     const [images, setImages] = useState(initialImages);
 
     useEffect(() => {
+        // Reset to THIS folder's build-time list whenever the folder changes
+        // (e.g. a carousel cycling through projects) — useState only captures
+        // the first value, so without this the image stays stuck on slide 0.
+        setImages(initialImages);
+
         // In dev the server reads the folder from disk on every reload — the JSON
         // listing only exists behind nginx in production. Skip the noise locally.
         if (process.env.NODE_ENV === 'development') return;
@@ -40,7 +45,7 @@ export function UseProjectImages(imagesFolder: string, initialImages: string[]):
         return () => {
             cancelled = true;
         };
-    }, [imagesFolder]);
+    }, [imagesFolder, initialImages]);
 
     return images;
 }
