@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Handshake, LineChart, PackageCheck, Eye, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Contact } from '@/lib/constants';
+import { TeamSection } from '@/components/features/TeamSection';
 
 const VALUES = [
     {
@@ -48,7 +49,7 @@ const STATS = [
     { value: '2', label: { en: 'Languages: Arabic & English', ar: 'لغتان: عربي وإنجليزي' } },
 ];
 
-export default function AboutContent() {
+export default function AboutContent({ teamPhotos }: { teamPhotos: Record<string, string | null> }) {
     const { language } = useLanguage();
     const isRTL = language === 'ar';
 
@@ -153,6 +154,9 @@ export default function AboutContent() {
                     </div>
                 </div>
             </section>
+
+            {/* Team */}
+            <TeamSection photos={teamPhotos} />
 
             {/* CTA */}
             <section className="py-20 text-center">

@@ -9,8 +9,16 @@ export type TLinkKey =
     | "appstore"
     | "googleplay"
     | "github"
+    | "reddit"
     | "docs"
-    | "video";
+    | "video"
+    | "linkedin"
+    | "twitter"
+    | "facebook"
+    | "phone"
+    | "whatsapp"
+    | "x"
+    | "email";
 
 export type TLinkItem = {
     key: TLinkKey;

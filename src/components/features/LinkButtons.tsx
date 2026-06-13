@@ -1,6 +1,6 @@
 "use client";
 
-import { Apple, ExternalLink, FileText, Github, Play, Youtube, type LucideIcon } from "lucide-react";
+import { Apple, ExternalLink, Facebook, FileText, Github, Linkedin, Mail, MessageCircle, MessageSquare, Phone, Play, Twitter, Youtube, type LucideIcon } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import type { TLinkItem, TLinkKey } from "@/data/links";
 import type { Lang } from "@/lib/seo";
@@ -38,6 +38,38 @@ const LINK_REGISTRY: Record<TLinkKey, TLinkMeta> = {
         icon: Youtube,
         label: { en: "Watch Demo", ar: "شاهد العرض" },
     },
+    linkedin: {
+        icon: Linkedin,
+        label: { en: "LinkedIn", ar: "LinkedIn" },
+    },
+    x: {
+        icon: Twitter,
+        label: { en: "X", ar: "X" },
+    },
+    twitter: {
+        icon: Twitter,
+        label: { en: "Twitter", ar: "Twitter" },
+    },
+    facebook: {
+        icon: Facebook,
+        label: { en: "Facebook", ar: "فيسبوك" },
+    },
+    whatsapp: {
+        icon: MessageCircle,
+        label: { en: "WhatsApp", ar: "واتساب" },
+    },
+    phone: {
+        icon: Phone,
+        label: { en: "Phone", ar: "جوال" },
+    },
+    email: {
+        icon: Mail,
+        label: { en: "Email", ar: "البريد" },
+    },
+    reddit: {
+        icon: MessageSquare,
+        label: { en: "Reddit", ar: "ريدديت" },
+    },
 };
 
 const PRIMARY_CLASS =
@@ -54,6 +86,9 @@ export function LinkButtons({ links }: { links: TLinkItem[] }) {
         <div className="flex flex-wrap items-center gap-2">
             {links.map((link, i) => {
                 const meta = LINK_REGISTRY[link.key];
+                // Defensive: an unknown key (registry drifted from the union)
+                // must never white-screen the page — just skip that link
+                if (!meta) return null;
                 const Icon = meta.icon;
                 const label = link.label ? link.label[language] : meta.label[language];
                 return (
