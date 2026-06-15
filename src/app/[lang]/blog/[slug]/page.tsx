@@ -6,7 +6,8 @@ import * as MdxRuntime from 'react/jsx-runtime';
 import { ArrowLeft, ArrowRight, BarChart, Clock, Layers, Server, ShoppingCart, Target } from 'lucide-react';
 import { GetAllArticleMetas, GetArticle, GetArticleSlugs } from '@/lib/blog';
 import { ArticleMdxComponents } from '@/components/blog/MdxComponents';
-import { BuildMetadata, DEFAULT_OG_IMAGE, IsLang, LANGS, SITE_URL, type Lang } from '@/lib/seo';
+import { GetArticleOgImage } from '@/lib/ogImages';
+import { BuildMetadata, IsLang, LANGS, SITE_URL, type Lang } from '@/lib/seo';
 import { Contact } from '@/lib/constants';
 
 const IconMap = { ShoppingCart, BarChart, Server, Layers };
@@ -26,7 +27,8 @@ export async function generateMetadata({
     if (!article) return { title: 'Article Not Found' };
 
     const { meta } = article;
-    const image = meta.coverImage ?? DEFAULT_OG_IMAGE;
+    // Per-article, per-language OG image with fallback to the site default
+    const image = GetArticleOgImage(slug, lang, meta.coverImage);
 
     return {
         ...BuildMetadata({
@@ -57,7 +59,7 @@ function ArticleSchema(lang: Lang, slug: string, meta: NonNullable<ReturnType<ty
         description: meta.excerpt,
         datePublished: meta.publishedAt,
         inLanguage: lang,
-        image: `${SITE_URL}${meta.coverImage ?? DEFAULT_OG_IMAGE}`,
+        image: `${SITE_URL}${GetArticleOgImage(slug, lang, meta.coverImage)}`,
         author: { '@type': 'Organization', name: meta.author, url: SITE_URL },
         publisher: { '@type': 'Organization', name: 'Future Solutions Dev', url: SITE_URL },
         mainEntityOfPage: `${SITE_URL}/${lang}/blog/${slug}`,
