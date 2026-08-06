@@ -149,7 +149,18 @@ export const Products: TProduct[] = [
       },
     ],
     imagesFolder: "/Products/est8core",
-    investorCta: true,
+    links: [
+      {
+        key: "website",
+        url: "https://est8core.com",
+        label: {
+          en: "Website",
+          ar: "موقع الويب",
+        },
+      }
+    ],
+    demoOnRequest: false,
+    investorCta: false,
   },
   {
     slug: "smartestprop",
