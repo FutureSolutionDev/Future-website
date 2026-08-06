@@ -152,7 +152,7 @@ export const Products: TProduct[] = [
     links: [
       {
         key: "website",
-        url: "https://est8core.com",
+        url: "https://demo.est8core.com",
         label: {
           en: "Website",
           ar: "موقع الويب",
