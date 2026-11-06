@@ -291,60 +291,6 @@ export const PRODUCTS: TProduct[] = [
     ImagesFolder: "/Products/smartestprop",
     InvestorCta: true,
   },
-  {
-    Slug: "agency-os",
-    Name: "Agency OS",
-    Status: "coming-soon",
-    Stage: {
-      en: "In active development, self-hosted edition nearing release",
-      ar: "قيد التطوير النشط، والنسخة المستضافة ذاتيًا تقترب من الإصدار",
-    },
-    Category: { en: "Operating System for Service Agencies", ar: "نظام تشغيل لوكالات الخدمات" },
-    Tagline: {
-      en: "Your clients see their projects. Your meetings turn into tasks. Unlimited users, flat price.",
-      ar: "عملاؤك يرون مشاريعهم، واجتماعاتك تتحول إلى مهام، ومستخدمون بلا حدود بسعر ثابت.",
-    },
-    Description: {
-      en: "Agency OS solves the three things that break every service agency: agreements lost in WhatsApp, meeting decisions that evaporate, and clients who keep asking 'where is my project?'. Clients get a branded transparency portal with progress and milestones. Meetings are recorded, transcribed by AI and summarized into action items that become tasks. The whole system is Arabic-first with unlimited users and no per-seat pricing.",
-      ar: "يحل Agency OS المشكلات الثلاث التي ترهق أي وكالة خدمات: الاتفاقات التي تضيع في واتساب، وقرارات الاجتماعات التي تتبخر، والعميل الذي يسأل كل يوم «إلى أين وصل مشروعي؟». يحصل العميل على بوابة شفافية بهوية وكالتك فيها التقدم والمراحل. وتُسجَّل الاجتماعات وتُفرَّغ وتُلخَّص بالذكاء الاصطناعي إلى مهام قابلة للتنفيذ. والنظام كله عربي أصيل بمستخدمين بلا حدود، دون تسعير لكل مستخدم.",
-    },
-    Audience: {
-      en: "Service agencies of every kind (software, marketing, design and consulting) that run client projects.",
-      ar: "وكالات الخدمات بكل أنواعها (البرمجة والتسويق والتصميم والاستشارات) التي تدير مشاريع لعملاء.",
-    },
-    Features: [
-      {
-        en: "Client transparency portal: progress, milestones and notes, branded as yours",
-        ar: "بوابة شفافية للعميل: التقدم والمراحل والملاحظات، بهوية وكالتك",
-      },
-      {
-        en: "Meeting intelligence: recording, AI transcript, summary and action items, then tasks",
-        ar: "ذكاء الاجتماعات: تسجيل ثم تفريغ بالذكاء الاصطناعي ثم ملخص ومهام قابلة للتنفيذ",
-      },
-      {
-        en: "Projects, phases and Kanban boards with task codes and assignments",
-        ar: "مشاريع ومراحل ولوحات Kanban بأكواد للمهام وتوزيع للمسؤوليات",
-      },
-      {
-        en: "Scheduled client updates on three channels: email, portal and in-app",
-        ar: "تحديثات دورية للعميل على ثلاث قنوات: البريد والبوابة وداخل النظام",
-      },
-      {
-        en: "Semantic search across every meeting and decision ever made",
-        ar: "بحث دلالي في كل اجتماع وقرار منذ أن بدأتم",
-      },
-      {
-        en: "Unlimited users, flat pricing: your team grows, your bill does not",
-        ar: "مستخدمون بلا حدود وسعر ثابت: يكبر فريقك وتبقى فاتورتك كما هي",
-      },
-      {
-        en: "Self-hosted edition: run it on your own server and own your data",
-        ar: "نسخة مستضافة ذاتيًا: شغّلها على خادمك وامتلك بياناتك",
-      },
-    ],
-    ImagesFolder: "/Products/agency-os",
-    InvestorCta: true,
-  },
 ];
 
 export function IsAvailable(Product: TProduct): boolean {
