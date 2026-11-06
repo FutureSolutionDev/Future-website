@@ -71,7 +71,7 @@ export const PROJECTS: TProject[] = [
       "01-platform-data.webp": { en: "Compounds, units and live prices", ar: "الكمبوندات والوحدات والأسعار المحدّثة" },
       "03-paymentplan.webp": { en: "Full payment plan for every unit", ar: "خطة السداد الكاملة لكل وحدة" },
       "04-ROI-Calc.webp": { en: "Investment ROI calculator", ar: "حاسبة العائد الاستثماري" },
-      "05-whatsapp-connection.png": { en: "One-tap sending on WhatsApp", ar: "الإرسال عبر واتساب بضغطة واحدة" },
+      "05-whatsapp-connection.webp": { en: "One-tap sending on WhatsApp", ar: "الإرسال عبر واتساب بضغطة واحدة" },
     },
   },
   {
