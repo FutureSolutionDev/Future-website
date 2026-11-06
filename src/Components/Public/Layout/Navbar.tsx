@@ -35,17 +35,15 @@ export function Navbar({
   LogoSrc,
 }: TNavbarProps) {
   const Pathname = usePathname() || `/${Language}`;
-  const [Open, SetOpen] = useState(false);
+  const [OpenPath, SetOpenPath] = useState<string | null>(null);
+  const Open = OpenPath === Pathname;
+  const SetOpen = (Value: boolean) => SetOpenPath(Value ? Pathname : null);
   const [Hash, SetHash] = useState("");
   const MenuButtonRef = useRef<HTMLButtonElement>(null);
   const PanelRef = useRef<HTMLDivElement>(null);
   const Rest = StripLang(Pathname === "/" ? "" : Pathname);
   const IsHome = Rest === "";
   const OtherLang: Lang = Language === "ar" ? "en" : "ar";
-
-  useEffect(() => {
-    SetOpen(false);
-  }, [Pathname]);
 
   useEffect(() => {
     const OnHashChange = () => SetHash(window.location.hash);
@@ -61,7 +59,7 @@ export function Navbar({
     document.body.style.overflow = "hidden";
     const OnKey = (Event: KeyboardEvent) => {
       if (Event.key === "Escape") {
-        SetOpen(false);
+        SetOpenPath(null);
         return;
       }
       if (Event.key !== "Tab" || !PanelRef.current) return;

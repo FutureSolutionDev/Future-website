@@ -1,28 +1,19 @@
-import {
-  Apple,
-  ExternalLink,
-  Facebook,
-  FileText,
-  Github,
-  Linkedin,
-  Mail,
-  MessageCircle,
-  MessageSquare,
-  Phone,
-  Play,
-  Twitter,
-  Youtube,
-  type LucideIcon,
-} from "lucide-react";
+import type { ComponentType } from "react";
+import { Apple, ExternalLink, FileText, Mail, MessageCircle, Phone, Play } from "lucide-react";
+import { BrandGlyph } from "./BrandIcons";
 import type { TLinkItem, TLinkKey } from "@/Data/Links";
 import type { Lang } from "@/Lib/Seo";
 import type { TCommon } from "@/I18n/Index";
 import { ButtonClass } from "./Button";
 
-const LINK_ICONS: Record<TLinkKey, LucideIcon> = {
-  website: ExternalLink, appstore: Apple, googleplay: Play, github: Github, docs: FileText,
-  video: Youtube, linkedin: Linkedin, x: Twitter, twitter: Twitter, facebook: Facebook,
-  whatsapp: MessageCircle, phone: Phone, email: Mail, reddit: MessageSquare,
+type TGlyph = ComponentType<{ size?: number; className?: string }>;
+
+const X_GLYPH = BrandGlyph("X");
+
+const LINK_ICONS: Record<TLinkKey, TGlyph> = {
+  website: ExternalLink, appstore: Apple, googleplay: Play, github: BrandGlyph("Github"), docs: FileText,
+  video: BrandGlyph("Youtube"), linkedin: BrandGlyph("Linkedin"), x: X_GLYPH, twitter: X_GLYPH,
+  facebook: BrandGlyph("Facebook"), whatsapp: MessageCircle, phone: Phone, email: Mail, reddit: BrandGlyph("Reddit"),
 };
 
 type TLinkButtonsProps = {
@@ -49,7 +40,7 @@ export function LinkButtons({ Links, Language, Labels, Compact = false }: TLinkB
             rel="noopener noreferrer"
             className={ButtonClass(Variant, "Sm")}
           >
-            <Glyph size={16} aria-hidden="true" />
+            <Glyph size={16} className="shrink-0" />
             {Label}
           </a>
         );

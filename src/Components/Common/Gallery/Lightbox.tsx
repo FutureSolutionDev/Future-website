@@ -42,7 +42,9 @@ export function Lightbox({
 }: TLightboxProps) {
   const Navigation = UseGalleryNavigation(Images.length, StartIndex, IsRtl);
   const [Playing, SetPlaying] = useState(false);
-  const [Zoomed, SetZoomed] = useState(false);
+  const [ZoomedAt, SetZoomedAt] = useState<number | null>(null);
+  const Zoomed = ZoomedAt === Navigation.Current;
+  const ToggleZoom = () => SetZoomedAt(Zoomed ? null : Navigation.Current);
   const DialogRef = useRef<HTMLDivElement>(null);
   const CloseRef = useRef<HTMLButtonElement>(null);
   const Active = Images[Navigation.Current];
@@ -57,10 +59,6 @@ export function Lightbox({
       PreviousFocus?.focus();
     };
   }, []);
-
-  useEffect(() => {
-    SetZoomed(false);
-  }, [Navigation.Current]);
 
   useEffect(() => {
     if (!Playing || Images.length < 2) return;
@@ -146,7 +144,7 @@ export function Lightbox({
           <button
             type="button"
             className={Cn(TOOL_CLASS, "max-sm:hidden")}
-            onClick={() => SetZoomed((Value) => !Value)}
+            onClick={ToggleZoom}
             aria-label={Copy.Zoom}
             aria-pressed={Zoomed}
           >
@@ -199,7 +197,7 @@ export function Lightbox({
               ? "mx-auto h-auto w-[160%] max-w-none cursor-zoom-out"
               : "max-h-full w-auto object-contain cursor-zoom-in",
           )}
-          onClick={() => SetZoomed((Value) => !Value)}
+          onClick={ToggleZoom}
         />
         {Images.length > 1 && (
           <>
