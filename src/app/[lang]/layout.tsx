@@ -1,134 +1,103 @@
-import type { Metadata } from 'next';
-import { Inter, Cairo } from 'next/font/google';
-import { notFound } from 'next/navigation';
-import { GoogleAnalytics } from '@next/third-parties/google';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
-import { LanguageProvider } from '@/context/LanguageContext';
-import SeasonalGreetings from '@/components/ui/SeasonalGreetings';
-import '../globals.css';
-import { cn } from '@/lib/utils';
-import { ActiveGreeting, Contact, SiteKeys, title as SiteTitle } from '@/lib/constants';
-import { IsLang, LANGS, SITE_DESCRIPTION, SITE_NAME, SITE_URL, type Lang } from '@/lib/seo';
+import type { Metadata, Viewport } from "next";
+import { IBM_Plex_Mono, IBM_Plex_Sans_Arabic, Inter } from "next/font/google";
+import { notFound } from "next/navigation";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Navbar, type TNavItem } from "@/Components/Public/Layout/Navbar";
+import { Footer } from "@/Components/Public/Layout/Footer";
+import SeasonalGreetings from "@/Components/Public/Seasonal/SeasonalGreetings";
+import { JsonLd } from "@/Components/Common/JsonLd";
+import { GetDictionary } from "@/I18n/Index";
+import { ACTIVE_GREETING, SITE_KEYS, SITE_TITLE } from "@/Lib/Site";
+import { IsLang, LANGS, PathFor, SITE_NAME, SITE_URL, SeoCopy, ToLang, type Lang } from "@/Lib/Seo";
+import { OrganizationSchema, WebSiteSchema } from "@/Lib/Schema";
+import { Cn } from "@/Lib/Cn";
+import "@/Styles/Globals.css";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const cairo = Cairo({ subsets: ['arabic'], variable: '--font-cairo' });
+const PlexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-plex-arabic",
+  display: "swap",
+});
 
-const GA_ID = SiteKeys.GaId;
+const InterFont = Inter({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-inter", display: "swap" });
 
-export function generateStaticParams() {
-    return LANGS.map((lang) => ({ lang }));
-}
+const PlexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-plex-mono", display: "swap" });
 
-// Only /en and /ar exist — anything else is a hard 404 (also in dev)
 export const dynamicParams = false;
 
-// Site-wide defaults; every page overrides title/description/canonical/og via PageMetadata()
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-    const { lang } = await params;
-    const language: Lang = IsLang(lang) ? lang : 'en';
-
-    const verification: NonNullable<Metadata['verification']> = {};
-    if (SiteKeys.GoogleSiteVerification) {
-        verification.google = SiteKeys.GoogleSiteVerification;
-    }
-    const otherVerification: Record<string, string> = {};
-    if (SiteKeys.BingSiteVerification) {
-        otherVerification['msvalidate.01'] = SiteKeys.BingSiteVerification;
-    }
-    if (SiteKeys.FbDomainVerification) {
-        otherVerification['facebook-domain-verification'] = SiteKeys.FbDomainVerification;
-    }
-    if (Object.keys(otherVerification).length > 0) {
-        verification.other = otherVerification;
-    }
-
-    return {
-        metadataBase: new URL(SITE_URL),
-        title: {
-            default: SITE_NAME,
-            template: `%s | ${SiteTitle}`,
-        },
-        description: SITE_DESCRIPTION[language],
-        publisher: SiteTitle,
-        manifest: '/manifest.json',
-        icons: {
-            icon: ActiveGreeting.Favicon,
-            apple: ActiveGreeting.Favicon,
-            shortcut: ActiveGreeting.Favicon,
-        },
-        robots: {
-            index: true,
-            follow: true,
-            googleBot: {
-                index: true,
-                follow: true,
-                'max-image-preview': 'large',
-                'max-video-preview': -1,
-                'max-snippet': -1,
-            },
-        },
-        verification,
-    };
+export function generateStaticParams() {
+  return LANGS.map((lang) => ({ lang }));
 }
 
-const OrganizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: SITE_NAME,
-    url: SITE_URL,
-    logo: `${SITE_URL}/favico/favico.png`,
-    email: Contact.Email,
-    telephone: `+${Contact.Phone}`,
-    address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Cairo',
-        addressCountry: 'EG',
-    },
-    sameAs: [Contact.Facebook, Contact.LinkedIn],
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b2840" },
+  ],
+  width: "device-width",
+  initialScale: 1,
 };
 
-export default async function RootLayout({
-    children,
-    params,
-}: {
-    children: React.ReactNode;
-    params: Promise<{ lang: string }>;
-}) {
-    const { lang } = await params;
-    if (!IsLang(lang)) {
-        notFound();
-    }
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const Language = ToLang((await params).lang);
+  const Other: Record<string, string> = {};
+  if (SITE_KEYS.BingSiteVerification) Other["msvalidate.01"] = SITE_KEYS.BingSiteVerification;
+  if (SITE_KEYS.FbDomainVerification) Other["facebook-domain-verification"] = SITE_KEYS.FbDomainVerification;
 
-    return (
-        <html lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'} className="dark">
-            <body
-                className={cn(
-                    inter.variable,
-                    cairo.variable,
-                    lang === 'ar' ? 'font-arabic' : 'font-sans',
-                    'min-h-screen bg-bg-dark text-text-main antialiased flex flex-col'
-                )}
-            >
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(OrganizationSchema) }}
-                />
-                <LanguageProvider lang={lang}>
-                    <SeasonalGreetings />
-                    <Navbar />
-                    <main
-                        className="flex-grow
-                        md:min-h-[calc(100dvh-8.6rem)] min-h-[calc(100dvh-9rem)]
-                        overflow-y-auto overflow-x-hidden
-                        "
-                    >
-                        {children}
-                    </main>
-                    <Footer />
-                </LanguageProvider>
-                {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
-            </body>
-        </html>
-    );
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: { default: SITE_NAME, template: `%s | ${SITE_TITLE}` },
+    description: SeoCopy(Language).SiteDescription,
+    applicationName: SITE_NAME,
+    publisher: SITE_TITLE,
+    manifest: "/manifest.json",
+    icons: { icon: ACTIVE_GREETING.Favicon, apple: ACTIVE_GREETING.Favicon, shortcut: ACTIVE_GREETING.Favicon },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large", "max-video-preview": -1, "max-snippet": -1 },
+    },
+    verification: {
+      ...(SITE_KEYS.GoogleSiteVerification ? { google: SITE_KEYS.GoogleSiteVerification } : {}),
+      ...(Object.keys(Other).length > 0 ? { other: Other } : {}),
+    },
+  };
+}
+
+function NavItems(Language: Lang): TNavItem[] {
+  const Nav = GetDictionary(Language).Common.Nav;
+  return [
+    { Key: "services", Label: Nav.Services, Path: PathFor(Language, "/services") },
+    { Key: "industries", Label: Nav.Industries, Path: PathFor(Language, "/solutions") },
+    { Key: "work", Label: Nav.Work, Path: PathFor(Language, "/portfolio") },
+    { Key: "blog", Label: Nav.Blog, Path: PathFor(Language, "/blog") },
+    { Key: "faq", Label: Nav.Faq, Path: PathFor(Language, "/faq") },
+    { Key: "about", Label: Nav.About, Path: PathFor(Language, "/about") },
+  ];
+}
+
+export default async function LangLayout({ children, params }: { children: React.ReactNode; params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  if (!IsLang(lang)) notFound();
+  const Common = GetDictionary(lang).Common;
+  const Items = NavItems(lang);
+
+  return (
+    <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} className={Cn(PlexArabic.variable, InterFont.variable, PlexMono.variable)}>
+      <body className="flex min-h-screen flex-col">
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-[200] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-on-primary">
+          {Common.SkipToContent}
+        </a>
+        <JsonLd Data={[OrganizationSchema(lang), WebSiteSchema(lang)]} />
+        <SeasonalGreetings />
+        <Navbar Language={lang} Items={Items} Nav={Common.Nav} BookLabel={Common.Cta.BookConsultation} LogoSrc={ACTIVE_GREETING.Logo} />
+        <main id="main" className="flex-1">
+          {children}
+        </main>
+        <Footer Language={lang} Common={Common} Items={Items} LogoSrc={ACTIVE_GREETING.Logo} />
+        {SITE_KEYS.GaId && <GoogleAnalytics gaId={SITE_KEYS.GaId} />}
+      </body>
+    </html>
+  );
 }

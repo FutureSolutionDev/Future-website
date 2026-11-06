@@ -1,69 +1,129 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { GetProduct, Products } from '@/data/products';
-import { GetProjectImages } from '@/lib/projectImages';
-import { BuildMetadata, IsLang, LANGS, SITE_URL, type Lang } from '@/lib/seo';
-import ProductView from './ProductView';
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { MessageCircle, Handshake } from "lucide-react";
+import { ButtonLink } from "@/Components/Common/Button";
+import { CtaPanel } from "@/Components/Common/CtaPanel";
+import { JsonLd } from "@/Components/Common/JsonLd";
+import { LinkButtons } from "@/Components/Common/LinkButtons";
+import { PageHeader } from "@/Components/Common/PageHeader";
+import { MetricRail } from "@/Components/Public/Home/MetricRail";
+import { WaitlistForm } from "@/Components/Public/Work/WaitlistForm";
+import { FeatureList, Screens } from "@/Components/Public/Work/DetailLayout";
+import { GetProductBySlug, PRODUCTS } from "@/Data/Products";
+import { GetProjectImages } from "@/Lib/Images";
+import { ProductSchema } from "@/Lib/Schema";
+import { BuildMetadata, LANGS, PathFor, ToLang } from "@/Lib/Seo";
+import { WhatsAppLink } from "@/Lib/Site";
+import { GetDictionary } from "@/I18n/Index";
+
+type TParams = { params: Promise<{ lang: string; slug: string }> };
 
 export function generateStaticParams() {
-    return LANGS.flatMap((lang) => Products.map((product) => ({ lang, slug: product.slug })));
+  return LANGS.flatMap((lang) => PRODUCTS.map((Product) => ({ lang, slug: Product.Slug })));
 }
 
-export async function generateMetadata({
-    params,
-}: {
-    params: Promise<{ lang: string; slug: string }>;
-}): Promise<Metadata> {
-    const { lang: langParam, slug } = await params;
-    const lang: Lang = IsLang(langParam) ? langParam : 'en';
-    const product = GetProduct(slug);
-    if (!product) return { title: 'Product Not Found' };
-
-    const cover = product.imagesFolder ? GetProjectImages(product.imagesFolder)[0] : undefined;
-
-    return BuildMetadata({
-        lang,
-        path: `/products/${slug}`,
-        title: `${product.name} — ${product.category[lang]}`,
-        description: product.tagline[lang],
-        images: cover ? [{ url: cover, width: 1200, height: 750, alt: product.name }] : undefined,
-    });
+export async function generateMetadata({ params }: TParams): Promise<Metadata> {
+  const { lang, slug } = await params;
+  const Language = ToLang(lang);
+  const Product = GetProductBySlug(slug);
+  if (!Product) return {};
+  const Cover = Product.ImagesFolder ? GetProjectImages(Product.ImagesFolder)[0] : undefined;
+  return BuildMetadata({
+    Language,
+    Path: `/products/${slug}`,
+    Title: `${Product.Name}: ${Product.Category[Language]}`,
+    Description: Product.Tagline[Language],
+    Images: Cover ? [{ url: Cover, width: 1200, height: 750, alt: Product.Name }] : undefined,
+  });
 }
 
-function ProductSchema(lang: Lang, product: NonNullable<ReturnType<typeof GetProduct>>) {
-    const liveUrl = product.links?.find((link) => link.key === 'website')?.url;
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'SoftwareApplication',
-        name: product.name,
-        applicationCategory: 'BusinessApplication',
-        operatingSystem: 'Web',
-        description: product.description[lang],
-        url: `${SITE_URL}/${lang}/products/${product.slug}`,
-        author: { '@type': 'Organization', name: 'Future Solutions Dev', url: SITE_URL },
-        ...(liveUrl ? { installUrl: liveUrl } : {}),
-    };
-}
+export default async function ProductPage({ params }: TParams) {
+  const { lang, slug } = await params;
+  const Language = ToLang(lang);
+  const Product = GetProductBySlug(slug);
+  if (!Product) notFound();
+  const Copy = GetDictionary(Language);
+  const { Common, Pages } = Copy;
+  const Images = Product.ImagesFolder ? GetProjectImages(Product.ImagesFolder) : [];
+  const IsLive = Product.Status === "live";
+  const Status = IsLive ? Pages.Work.Live : (Product.Stage?.[Language] ?? Pages.Work.ComingSoon);
 
-export default async function ProductPage({
-    params,
-}: {
-    params: Promise<{ lang: string; slug: string }>;
-}) {
-    const { lang: langParam, slug } = await params;
-    const lang: Lang = IsLang(langParam) ? langParam : 'en';
-    const product = GetProduct(slug);
-    if (!product) notFound();
+  return (
+    <>
+      <JsonLd Data={ProductSchema(Product, Language, Images)} />
+      <PageHeader
+        Language={Language}
+        Common={Common}
+        Trail={[
+          { Name: Common.Nav.Work, Path: PathFor(Language, "/portfolio") },
+          { Name: Product.Name, Path: PathFor(Language, `/products/${Product.Slug}`) },
+        ]}
+        Label={Product.Category[Language]}
+        Title={<span className="font-latin">{Product.Name}</span>}
+        Lead={Product.Tagline[Language]}
+      >
+        <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-line px-3 py-1 text-sm font-semibold text-accent-ink">
+          <span aria-hidden="true" className={IsLive ? "size-2 rounded-full bg-success" : "size-2 rounded-full bg-accent"} />
+          {Status}
+        </p>
+        <div className="mt-7 flex flex-wrap gap-3">
+          {Product.DemoOnRequest && (
+            <ButtonLink Href={WhatsAppLink(`${Pages.Product.DemoMessage} ${Product.Name}`)} External>
+              <MessageCircle size={18} aria-hidden="true" />
+              {Pages.Product.RequestDemo}
+            </ButtonLink>
+          )}
+          {Product.Links && <LinkButtons Links={Product.Links} Language={Language} Labels={Common.Links} />}
+        </div>
+      </PageHeader>
 
-    const initialImages = product.imagesFolder ? GetProjectImages(product.imagesFolder) : [];
+      <div className="container-page grid gap-16 py-16 md:gap-20 md:py-20">
+        <section className="grid gap-10 md:grid-cols-[1.2fr_1fr] md:gap-14">
+          <div>
+            <h2 className="text-2xl font-bold md:text-[28px]">{Pages.Project.Overview}</h2>
+            <p className="mt-4 text-lg text-ink-muted">{Product.Description[Language]}</p>
+            <p className="mt-6 rounded-md border-s-2 border-accent bg-accent-soft p-5">
+              <b className="block text-sm text-accent-ink">{Pages.Product.WhoFor}</b>
+              <span className="mt-1 block">{Product.Audience[Language]}</span>
+            </p>
+          </div>
+          <div className="grid content-start gap-4">
+            {!IsLive && <WaitlistForm Product={Product.Name} Copy={Pages.Waitlist} />}
+            {Product.AppsComingSoon && <WaitlistForm Product={`${Product.Name} apps`} Copy={Pages.Waitlist} Title={Pages.Product.AppsSoon} />}
+            {Product.InvestorCta && (
+              <div className="rounded-lg border border-line p-5">
+                <p className="flex items-center gap-2 font-semibold">
+                  <Handshake size={18} className="text-accent" aria-hidden="true" />
+                  {Pages.Product.InvestorTitle}
+                </p>
+                <p className="mt-1.5 text-[15px] text-ink-muted">{Pages.Product.InvestorText}</p>
+                <ButtonLink Href={WhatsAppLink(`${Pages.Product.InvestorMessage} ${Product.Name}`)} External Variant="Line" Size="Sm" ClassName="mt-4">
+                  <MessageCircle size={16} aria-hidden="true" />
+                  {Common.Cta.WhatsApp}
+                </ButtonLink>
+              </div>
+            )}
+          </div>
+        </section>
 
-    return (
-        <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(ProductSchema(lang, product)) }}
-            />
-            <ProductView product={product} initialImages={initialImages} />
-        </>
-    );
+        {Product.Stats && (
+          <div className="-mb-12">
+            <MetricRail Items={Product.Stats} Language={Language} />
+          </div>
+        )}
+
+        {Images.length > 0 && (
+          <Screens Title={Product.Name} ImagesFolder={Product.ImagesFolder} Images={Images} Captions={Product.Captions} Language={Language} Copy={Copy} />
+        )}
+        <FeatureList Title={Pages.Product.Delivers} Features={Product.Features} Language={Language} />
+      </div>
+
+      <CtaPanel
+        Language={Language}
+        Common={Common}
+        Title={IsLive ? Pages.Product.CtaLive : `${Pages.Product.CtaSoon} ${Product.Name}?`}
+        Text={Pages.Product.CtaText}
+      />
+    </>
+  );
 }

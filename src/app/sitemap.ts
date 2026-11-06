@@ -1,42 +1,45 @@
-import type { MetadataRoute } from 'next';
-import { GetAllArticleMetas } from '@/lib/blog';
-import { Products } from '@/data/products';
-import { LANGS, SITE_URL } from '@/lib/seo';
+import type { MetadataRoute } from "next";
+import { GetAllArticleMetas } from "@/Lib/Blog";
+import { PRODUCTS } from "@/Data/Products";
+import { PROJECTS } from "@/Data/Projects";
+import { DEFAULT_LANG, LANGS, SITE_URL } from "@/Lib/Seo";
 
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
-const STATIC_PATHS = ['', '/services', '/solutions', '/products', '/portfolio', '/technologies', '/about', '/contact', '/blog'];
+const STATIC_PATHS: { Path: string; Priority: number }[] = [
+  { Path: "", Priority: 1 },
+  { Path: "/services", Priority: 0.9 },
+  { Path: "/portfolio", Priority: 0.9 },
+  { Path: "/solutions", Priority: 0.8 },
+  { Path: "/faq", Priority: 0.8 },
+  { Path: "/blog", Priority: 0.8 },
+  { Path: "/about", Priority: 0.7 },
+  { Path: "/contact", Priority: 0.7 },
+];
+
+function Alternates(Path: string) {
+  return {
+    languages: {
+      ...Object.fromEntries(LANGS.map((Language) => [Language, `${SITE_URL}/${Language}${Path}`])),
+      "x-default": `${SITE_URL}/${DEFAULT_LANG}${Path}`,
+    },
+  };
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const buildDate = new Date().toISOString().split('T')[0];
+  const BuildDate = new Date().toISOString().split("T")[0];
+  const Entry = (Path: string, Priority: number, LastModified = BuildDate) =>
+    LANGS.map((Language) => ({
+      url: `${SITE_URL}/${Language}${Path}`,
+      lastModified: LastModified,
+      priority: Priority,
+      alternates: Alternates(Path),
+    }));
 
-    const LanguageAlternates = (path: string) => ({
-        languages: Object.fromEntries(LANGS.map((lang) => [lang, `${SITE_URL}/${lang}${path}`])),
-    });
-
-    const staticEntries: MetadataRoute.Sitemap = LANGS.flatMap((lang) =>
-        STATIC_PATHS.map((path) => ({
-            url: `${SITE_URL}/${lang}${path}`,
-            lastModified: buildDate,
-            alternates: LanguageAlternates(path),
-        }))
-    );
-
-    const articleEntries: MetadataRoute.Sitemap = LANGS.flatMap((lang) =>
-        GetAllArticleMetas(lang).map((meta) => ({
-            url: `${SITE_URL}/${lang}/blog/${meta.slug}`,
-            lastModified: meta.publishedAt,
-            alternates: LanguageAlternates(`/blog/${meta.slug}`),
-        }))
-    );
-
-    const productEntries: MetadataRoute.Sitemap = LANGS.flatMap((lang) =>
-        Products.map((product) => ({
-            url: `${SITE_URL}/${lang}/products/${product.slug}`,
-            lastModified: buildDate,
-            alternates: LanguageAlternates(`/products/${product.slug}`),
-        }))
-    );
-
-    return [...staticEntries, ...productEntries, ...articleEntries];
+  return [
+    ...STATIC_PATHS.flatMap((Item) => Entry(Item.Path, Item.Priority)),
+    ...PROJECTS.flatMap((Project) => Entry(`/portfolio/${Project.Slug}`, 0.8)),
+    ...PRODUCTS.flatMap((Product) => Entry(`/products/${Product.Slug}`, 0.7)),
+    ...GetAllArticleMetas("en").flatMap((Meta) => Entry(`/blog/${Meta.slug}`, 0.7, Meta.publishedAt)),
+  ];
 }
