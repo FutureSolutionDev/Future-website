@@ -49,13 +49,13 @@ src/
 
 | القديم | الجديد |
 |---|---|
-| `/services` | زي ما هو، ومدموج فيه قسم التقنيات `#technologies` |
+| `/services` | زي ما هو. قسم التقنيات الكبير اتشال بقرار Sabry، وكل خدمة بقى معاها سطر «أدواتنا» |
 | `/solutions` | زي ما هو، واسمه في القائمة «القطاعات» |
 | `/portfolio` | زي ما هو، واسمه «أعمالنا»، ومدموج فيه المنتجات `#products` |
 | `/portfolio/<slug>` | **جديد**: صفحة مشروع فيها Files Viewer |
 | `/products/<slug>` | زي ما هو، ومعاه Files Viewer |
 | `/faq` | **جديد**: الخط الزمني |
-| `/technologies` | 301 لـ `/services#technologies` (nginx) + صفحة redirect احتياطي |
+| `/technologies` | 301 لـ `/services` (nginx) + صفحة redirect احتياطي |
 | `/products` | 301 لـ `/portfolio#products` (nginx) + صفحة redirect احتياطي |
 
 ## SEO + AEO + GEO

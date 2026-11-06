@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MovedMetadata, MovedPage } from "@/Components/Common/MovedPage";
 import { ToLang } from "@/Lib/Seo";
 
-const TARGET = "/services#technologies";
+const TARGET = "/services";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   return MovedMetadata(ToLang((await params).lang), TARGET);

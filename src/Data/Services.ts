@@ -8,6 +8,7 @@ export type TService = {
   Title: TBilingual;
   Description: TBilingual;
   Features: TBilingual[];
+  Stack?: string[];
 };
 
 export const SERVICES: TService[] = [
@@ -25,6 +26,7 @@ export const SERVICES: TService[] = [
       { en: "Flawless on mobile", ar: "مثالي على الجوال" },
       { en: "Designed to convert visitors", ar: "مصمم لتحويل الزوار إلى عملاء" },
     ],
+    Stack: ["Next.js", "React", "TypeScript"],
   },
   {
     Id: "mobile",
@@ -40,6 +42,7 @@ export const SERVICES: TService[] = [
       { en: "Works even offline", ar: "يعمل حتى دون اتصال بالإنترنت" },
       { en: "Store-ready from day one", ar: "جاهز للنشر على المتاجر" },
     ],
+    Stack: ["Flutter"],
   },
   {
     Id: "saas",
@@ -55,6 +58,7 @@ export const SERVICES: TService[] = [
       { en: "Admin dashboard included", ar: "لوحة تحكم إدارية جاهزة" },
       { en: "Reports that track your numbers", ar: "تقارير تتابع منها أرقامك" },
     ],
+    Stack: ["Node.js", "Bun", "Hono", "PostgreSQL"],
   },
   {
     Id: "ai",
@@ -85,6 +89,7 @@ export const SERVICES: TService[] = [
       { en: "Automatic backups", ar: "نسخ احتياطي تلقائي" },
       { en: "Hosting costs under control", ar: "تكاليف استضافة تحت السيطرة" },
     ],
+    Stack: ["Nginx", "GitHub Actions"],
   },
   {
     Id: "security",
@@ -102,3 +107,5 @@ export const SERVICES: TService[] = [
     ],
   },
 ];
+
+export const TECH_EXPERTISE: string[] = Array.from(new Set(SERVICES.flatMap((Service) => Service.Stack ?? [])));

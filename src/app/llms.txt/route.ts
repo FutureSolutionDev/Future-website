@@ -2,7 +2,7 @@ import { ALL_FAQS, AnswerText } from "@/Data/Faqs";
 import { INDUSTRIES } from "@/Data/Industries";
 import { PRODUCTS } from "@/Data/Products";
 import { PROJECTS } from "@/Data/Projects";
-import { SERVICES } from "@/Data/Services";
+import { SERVICES, TECH_EXPERTISE } from "@/Data/Services";
 import { GetAllArticleMetas } from "@/Lib/Blog";
 import { SITE_NAME, SITE_URL, SeoCopy } from "@/Lib/Seo";
 import { CONTACT } from "@/Lib/Site";
@@ -27,6 +27,8 @@ export function GET() {
       "Services",
       SERVICES.map((Service) => `- [${Service.Title.en}](${SITE_URL}/en/services#${Service.Id}): ${Service.Description.en}`),
     ),
+    `Core technologies: ${TECH_EXPERTISE.join(", ")}.`,
+    "",
     Section(
       "Industries",
       INDUSTRIES.map((Industry) => `- [${Industry.Title.en}](${SITE_URL}/en/blog/${Industry.Slug}): ${Industry.Content.en}`),

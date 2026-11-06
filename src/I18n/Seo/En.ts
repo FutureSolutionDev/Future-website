@@ -8,9 +8,9 @@ export const SEO_EN = {
         "We design, build and scale web, mobile, SaaS and AI-powered software for businesses across the Arab world and beyond. Book a free consultation today.",
     },
     services: {
-      title: "Software Development Services & Technologies",
+      title: "Software Development Services",
       description:
-        "Web development, mobile apps, SaaS platforms, AI integration, hosting and cybersecurity, plus the technologies behind them. Services built around your business goal.",
+        "Web development, mobile apps, SaaS platforms, AI integration, hosting and cybersecurity. Software services built around your business goal.",
     },
     solutions: {
       title: "Industry Solutions: E-Commerce, FinTech, ERP & Healthcare",
@@ -20,7 +20,7 @@ export const SEO_EN = {
     portfolio: {
       title: "Our Work: Software Projects, Case Studies & Products",
       description:
-        "Platforms we designed, built and run in production, with their results, screenshots and technologies, plus the SaaS products we operate.",
+        "Platforms we designed, built and run in production, with their results and screenshots, plus the SaaS products we operate.",
     },
     about: {
       title: "About Us: Who We Are",

@@ -2,10 +2,7 @@ export const PAGES_EN = {
   Services: {
     Title: "Software services built around your business goal",
     Lead: "Every service is built around one question: what will it add to your business?",
-    TechLabel: "Technologies",
-    TechTitle: "The tools we use, and what they mean for you",
-    TechLead: "We pick the tool that serves your goal, not the other way around. Every category translates into something you care about: speed, stability and costs under control.",
-    KeyTechTitle: "The core of our stack",
+    StackLabel: "Our tools",
     CtaTitle: "Need something custom?",
     CtaText: "You don't need to know exactly what you need. Describe the problem and we will propose the solution. The first consultation is free, with no commitment.",
   },

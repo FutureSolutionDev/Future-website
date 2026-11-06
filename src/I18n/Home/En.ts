@@ -12,7 +12,7 @@ export const HOME_EN = {
     Label: "Our services",
     Title: "Every service starts with one question: what will it add to your business?",
     Lead: "We build what brings a measurable return, not just good-looking screens.",
-    AllServices: "All services and technologies",
+    AllServices: "All services",
   },
   Work: {
     Title: "Platforms that sell, run and grow",

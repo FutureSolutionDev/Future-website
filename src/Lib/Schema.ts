@@ -1,6 +1,6 @@
 import { SITE_NAME, SITE_URL, SeoCopy, PathFor, type Lang } from "@/Lib/Seo";
 import { CONTACT } from "@/Lib/Site";
-import { SERVICES } from "@/Data/Services";
+import { SERVICES, TECH_EXPERTISE } from "@/Data/Services";
 import { TEAM } from "@/Data/Team";
 import { AnswerText, type TFaq } from "@/Data/Faqs";
 import type { TProject } from "@/Data/Projects";
@@ -32,7 +32,7 @@ export function OrganizationSchema(Language: Lang) {
     address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" },
     areaServed: ["EG", "SA", "AE", "KW", "QA", "BH", "OM", "JO", "Worldwide"],
     knowsLanguage: ["ar", "en"],
-    knowsAbout: SERVICES.map((Service) => Service.Title.en),
+    knowsAbout: [...SERVICES.map((Service) => Service.Title.en), ...TECH_EXPERTISE],
     sameAs: [CONTACT.Facebook, CONTACT.LinkedIn],
     founder: TEAM.map((Member) => ({ "@type": "Person", name: Member.Name.en, jobTitle: Member.Role.en })),
     contactPoint: {
