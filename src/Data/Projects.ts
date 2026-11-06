@@ -31,13 +31,13 @@ export const PROJECTS: TProject[] = [
       ar: "منصة بيانات عقارية للوسطاء في المدن الجديدة بمصر. تمنح الوسيط قاعدة بيانات محدّثة يوميًا للكمبوندات والوحدات والأسعار وخطط السداد الكاملة، مع إرسال عبر واتساب بضغطة واحدة، وحاسبة للعائد الاستثماري، وتتبع للعمولات مع احتساب الضرائب. وتطبيقات الجوال في طريقها إلى المتاجر.",
     },
     Result: {
-      en: "10,000+ brokers active on the platform across 1,000+ compounds and 15,000+ live-priced units, with data refreshed every day.",
-      ar: "أكثر من 10,000 وسيط نشط على المنصة عبر أكثر من 1,000 كمبوند و15,000 وحدة بأسعار محدّثة، مع تحديث يومي للبيانات.",
+      en: "10K+ brokers active on the platform across 1K+ compounds and 15K+ live-priced units, with data refreshed every day.",
+      ar: "أكثر من 10 آلاف وسيط نشط على المنصة عبر أكثر من ألف كمبوند و15 ألف وحدة بأسعار محدّثة، مع تحديث يومي للبيانات.",
     },
     Metrics: [
-      { Value: "10,000+", Label: { en: "Active brokers", ar: "وسيط عقاري نشط" } },
-      { Value: "1,000+", Label: { en: "Compounds in the database", ar: "كمبوند في قاعدة البيانات" } },
-      { Value: "15,000+", Label: { en: "Units with live prices", ar: "وحدة بأسعار محدّثة يوميًا" } },
+      { Value: "10K+", Label: { en: "Active brokers", ar: "وسيط عقاري نشط" } },
+      { Value: "1K+", Label: { en: "Compounds in the database", ar: "كمبوند في قاعدة البيانات" } },
+      { Value: "15K+", Label: { en: "Units with live prices", ar: "وحدة بأسعار محدّثة يوميًا" } },
     ],
     Features: [
       {
@@ -88,12 +88,12 @@ export const PROJECTS: TProject[] = [
       ar: "النسخة الموجهة للمستهلك من محرك Master V، أُطلقت بهوية أحد أبرز المسوقين العقاريين في مصر. يتصفح المشتري الكمبوندات والمشاريع بأسعار وخطط سداد محدّثة، ويقارن بنفسه، ويصل إلى مستشار مباشرة. وهي دليل على أن المنصة نفسها يمكن إطلاقها بهوية أي شريك (White-label).",
     },
     Result: {
-      en: "20,000+ buyers browsing 1,000+ compounds, on the same engine relaunched white-labeled for a top property brand.",
-      ar: "أكثر من 20,000 عميل يتصفحون أكثر من 1,000 كمبوند، على المحرك نفسه بعد إطلاقه بهوية علامة عقارية رائدة.",
+      en: "20K+ buyers browsing 1K+ compounds, on the same engine relaunched white-labeled for a top property brand.",
+      ar: "أكثر من 20 ألف عميل يتصفحون أكثر من ألف كمبوند، على المحرك نفسه بعد إطلاقه بهوية علامة عقارية رائدة.",
     },
     Metrics: [
-      { Value: "20,000+", Label: { en: "Buyers browsing", ar: "عميل يتصفحون المنصة" } },
-      { Value: "1,000+", Label: { en: "Compounds listed", ar: "كمبوند معروض" } },
+      { Value: "20K+", Label: { en: "Buyers browsing", ar: "عميل يتصفحون المنصة" } },
+      { Value: "1K+", Label: { en: "Compounds listed", ar: "كمبوند معروض" } },
     ],
     Features: [
       { en: "Browse compounds and projects with daily-updated prices", ar: "تصفح الكمبوندات والمشاريع بأسعار محدّثة يوميًا" },

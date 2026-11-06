@@ -69,8 +69,8 @@ export const COMPANY_STATS: { Value: string; Label: TBilingual }[] = [
 ];
 
 export const HOME_METRICS: { Value: string; Label: TBilingual }[] = [
-  { Value: "10,000+", Label: { en: "Active brokers on Master V", ar: "وسيط عقاري نشط على Master V" } },
-  { Value: "20,000+", Label: { en: "Buyers on Adham Fathallah", ar: "مشترٍ على منصة Adham Fathallah" } },
+  { Value: "10K+", Label: { en: "Active brokers on Master V", ar: "وسيط عقاري نشط على Master V" } },
+  { Value: "20K+", Label: { en: "Buyers on Adham Fathallah", ar: "مشترٍ على منصة Adham Fathallah" } },
   { Value: "500+", Label: { en: "Digital files sold on Imtithal", ar: "ملف رقمي مُباع على Imtithal" } },
   { Value: "100%", Label: { en: "Code ownership for the client", ar: "ملكية الكود للعميل" } },
 ];

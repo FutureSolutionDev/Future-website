@@ -49,7 +49,7 @@ export const SERVICES: TService[] = [
     Icon: "Cloud",
     Title: { en: "SaaS Platforms", ar: "منصات SaaS" },
     Description: {
-      en: "Launch a subscription product that scales smoothly from 10 users to 10,000.",
+      en: "Launch a subscription product that scales smoothly from 10 users to 10K.",
       ar: "أطلق منتجك بنظام الاشتراك ليتوسع بسلاسة من 10 مستخدمين إلى 10 آلاف.",
     },
     Features: [
