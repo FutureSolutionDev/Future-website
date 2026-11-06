@@ -14,6 +14,8 @@ export const COMMON_EN = {
     SwitchLanguage: "العربية",
     SwitchLanguageLabel: "اقرأ هذه الصفحة بالعربية",
     MainNavigation: "Main navigation",
+    ThemeDark: "Switch to dark mode",
+    ThemeLight: "Switch to light mode",
   },
   Cta: {
     BookConsultation: "Book a free consultation",

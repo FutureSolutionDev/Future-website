@@ -9,6 +9,7 @@ import { Menu, X } from "lucide-react";
 import { Cn } from "@/Lib/Cn";
 import { ButtonClass } from "@/Components/Common/Button";
 import SeasonalDecorations from "@/Components/Public/Seasonal/SeasonalDecorations";
+import { ThemeToggle } from "./ThemeToggle";
 import type { Lang } from "@/Lib/Seo";
 import type { TCommon } from "@/I18n/Index";
 
@@ -102,7 +103,7 @@ export function Navbar({
 
   return (
     <header
-      data-theme={IsHome ? "inverse" : "light"}
+      data-theme={IsHome ? "inverse" : undefined}
       className="sticky top-0 z-50 border-b border-line bg-page/90 backdrop-blur-md supports-[backdrop-filter]:bg-page/85"
     >
       <div className="container-page relative flex h-nav items-center justify-between gap-6">
@@ -142,6 +143,7 @@ export function Navbar({
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle DarkLabel={Nav.ThemeDark} LightLabel={Nav.ThemeLight} />
           <Link
             href={`/${OtherLang}${Rest}${Hash}`}
             hrefLang={OtherLang}
@@ -174,10 +176,7 @@ export function Navbar({
 
       {Open &&
         createPortal(
-          <div
-            className="fixed inset-0 z-[60] text-ink lg:hidden"
-            data-theme="light"
-          >
+          <div className="fixed inset-0 z-[60] text-ink lg:hidden">
             <button
               type="button"
               tabIndex={-1}

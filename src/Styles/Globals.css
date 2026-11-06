@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant inverse (&:where([data-theme="inverse"], [data-theme="inverse"] *));
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root,
 [data-theme="light"] {
@@ -27,6 +27,33 @@
   --success: #067647;
   --shadow-card: 0 1px 2px rgba(11, 23, 36, 0.04), 0 8px 24px rgba(11, 23, 36, 0.05);
   --shadow-shot: 0 20px 50px rgba(11, 23, 36, 0.22);
+}
+
+[data-theme="dark"] {
+  --bg: #08111b;
+  --bg-subtle: #0b1824;
+  --surface: #0f1f2e;
+  --surface-2: #142838;
+  --line: #1c3042;
+  --line-strong: #2c4a63;
+  --control-border: #5d7c96;
+  --text: #e8f0f7;
+  --text-muted: #a9bccd;
+  --text-soft: #8aa1b6;
+  --primary: #42abe2;
+  --primary-hover: #7cc6ec;
+  --on-primary: #04131f;
+  --accent: #42abe2;
+  --accent-text: #7cc6ec;
+  --accent-soft: rgba(66, 171, 226, 0.12);
+  --trace: rgba(124, 198, 236, 0.22);
+  --node: #42abe2;
+  --focus: #7cc6ec;
+  --danger: #fda29b;
+  --success: #75e0a7;
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 12px 32px rgba(0, 0, 0, 0.35);
+  --shadow-shot: 0 30px 60px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
 }
 
 [data-theme="inverse"] {
@@ -152,6 +179,10 @@
   ::selection {
     background-color: var(--color-brand-200);
     color: var(--color-brand-950);
+  }
+
+  html {
+    transition: background-color 0.2s ease;
   }
 }
 

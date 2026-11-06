@@ -16,6 +16,8 @@ export const COMMON_AR: TCommonCopy = {
     SwitchLanguage: "EN",
     SwitchLanguageLabel: "Read this page in English",
     MainNavigation: "التنقل الرئيسي",
+    ThemeDark: "التبديل إلى الوضع الداكن",
+    ThemeLight: "التبديل إلى الوضع الفاتح",
   },
   Cta: {
     BookConsultation: "احجز استشارة مجانية",
