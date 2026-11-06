@@ -1,5 +1,5 @@
 const RESPONSIVE_ROOTS = /^\/(Projects|Products|Team)\/.+\.webp$/;
-const SMALL_MAX_WIDTH = 828;
+const SMALL_MAX_WIDTH = 750;
 
 export default function ImageLoader({ src, width }: { src: string; width: number }): string {
   if (!RESPONSIVE_ROOTS.test(src) || width > SMALL_MAX_WIDTH) return src;

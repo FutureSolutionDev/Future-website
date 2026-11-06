@@ -68,9 +68,10 @@ export const PROJECTS: TProject[] = [
     Tech: ["React", "Node.js", "Express", "Socket.IO", "MariaDB", "Flutter", "Next.js"],
     Links: [{ key: "website", url: "https://masterv.net" }],
     Captions: {
-      "01-platform-data.webp": { en: "Compounds, units and live prices", ar: "الكمبوندات والوحدات والأسعار المحدّثة" },
-      "03-paymentplan.webp": { en: "Full payment plan for every unit", ar: "خطة السداد الكاملة لكل وحدة" },
-      "04-ROI-Calc.webp": { en: "Investment ROI calculator", ar: "حاسبة العائد الاستثماري" },
+      "01-platform-data.webp": { en: "Projects, units and live prices", ar: "المشروعات والوحدات والأسعار المحدّثة" },
+      "02-payment-plans.webp": { en: "Every payment plan for the project", ar: "كل أنظمة السداد للمشروع" },
+      "03-payment-schedule.webp": { en: "Full installment schedule for each unit", ar: "جدول الأقساط الكامل لكل وحدة" },
+      "04-roi-calculator.webp": { en: "Investment calculator: NPV and ROI", ar: "حاسبة العائد الاستثماري وصافي القيمة الحالية" },
       "05-whatsapp-connection.webp": { en: "One-tap sending on WhatsApp", ar: "الإرسال عبر واتساب بضغطة واحدة" },
     },
   },
