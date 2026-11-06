@@ -112,11 +112,11 @@ export const PROJECTS: TProject[] = [
     Tech: ["React", "Node.js", "Express", "MariaDB", "Flutter", "Next.js"],
     Links: [{ key: "website", url: "https://adhamfathallah.com" }],
     Captions: {
-      "01-home.webp": { en: "Home page", ar: "الصفحة الرئيسية" },
-      "02-projects-browser.webp": { en: "Projects browser", ar: "تصفح المشاريع" },
+      "01-home.webp": { en: "Home page with live developer prices", ar: "الصفحة الرئيسية وأسعار المطورين المحدّثة" },
+      "02-projects.webp": { en: "Projects directory by city and type", ar: "دليل المشروعات حسب المدينة والنوع" },
       "03-about.webp": { en: "About the brand", ar: "التعريف بالعلامة" },
-      "04-customer-service.webp": { en: "Talk to a consultant", ar: "التواصل مع مستشار" },
-      "05-project-info.png": { en: "Project details", ar: "تفاصيل المشروع" },
+      "04-contact.webp": { en: "Every way to reach the team", ar: "كل طرق التواصل مع الفريق" },
+      "05-faq.webp": { en: "Frequently asked questions", ar: "الأسئلة الشائعة" },
     },
   },
   {
