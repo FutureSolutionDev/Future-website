@@ -45,7 +45,7 @@ export function FilesViewer({ Title, ImagesFolder, InitialImages, Captions, File
       aria-label={`${FilesCopy.Title}: ${Title}`}
       className="overflow-hidden rounded-lg border border-line bg-surface shadow-card"
       onKeyDown={(Event) => {
-        if (Navigation.HandleArrowKey(Event.key)) Event.preventDefault();
+        if (Navigation.HandleArrowKey(Event)) Event.preventDefault();
       }}
     >
       <div className="flex h-14 items-center justify-between gap-4 border-b border-line bg-subtle px-3 sm:px-4">
@@ -100,13 +100,13 @@ export function FilesViewer({ Title, ImagesFolder, InitialImages, Captions, File
         </div>
       ) : (
         <div className="grid md:h-[600px] md:grid-cols-[280px_1fr]">
-          <div role="listbox" aria-label={FilesCopy.Screens} className="flex gap-2 overflow-auto border-line p-2.5 max-md:order-2 max-md:border-t md:flex-col md:border-e">
+          <div aria-label={FilesCopy.Screens} role="group" className="flex gap-2 overflow-auto border-line p-2.5 max-md:order-2 max-md:border-t md:flex-col md:border-e">
             {Images.map((Item, Index) => (
               <button
                 key={Item.Src}
                 type="button"
-                role="option"
-                aria-selected={Index === Navigation.Current}
+                aria-pressed={Index === Navigation.Current}
+                aria-label={Item.Caption}
                 onClick={() => Navigation.GoTo(Index)}
                 className={Cn(
                   "grid shrink-0 items-center gap-3 rounded-[10px] p-2 text-start transition-colors max-md:w-28 max-md:grid-cols-1 md:grid-cols-[64px_1fr]",
@@ -166,7 +166,10 @@ export function FilesViewer({ Title, ImagesFolder, InitialImages, Captions, File
       </div>
 
       {LightboxOpen && (
-        <Lightbox Images={Images} StartIndex={Navigation.Current} Title={Title} Copy={GalleryCopy} IsRtl={IsRtl} OnClose={() => SetLightboxOpen(false)} />
+        <Lightbox Images={Images} StartIndex={Navigation.Current} Title={Title} Copy={GalleryCopy} IsRtl={IsRtl} OnClose={(LastIndex) => {
+            Navigation.GoTo(LastIndex);
+            SetLightboxOpen(false);
+          }} />
       )}
     </section>
   );

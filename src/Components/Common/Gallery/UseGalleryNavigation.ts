@@ -4,32 +4,36 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const SWIPE_THRESHOLD = 50;
 
+type TKeyLike = { key: string; altKey: boolean; ctrlKey: boolean; metaKey: boolean; shiftKey: boolean };
+
 export function Wrap(Index: number, Count: number): number {
   return ((Index % Count) + Count) % Count;
 }
 
 export function UseGalleryNavigation(Count: number, StartIndex: number, IsRtl: boolean) {
   const [Current, SetCurrent] = useState(StartIndex);
-  const TouchStartX = useRef<number | null>(null);
+  const TouchStart = useRef<{ X: number; Y: number } | null>(null);
+  const Safe = Math.max(Count, 1);
 
   useEffect(() => {
     SetCurrent(Wrap(StartIndex, Math.max(Count, 1)));
   }, [StartIndex, Count]);
 
-  const GoTo = useCallback((Index: number) => SetCurrent(Wrap(Index, Math.max(Count, 1))), [Count]);
-  const Next = useCallback(() => SetCurrent((Value) => Wrap(Value + 1, Math.max(Count, 1))), [Count]);
-  const Previous = useCallback(() => SetCurrent((Value) => Wrap(Value - 1, Math.max(Count, 1))), [Count]);
+  const GoTo = useCallback((Index: number) => SetCurrent(Wrap(Index, Safe)), [Safe]);
+  const Next = useCallback(() => SetCurrent((Value) => Wrap(Value + 1, Safe)), [Safe]);
+  const Previous = useCallback(() => SetCurrent((Value) => Wrap(Value - 1, Safe)), [Safe]);
 
   const HandleArrowKey = useCallback(
-    (Key: string): boolean => {
-      if (Key === "ArrowLeft") {
-        if (IsRtl) Next();
-        else Previous();
+    (Event: TKeyLike): boolean => {
+      if (Event.altKey || Event.ctrlKey || Event.metaKey || Event.shiftKey) return false;
+      const Forward = IsRtl ? "ArrowLeft" : "ArrowRight";
+      const Backward = IsRtl ? "ArrowRight" : "ArrowLeft";
+      if (Event.key === Forward) {
+        Next();
         return true;
       }
-      if (Key === "ArrowRight") {
-        if (IsRtl) Previous();
-        else Next();
+      if (Event.key === Backward) {
+        Previous();
         return true;
       }
       return false;
@@ -38,17 +42,21 @@ export function UseGalleryNavigation(Count: number, StartIndex: number, IsRtl: b
   );
 
   const OnTouchStart = useCallback((Event: React.TouchEvent) => {
-    TouchStartX.current = Event.touches[0]?.clientX ?? null;
+    const Touch = Event.touches[0];
+    TouchStart.current = Touch ? { X: Touch.clientX, Y: Touch.clientY } : null;
   }, []);
 
   const OnTouchEnd = useCallback(
     (Event: React.TouchEvent) => {
-      if (TouchStartX.current === null) return;
-      const Delta = (Event.changedTouches[0]?.clientX ?? 0) - TouchStartX.current;
-      TouchStartX.current = null;
-      if (Math.abs(Delta) < SWIPE_THRESHOLD) return;
-      const SwipedTowardStart = IsRtl ? Delta > 0 : Delta < 0;
-      if (SwipedTowardStart) Next();
+      const Start = TouchStart.current;
+      const Touch = Event.changedTouches[0];
+      TouchStart.current = null;
+      if (!Start || !Touch) return;
+      const DeltaX = Touch.clientX - Start.X;
+      const DeltaY = Touch.clientY - Start.Y;
+      if (Math.abs(DeltaX) < SWIPE_THRESHOLD || Math.abs(DeltaX) <= Math.abs(DeltaY)) return;
+      const TowardNext = IsRtl ? DeltaX > 0 : DeltaX < 0;
+      if (TowardNext) Next();
       else Previous();
     },
     [IsRtl, Next, Previous],

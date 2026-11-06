@@ -40,7 +40,6 @@ function GotoLink({ Item, Language }: { Item: TFaqLink; Language: Lang }) {
 export function FaqTimeline({ Language, Copy }: TFaqTimelineProps) {
   const [Query, SetQuery] = useState("");
   const AllIds = useMemo(() => FAQ_CHAPTERS.flatMap((Chapter) => Chapter.Faqs.map((Faq) => Faq.Id)), []);
-  const { ReadIds, ActiveChapter, FocusedId } = UseFaqProgress(AllIds);
   const Normalized = Query.trim().toLowerCase();
 
   const Chapters = useMemo(() => {
@@ -55,6 +54,10 @@ export function FaqTimeline({ Language, Copy }: TFaqTimelineProps) {
     })).filter((Chapter) => Chapter.Items.length > 0);
   }, [Language, Normalized]);
 
+  const VisibleIds = useMemo(() => Chapters.flatMap((Chapter) => Chapter.Items.map(({ Faq }) => Faq.Id)), [Chapters]);
+  const VisibleChapters = new Set(Chapters.map((Chapter) => Chapter.Id));
+  const { ReadIds, ActiveChapter, FocusedId } = UseFaqProgress(VisibleIds);
+
   const Progress = Math.round((ReadIds.size / AllIds.length) * 100);
   let Side = 0;
 
@@ -64,12 +67,12 @@ export function FaqTimeline({ Language, Copy }: TFaqTimelineProps) {
         <h2 className="mb-3 hidden text-[13px] font-semibold text-ink-soft lg:block">{Copy.Stages}</h2>
         <nav aria-label={Copy.Stages}>
           <ul className="flex gap-2 overflow-x-auto lg:flex-col lg:gap-0.5">
-            {FAQ_CHAPTERS.map((Chapter) => (
+            {FAQ_CHAPTERS.filter((Chapter) => VisibleChapters.has(Chapter.Id)).map((Chapter) => (
               <li key={Chapter.Id} className="shrink-0">
                 <a
                   href={`#stage-${Chapter.Id}`}
-                  aria-current={ActiveChapter === Chapter.Id ? "true" : undefined}
-                  className="flex items-center gap-2.5 rounded-full border border-line px-3 py-1.5 text-sm text-ink-muted transition-colors hover:text-ink aria-[current=true]:border-accent aria-[current=true]:bg-accent-soft aria-[current=true]:font-semibold aria-[current=true]:text-accent-ink lg:rounded-sm lg:border-0 lg:px-3 lg:py-2.5 lg:text-[15px]"
+                  aria-current={ActiveChapter === Chapter.Id ? "location" : undefined}
+                  className="flex items-center gap-2.5 rounded-full border border-line px-3 py-1.5 text-sm text-ink-muted transition-colors hover:text-ink aria-[current=location]:border-accent aria-[current=location]:bg-accent-soft aria-[current=location]:font-semibold aria-[current=location]:text-accent-ink lg:rounded-sm lg:border-0 lg:px-3 lg:py-2.5 lg:text-[15px]"
                 >
                   <Icon Name={Chapter.Icon} Size={17} />
                   {Chapter.Title[Language]}
@@ -85,14 +88,14 @@ export function FaqTimeline({ Language, Copy }: TFaqTimelineProps) {
           <div className="h-[3px] overflow-hidden rounded-full bg-line" aria-hidden="true">
             <div className="h-full rounded-full bg-accent transition-[width] duration-500" style={{ width: `${Progress}%` }} />
           </div>
-          <p className="mt-2 text-[13px] text-ink-soft" aria-live="polite">
+          <p className="mt-2 text-[13px] text-ink-soft">
             {Copy.ReadOf} <bdi dir="ltr">{ReadIds.size}</bdi> {Copy.Of} <bdi dir="ltr">{AllIds.length}</bdi>
           </p>
         </div>
       </aside>
 
       <div>
-        <label className="mx-auto mb-10 flex h-[52px] max-w-xl items-center gap-2.5 rounded-md border border-control bg-surface px-4 text-ink-soft focus-within:border-focus">
+        <label className="mx-auto mb-10 flex h-[52px] max-w-xl items-center gap-2.5 rounded-md border border-control bg-surface px-4 text-ink-soft focus-within:border-focus focus-within:ring-2 focus-within:ring-focus/30">
           <Search size={18} aria-hidden="true" />
           <span className="sr-only">{Copy.SearchLabel}</span>
           <input
@@ -105,7 +108,9 @@ export function FaqTimeline({ Language, Copy }: TFaqTimelineProps) {
           />
         </label>
 
-        {Chapters.length === 0 && <p className="text-center text-ink-muted">{Copy.NoResults}</p>}
+        <p role="status" className="text-center text-ink-muted empty:hidden">
+          {Chapters.length === 0 ? Copy.NoResults : ""}
+        </p>
 
         <div className="relative before:absolute before:inset-y-0 before:start-[11px] before:w-0.5 before:bg-line md:before:start-1/2 md:before:-translate-x-1/2 md:rtl:before:translate-x-1/2">
           <div

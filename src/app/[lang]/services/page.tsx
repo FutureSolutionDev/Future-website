@@ -65,9 +65,9 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
           <SectionLabel>{Copy.TechLabel}</SectionLabel>
           <h2 className="mt-4 max-w-3xl text-[30px] font-bold md:text-[42px]">{Copy.TechTitle}</h2>
           <p className="mt-3 max-w-3xl text-lg text-ink-muted">{Copy.TechLead}</p>
-          <div className="mt-12 grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {TECH_CATEGORIES.map((Category) => (
-              <div key={Category.Name.en} className="bg-page p-6 md:p-7">
+              <div key={Category.Name.en} className="rounded-lg border border-line bg-surface p-6 md:p-7">
                 <h3 className="text-xl font-bold">{Category.Name[Language]}</h3>
                 <p className="mt-2 text-[15px] text-ink-muted">{Category.Benefit[Language]}</p>
                 <ul className="mt-5 flex flex-wrap gap-2" lang="en">

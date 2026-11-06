@@ -134,6 +134,8 @@ export const PAGES_EN = {
       SentText: "We will get back to you within one business day.",
       Error: "The message could not be sent. Please try again or reach us directly on",
       Required: "Required",
+      NameError: "Enter your name.",
+      MessageError: "Tell us briefly about your project.",
     },
   },
   NotFound: {

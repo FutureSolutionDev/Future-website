@@ -132,6 +132,8 @@ export const PAGES_AR: TPagesCopy = {
       SentText: "سنرد عليك خلال يوم عمل واحد.",
       Error: "تعذر إرسال الرسالة. حاول مرة أخرى أو تواصل معنا مباشرة عبر",
       Required: "مطلوب",
+      NameError: "أدخل اسمك.",
+      MessageError: "اكتب لنا نبذة قصيرة عن مشروعك.",
     },
   },
   NotFound: {

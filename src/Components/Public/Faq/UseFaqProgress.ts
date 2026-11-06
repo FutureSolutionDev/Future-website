@@ -2,35 +2,54 @@
 
 import { useEffect, useState } from "react";
 
-export function UseFaqProgress(ItemIds: string[]) {
+function ReadHashId(): string | null {
+  try {
+    const Hash = decodeURIComponent(window.location.hash.replace("#", ""));
+    return Hash.startsWith("q-") ? Hash.slice(2) : null;
+  } catch {
+    return null;
+  }
+}
+
+function AddIds(Previous: Set<string>, Ids: string[]): Set<string> {
+  if (Ids.every((Id) => Previous.has(Id))) return Previous;
+  const Next = new Set(Previous);
+  Ids.forEach((Id) => Next.add(Id));
+  return Next;
+}
+
+export function UseFaqProgress(VisibleIds: string[]) {
   const [ReadIds, SetReadIds] = useState<Set<string>>(() => new Set());
   const [ActiveChapter, SetActiveChapter] = useState<string | null>(null);
   const [FocusedId, SetFocusedId] = useState<string | null>(null);
+  const VisibleKey = VisibleIds.join("|");
 
   useEffect(() => {
-    const Hash = decodeURIComponent(window.location.hash.replace("#", ""));
-    if (Hash.startsWith("q-")) SetFocusedId(Hash.slice(2));
+    const OnHashChange = () => SetFocusedId(ReadHashId());
+    OnHashChange();
+    window.addEventListener("hashchange", OnHashChange);
+    return () => window.removeEventListener("hashchange", OnHashChange);
+  }, []);
 
+  useEffect(() => {
+    const Ids = VisibleKey ? VisibleKey.split("|") : [];
     const Observer = new IntersectionObserver(
       (Entries) => {
         for (const Entry of Entries) {
           const Target = Entry.target as HTMLElement;
           if (!Entry.isIntersecting && Entry.boundingClientRect.top >= 0) continue;
-          if (Target.dataset.faqId) {
-            const Id = Target.dataset.faqId;
-            SetReadIds((Previous) => (Previous.has(Id) ? Previous : new Set(Previous).add(Id)));
-          }
+          const FaqId = Target.dataset.faqId;
+          if (FaqId) SetReadIds((Previous) => AddIds(Previous, [FaqId]));
           if (Target.dataset.chapterId && Entry.isIntersecting) SetActiveChapter(Target.dataset.chapterId);
         }
       },
       { rootMargin: "0px 0px -45% 0px" },
     );
-
     document.querySelectorAll<HTMLElement>("[data-faq-id],[data-chapter-id]").forEach((Node) => Observer.observe(Node));
 
     const OnScroll = () => {
       const AtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 400;
-      if (AtBottom) SetReadIds(new Set(ItemIds));
+      if (AtBottom) SetReadIds((Previous) => AddIds(Previous, Ids));
     };
     window.addEventListener("scroll", OnScroll, { passive: true });
 
@@ -38,7 +57,7 @@ export function UseFaqProgress(ItemIds: string[]) {
       Observer.disconnect();
       window.removeEventListener("scroll", OnScroll);
     };
-  }, [ItemIds]);
+  }, [VisibleKey]);
 
   return { ReadIds, ActiveChapter, FocusedId };
 }

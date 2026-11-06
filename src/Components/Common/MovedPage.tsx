@@ -15,6 +15,7 @@ export function MovedPage({ Language, Target }: { Language: Lang; Target: string
   return (
     <section className="container-page py-24">
       <meta httpEquiv="refresh" content={`0;url=${Href}`} />
+      <h1 className="sr-only">{GetDictionary(Language).Pages.Redirect.Text}</h1>
       <p className="text-lg text-ink-muted">
         {GetDictionary(Language).Pages.Redirect.Text}{" "}
         <Link href={Href} className="font-semibold text-accent-ink underline">
