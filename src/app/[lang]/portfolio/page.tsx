@@ -7,7 +7,7 @@ import { PageHeader } from "@/Components/Common/PageHeader";
 import { SectionLabel } from "@/Components/Common/SectionLabel";
 import { ProjectCard } from "@/Components/Public/Work/ProjectCard";
 import { PROJECTS } from "@/Data/Projects";
-import { PRODUCTS } from "@/Data/Products";
+import { PRODUCTS, StatusLabel } from "@/Data/Products";
 import { GetProjectImages } from "@/Lib/Images";
 import { PageMetadata, PathFor, ToLang } from "@/Lib/Seo";
 import { GetDictionary } from "@/I18n/Index";
@@ -90,7 +90,7 @@ export default async function PortfolioPage({ params }: { params: Promise<{ lang
           <h2 className="mt-4 text-[30px] font-bold md:text-[42px]">{Copy.ProductsTitle}</h2>
           <p className="mt-3 max-w-3xl text-lg text-ink-muted">{Copy.ProductsLead}</p>
           <div className="mt-12 grid gap-10 md:grid-cols-2 md:gap-x-6 md:gap-y-12">
-            {PRODUCTS.map((Product) => (
+            {PRODUCTS.filter((Product) => Product.Status !== "open-source").map((Product) => (
               <ProjectCard
                 key={Product.Slug}
                 Href={PathFor(Language, `/products/${Product.Slug}`)}
@@ -99,16 +99,36 @@ export default async function PortfolioPage({ params }: { params: Promise<{ lang
                 Kicker={Product.Category[Language]}
                 Title={Product.Name}
                 Text={Product.Tagline[Language]}
-                Badge={Product.Status === "live" ? Copy.Live : Copy.ComingSoon}
+                Badge={StatusLabel(Product, Copy)}
               />
             ))}
           </div>
         </div>
       </section>
 
-      <div className="pt-20 md:pt-[104px]">
-        <CtaPanel Language={Language} Common={Common} Title={Copy.CtaTitle} />
-      </div>
+      <section id="open-source" className="scroll-mt-20 py-20 md:py-[104px]">
+        <div className="container-page">
+          <SectionLabel>{Copy.CommunityLabel}</SectionLabel>
+          <h2 className="mt-4 text-[30px] font-bold md:text-[42px]">{Copy.CommunityTitle}</h2>
+          <p className="mt-3 max-w-3xl text-lg text-ink-muted">{Copy.CommunityLead}</p>
+          <div className="mt-12 grid gap-10 md:grid-cols-2 md:gap-6">
+            {PRODUCTS.filter((Product) => Product.Status === "open-source").map((Product) => (
+              <ProjectCard
+                key={Product.Slug}
+                Href={PathFor(Language, `/products/${Product.Slug}`)}
+                ImageSrc={Product.ImagesFolder ? GetProjectImages(Product.ImagesFolder)[0] : undefined}
+                ImageAlt={Product.Name}
+                Kicker={Product.Category[Language]}
+                Title={Product.Name}
+                Text={Product.Tagline[Language]}
+                Badge={StatusLabel(Product, Copy)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CtaPanel Language={Language} Common={Common} Title={Copy.CtaTitle} />
     </>
   );
 }

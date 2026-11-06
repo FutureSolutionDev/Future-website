@@ -1,7 +1,7 @@
 import type { TBilingual } from "@/Lib/Seo";
 import type { TLinkItem, TScreenCaptions } from "@/Data/Links";
 
-export type TProductStatus = "live" | "coming-soon";
+export type TProductStatus = "live" | "beta" | "coming-soon" | "open-source";
 
 export type TProduct = {
   Slug: string;
@@ -20,6 +20,7 @@ export type TProduct = {
   InvestorCta?: boolean;
   DemoOnRequest?: boolean;
   Captions?: TScreenCaptions;
+  License?: { Name: string; Url: string };
 };
 
 export const PRODUCTS: TProduct[] = [
@@ -82,6 +83,91 @@ export const PRODUCTS: TProduct[] = [
       "02-master-data.png": { en: "Master data", ar: "البيانات الأساسية" },
       "03-Customers.png": { en: "Customers", ar: "العملاء" },
       "04-acc-manager.png": { en: "Account manager view", ar: "واجهة مدير الحساب" },
+    },
+  },
+  {
+    Slug: "bunxray",
+    Name: "BunXRay",
+    Status: "beta",
+    Stage: { en: "Free, invite-only beta", ar: "نسخة تجريبية مجانية بالدعوة" },
+    Category: { en: "AI Security Testing", ar: "اختبار أمني بالذكاء الاصطناعي" },
+    Tagline: {
+      en: "Watch a team of AI specialists test your site's security, step by step.",
+      ar: "شاهد فريقًا من متخصصي الذكاء الاصطناعي يختبر أمان موقعك خطوة بخطوة.",
+    },
+    Description: {
+      en: "BunXRay tests your real site the way an attacker would. A team of AI specialists, each able to run on a different model, maps your pages and endpoints, argues out a plan in a shared room, then tries it with real requests while you watch every message and every request as it happens. A different specialist re-checks each finding against its evidence before it reaches you, and the report shows the plans tried, the evidence and the model behind each finding.",
+      ar: "يختبر BunXRay موقعك الحقيقي كما يفعل المهاجم. فريق من متخصصي الذكاء الاصطناعي، يستطيع كل منهم العمل على نموذج مختلف، يرسم خريطة صفحاتك ونقاط الاتصال، ويتناقش في خطة داخل غرفة مشتركة، ثم ينفذها بطلبات حقيقية بينما تتابع كل رسالة وكل طلب لحظة بلحظة. ويعيد متخصص آخر فحص كل نتيجة مقابل دليلها قبل أن تصلك، ويعرض التقرير الخطط التي جُرّبت والأدلة والنموذج الذي يقف وراء كل نتيجة.",
+    },
+    Audience: {
+      en: "Teams and founders who own a web app and want to find the logic flaws a fixed scanner misses.",
+      ar: "الفرق وأصحاب المنتجات الذين يملكون تطبيق ويب ويريدون اكتشاف ثغرات المنطق التي لا تلتقطها أدوات الفحص التقليدية.",
+    },
+    Features: [
+      { en: "Recon first: the team maps your pages, forms and endpoints before any attack", ar: "الاستطلاع أولًا: يرسم الفريق خريطة الصفحات والنماذج ونقاط الاتصال قبل أي هجوم" },
+      { en: "Specialists argue out the plan in a shared room you can read live", ar: "يتناقش المتخصصون في الخطة داخل غرفة مشتركة تقرؤها مباشرة" },
+      { en: "Live execution on your real site: see every request and response, then pause, steer or stop", ar: "تنفيذ مباشر على موقعك: ترى كل طلب ورده، وتستطيع الإيقاف أو التوجيه في أي لحظة" },
+      { en: "Every finding is re-checked by a different specialist against its evidence", ar: "يعيد متخصص آخر فحص كل نتيجة مقابل دليلها قبل اعتمادها" },
+      { en: "A team you shape: add your own specialists, roles and models", ar: "فريق تشكّله بنفسك: أضف متخصصيك وأدوارهم ونماذجهم" },
+      { en: "Deeper mode with two test accounts proves authorization flaws, such as one customer reaching another's data", ar: "وضع أعمق بحسابين تجريبيين يثبت ثغرات الصلاحيات، مثل وصول عميل إلى بيانات عميل آخر" },
+      { en: "No login to your site required for the default external scan", ar: "لا يحتاج الفحص الخارجي الافتراضي إلى تسجيل دخول في موقعك" },
+    ],
+    ImagesFolder: "/Products/bunxray",
+    Links: [
+      { key: "website", url: "https://bunxray.com", label: { en: "Request an invite", ar: "اطلب دعوة" } },
+      { key: "x", url: "https://x.com/BunXRay" },
+    ],
+    Captions: {
+      "01-home.webp": { en: "Home page and invite request", ar: "الصفحة الرئيسية وطلب الدعوة" },
+      "02-how-it-works.webp": { en: "How an engagement unfolds, in five steps", ar: "مراحل الاختبار الخمس" },
+      "03-team.webp": { en: "A team of specialists you shape", ar: "فريق متخصصين تشكّله بنفسك" },
+      "04-logic-flaws.webp": { en: "The logic flaws no checklist catches", ar: "ثغرات المنطق التي لا تلتقطها القوائم الجاهزة" },
+    },
+  },
+  {
+    Slug: "internet-monitor",
+    Name: "Internet Monitor",
+    Status: "open-source",
+    Stage: { en: "Free for home and work · Elastic License 2.0", ar: "مجاني للبيت والعمل · Elastic License 2.0" },
+    Category: { en: "Free desktop app for Windows, Mac and Linux", ar: "تطبيق مجاني لأنظمة Windows وMac وLinux" },
+    Tagline: {
+      en: "Document every internet outage, and complain to your provider with proof.",
+      ar: "وثّق كل انقطاع في الإنترنت، واشتكِ لشركة الإنترنت بدليل.",
+    },
+    Description: {
+      en: "Internet Monitor quietly watches your home internet. Every time it drops or slows down, it records when, for how long and why, then turns the record into proof you can send to your provider. It runs on Windows, Mac and Linux, needs no account and keeps your data on your own computer. Our team built it and published its code for everyone as a contribution to the community.",
+      ar: "يراقب «مراقب الإنترنت» اتصال المنزل بهدوء. كلما انقطع الإنترنت أو أبطأ، يسجّل متى حدث ذلك وكم استمر ولماذا، ثم يحوّل السجل إلى دليل ترسله لشركة الإنترنت. يعمل على Windows وMac وLinux دون حساب، وتبقى بياناتك على جهازك. طوّره فريقنا ونشر كوده للجميع مساهمةً منا في المجتمع.",
+    },
+    Audience: {
+      en: "Anyone who pays for an internet line and wants evidence when it fails: households, freelancers and small offices.",
+      ar: "كل من يدفع مقابل خط إنترنت ويريد دليلًا عندما يتعطل: الأسر والمستقلون والمكاتب الصغيرة.",
+    },
+    Features: [
+      { en: "Every outage written down: exact start, duration and which part failed, even short drops", ar: "كل انقطاع مسجّل: وقت البداية بالضبط والمدة والجزء الذي تعطل، حتى الانقطاعات القصيرة" },
+      { en: "Tells you whether the problem is your router or your provider", ar: "يحدد إن كانت المشكلة في الراوتر عندك أم عند شركة الإنترنت" },
+      { en: "A complaint text built from your measurements in one click, with an evidence file", ar: "نص شكوى جاهز بضغطة واحدة مبني على قياساتك، مع ملف إثبات" },
+      { en: "Scheduled speed tests compared with the speed in your contract", ar: "اختبارات سرعة مجدولة تقارنها بالسرعة المذكورة في عقدك" },
+      { en: "A monthly PDF report and complaint tracking with the provider's deadline", ar: "تقرير شهري بصيغة PDF، ومتابعة للشكاوى ومهلة رد الشركة" },
+      { en: "No account, no ads, no tracking: your data stays on your computer", ar: "دون حساب أو إعلانات أو تتبّع، وبياناتك تبقى على جهازك" },
+      { en: "Available in Arabic, English, French, Turkish and Urdu", ar: "متاح بالعربية والإنجليزية والفرنسية والتركية والأردية" },
+    ],
+    Stats: [
+      { Value: "3", Label: { en: "Platforms: Windows, Mac and Linux", ar: "أنظمة: Windows وMac وLinux" } },
+      { Value: "5", Label: { en: "Interface languages", ar: "لغات للواجهة" } },
+      { Value: "0", Label: { en: "Accounts, ads or trackers", ar: "حسابات أو إعلانات أو تتبّع" } },
+    ],
+    ImagesFolder: "/Products/internet-monitor",
+    Links: [
+      { key: "website", url: "https://khaymah.github.io/internet-monitor/", label: { en: "Download the app", ar: "حمّل التطبيق" } },
+      { key: "github", url: "https://github.com/Khaymah/internet-monitor", label: { en: "Source code on GitHub", ar: "الكود على GitHub" } },
+    ],
+    License: { Name: "Elastic License 2.0", Url: "https://github.com/Khaymah/internet-monitor/blob/master/LICENSE" },
+    Captions: {
+      "01-overview.webp": { en: "Dashboard: connection status, response time and outage timeline", ar: "لوحة المتابعة: حالة الاتصال وزمن الاستجابة وخط الانقطاعات" },
+      "02-complaints.webp": { en: "Complaints, the provider's deadline and the proof for each", ar: "الشكاوى ومهلة الشركة والإثبات لكل شكوى" },
+      "03-report.webp": { en: "A monthly report you can save as PDF", ar: "التقرير الشهري بصيغة PDF" },
+      "04-history.webp": { en: "Every outage of the day with its time, length and cause", ar: "انقطاعات اليوم بوقتها ومدتها وسببها" },
+      "05-home.webp": { en: "The app website", ar: "موقع التطبيق" },
     },
   },
   {
@@ -260,6 +346,17 @@ export const PRODUCTS: TProduct[] = [
     InvestorCta: true,
   },
 ];
+
+export function IsAvailable(Product: TProduct): boolean {
+  return Product.Status !== "coming-soon";
+}
+
+export function StatusLabel(Product: TProduct, Copy: { Live: string; Beta: string; ComingSoon: string; OpenCode: string }): string {
+  if (Product.Status === "live") return Copy.Live;
+  if (Product.Status === "beta") return Copy.Beta;
+  if (Product.Status === "open-source") return Copy.OpenCode;
+  return Copy.ComingSoon;
+}
 
 export function GetProductBySlug(Slug: string): TProduct | undefined {
   return PRODUCTS.find((Product) => Product.Slug === Slug);

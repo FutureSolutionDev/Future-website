@@ -150,6 +150,11 @@ export function ProductSchema(Product: TProduct, Language: Lang, Images: string[
     image: Images.map(Absolute),
     author: { "@id": ORGANIZATION_ID },
     ...(LiveUrl ? { installUrl: LiveUrl } : {}),
+    ...(Product.Status === "open-source" || Product.Status === "beta" ? { isAccessibleForFree: true } : {}),
+    ...(Product.Status === "open-source"
+      ? { offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, operatingSystem: "Windows, macOS, Linux" }
+      : {}),
+    ...(Product.License ? { license: Product.License.Url } : {}),
   };
 }
 

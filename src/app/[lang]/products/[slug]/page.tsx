@@ -9,7 +9,7 @@ import { PageHeader } from "@/Components/Common/PageHeader";
 import { MetricRail } from "@/Components/Public/Home/MetricRail";
 import { WaitlistForm } from "@/Components/Public/Work/WaitlistForm";
 import { FeatureList, Screens } from "@/Components/Public/Work/DetailLayout";
-import { GetProductBySlug, PRODUCTS } from "@/Data/Products";
+import { GetProductBySlug, IsAvailable, PRODUCTS, StatusLabel } from "@/Data/Products";
 import { GetProjectImages } from "@/Lib/Images";
 import { ProductSchema } from "@/Lib/Schema";
 import { BuildMetadata, LANGS, PathFor, ToLang } from "@/Lib/Seo";
@@ -45,8 +45,8 @@ export default async function ProductPage({ params }: TParams) {
   const Copy = GetDictionary(Language);
   const { Common, Pages } = Copy;
   const Images = Product.ImagesFolder ? GetProjectImages(Product.ImagesFolder) : [];
-  const IsLive = Product.Status === "live";
-  const Status = IsLive ? Pages.Work.Live : (Product.Stage?.[Language] ?? Pages.Work.ComingSoon);
+  const IsLive = IsAvailable(Product);
+  const Status = Product.Stage?.[Language] ?? StatusLabel(Product, Pages.Work);
 
   return (
     <>
@@ -86,6 +86,14 @@ export default async function ProductPage({ params }: TParams) {
               <b className="block text-sm text-accent-ink">{Pages.Product.WhoFor}</b>
               <span className="mt-1 block">{Product.Audience[Language]}</span>
             </p>
+            {Product.License && (
+              <p className="mt-4 text-sm text-ink-soft">
+                {Pages.Product.License}:{" "}
+                <a href={Product.License.Url} target="_blank" rel="noopener noreferrer" lang="en" className="font-semibold text-accent-ink underline underline-offset-4">
+                  {Product.License.Name}
+                </a>
+              </p>
+            )}
           </div>
           <div className="grid content-start gap-4">
             {!IsLive && <WaitlistForm Product={Product.Name} Copy={Pages.Waitlist} />}

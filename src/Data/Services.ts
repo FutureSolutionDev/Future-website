@@ -74,6 +74,7 @@ export const SERVICES: TService[] = [
       { en: "An assistant that serves your customers", ar: "مساعد ذكي يخدم عملاءك" },
       { en: "Decisions backed by your data", ar: "قرارات مبنية على بياناتك" },
     ],
+    Stack: ["Claude", "GPT", "Gemini", "Kimi", "GLM", "Llama", "Mistral", "pgvector", "Whisper", "LangChain", "Python", "FastAPI"],
   },
   {
     Id: "hosting",
@@ -105,6 +106,7 @@ export const SERVICES: TService[] = [
       { en: "Compliance-ready", ar: "جاهزية للامتثال والمعايير" },
       { en: "An incident response plan", ar: "خطة استجابة للطوارئ" },
     ],
+    Stack: ["BunXRay", "Cloudflare", "Let's Encrypt", "Fail2ban", "UFW", "Sentry", "OWASP ZAP", "Burp Suite", "Snyk", "Dependabot"],
   },
 ];
 
