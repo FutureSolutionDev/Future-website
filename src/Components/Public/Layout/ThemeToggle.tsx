@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Moon, Sun } from "lucide-react";
 
 export const THEME_STORAGE_KEY = "theme";
@@ -17,10 +18,28 @@ function ApplyTheme(Theme: "light" | "dark") {
   document.documentElement.setAttribute("data-theme", Theme);
 }
 
+const MANUAL_CHOICE: { Theme: "light" | "dark" | null } = { Theme: null };
+
+function SavedTheme(): "light" | "dark" {
+  if (MANUAL_CHOICE.Theme) return MANUAL_CHOICE.Theme;
+  try {
+    const Stored = localStorage.getItem(THEME_STORAGE_KEY);
+    if (Stored) return Stored === "dark" ? "dark" : "light";
+  } catch {}
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
 export function ThemeToggle({ DarkLabel, LightLabel }: { DarkLabel: string; LightLabel: string }) {
+  const Pathname = usePathname();
+
+  useLayoutEffect(() => {
+    if (document.documentElement.getAttribute("data-theme") !== SavedTheme()) ApplyTheme(SavedTheme());
+  }, [Pathname]);
+
   useEffect(() => {
     const Query = window.matchMedia("(prefers-color-scheme: dark)");
     const OnSystemChange = (Event: MediaQueryListEvent) => {
+      if (MANUAL_CHOICE.Theme) return;
       try {
         if (localStorage.getItem(THEME_STORAGE_KEY)) return;
       } catch {
@@ -36,6 +55,7 @@ export function ThemeToggle({ DarkLabel, LightLabel }: { DarkLabel: string; Ligh
     const Root = document.documentElement;
     const Next = Root.getAttribute("data-theme") === "dark" ? "light" : "dark";
     const Commit = () => {
+      MANUAL_CHOICE.Theme = Next;
       ApplyTheme(Next);
       try {
         localStorage.setItem(THEME_STORAGE_KEY, Next);

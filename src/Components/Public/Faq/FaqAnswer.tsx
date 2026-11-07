@@ -19,7 +19,7 @@ export function FaqAnswer({ Parts, Language }: { Parts: TFaqAnswerPart[]; Langua
           <Link
             key={Index}
             href={LocalHref(Language, Part.Href)}
-            className="font-semibold text-accent-ink [background:linear-gradient(var(--accent-soft),var(--accent-soft))_no-repeat_0_100%/100%_40%] hover:text-ink"
+            className="font-semibold text-accent-ink underline decoration-accent decoration-2 underline-offset-[5px] transition-colors hover:text-ink hover:decoration-ink"
           >
             {Part.Text}
           </Link>

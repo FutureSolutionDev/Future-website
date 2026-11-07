@@ -51,6 +51,8 @@ export const PAGES_AR: TPagesCopy = {
     Status: "الحالة",
     LiveNow: "تعمل الآن",
     Screens: "الشاشات",
+    AppLabel: "تطبيق الجوال",
+    AppTitle: "المنصة نفسها في جيب عميلك",
     OtherProjects: "مشاريع أخرى",
   },
   Product: {

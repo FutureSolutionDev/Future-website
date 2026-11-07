@@ -6,10 +6,12 @@ import { LinkButtons } from "@/Components/Common/LinkButtons";
 import { PageHeader } from "@/Components/Common/PageHeader";
 import { MetricRail } from "@/Components/Public/Home/MetricRail";
 import { ProjectCard } from "@/Components/Public/Work/ProjectCard";
+import { StoreBadge } from "@/Components/Common/StoreBadge";
+import { AppShowcase } from "@/Components/Public/Work/AppShowcase";
 import { FactsGrid, FeatureList, Screens, TechList } from "@/Components/Public/Work/DetailLayout";
 import { GetProjectBySlug, PROJECTS } from "@/Data/Projects";
 import { GetProjectImages, GetWorkOgImage } from "@/Lib/Images";
-import { ProjectSchema } from "@/Lib/Schema";
+import { MobileAppSchema, ProjectSchema } from "@/Lib/Schema";
 import { BuildMetadata, LANGS, PathFor, ToLang } from "@/Lib/Seo";
 import { GetDictionary } from "@/I18n/Index";
 
@@ -47,7 +49,7 @@ export default async function ProjectPage({ params }: TParams) {
 
   return (
     <>
-      <JsonLd Data={ProjectSchema(Project, Language, Images)} />
+      <JsonLd Data={[ProjectSchema(Project, Language, Images), ...(Project.App ? [MobileAppSchema(Project.App, Language)] : [])]} />
       <PageHeader
         Language={Language}
         Common={Common}
@@ -59,8 +61,11 @@ export default async function ProjectPage({ params }: TParams) {
         Title={<span className="font-latin">{Project.Title}</span>}
         Lead={Project.Summary[Language]}
       >
-        <div className="mt-7">
+        <div className="mt-7 flex flex-wrap items-center gap-3">
           <LinkButtons Links={Project.Links} Language={Language} Labels={Common.Links} />
+          {Project.App?.Stores.filter((Item) => Item.Url).map((Item) => (
+            <StoreBadge key={Item.Store} Store={Item.Store} Url={Item.Url} Copy={Common.Stores} />
+          ))}
         </div>
       </PageHeader>
 
@@ -93,6 +98,16 @@ export default async function ProjectPage({ params }: TParams) {
         )}
 
         <Screens Title={Project.Title} ImagesFolder={Project.ImagesFolder} Images={Images} Captions={Project.Captions} Language={Language} Copy={Copy} />
+        {Project.App && (
+          <AppShowcase
+            App={Project.App}
+            Language={Language}
+            Label={Pages.Project.AppLabel}
+            Title={Pages.Project.AppTitle}
+            StoreCopy={Common.Stores}
+            GalleryCopy={Common.Gallery}
+          />
+        )}
         <FeatureList Title={Pages.Project.Delivers} Features={Project.Features} Language={Language} />
         <TechList Label={Common.BuiltWith} Items={Project.Tech} />
 

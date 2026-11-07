@@ -1,11 +1,40 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useLayoutEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { Lang } from "@/Lib/Seo";
 import { Cn } from "@/Lib/Cn";
 
 const NATIVE_NAMES: Record<Lang, string> = { ar: "العربية", en: "English" };
+
+const SWITCH_STATE = { Pending: false };
+
+function HashTarget(): HTMLElement | null {
+  const Raw = window.location.hash.slice(1);
+  if (!Raw) return null;
+  try {
+    return document.getElementById(decodeURIComponent(Raw));
+  } catch {
+    return document.getElementById(Raw);
+  }
+}
+
+function UseLandingScroll() {
+  const Pathname = usePathname();
+  useLayoutEffect(() => {
+    if (!SWITCH_STATE.Pending) return;
+    SWITCH_STATE.Pending = false;
+    const Target = HashTarget();
+    if (Target) Target.scrollIntoView();
+    else window.scrollTo(0, 0);
+  }, [Pathname]);
+}
+
+function MarkSwitch(Event: React.MouseEvent<HTMLAnchorElement>) {
+  if (Event.button !== 0 || Event.metaKey || Event.ctrlKey || Event.shiftKey || Event.altKey) return;
+  SWITCH_STATE.Pending = true;
+}
 
 function EgyptFlag() {
   return (
@@ -52,6 +81,7 @@ type TLanguageSwitchProps = {
 };
 
 export function LanguageSwitch({ Target, Href, Label, ClassName }: TLanguageSwitchProps) {
+  UseLandingScroll();
   return (
     <Link
       href={Href}
@@ -59,6 +89,7 @@ export function LanguageSwitch({ Target, Href, Label, ClassName }: TLanguageSwit
       aria-label={Label}
       title={Label}
       scroll={false}
+      onClick={MarkSwitch}
       className={Cn(
         "group inline-flex h-[42px] items-center gap-2 rounded-full sm:pe-3.5 border border-line bg-surface/60 p-1 text-[13px] font-semibold text-ink-muted transition-all hover:border-accent hover:text-ink",
         ClassName,

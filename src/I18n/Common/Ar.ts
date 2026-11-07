@@ -52,6 +52,12 @@ export const COMMON_AR: TCommonCopy = {
     Open: "فتح الصورة",
     Of: "من",
   },
+  Stores: {
+    GetItOn: "احصل عليه من",
+    DownloadOn: "حمّله من",
+    SoonOn: "قريبًا على",
+    Soon: "قريبًا",
+  },
   Files: {
     Title: "ملفات المشروع",
     Screens: "الشاشات",

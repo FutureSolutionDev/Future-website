@@ -1,5 +1,14 @@
 import type { TBilingual } from "@/Lib/Seo";
 import type { TLinkItem, TScreenCaptions } from "@/Data/Links";
+import type { TStore } from "@/Components/Common/StoreBadge";
+
+export type TProjectApp = {
+  Name: string;
+  Folder: string;
+  Summary: TBilingual;
+  Stores: { Store: TStore; Url?: string }[];
+  Screens: { File: string; Caption: TBilingual }[];
+};
 
 export type TProject = {
   Slug: string;
@@ -14,6 +23,7 @@ export type TProject = {
   Tech: string[];
   Links: TLinkItem[];
   Captions?: TScreenCaptions;
+  App?: TProjectApp;
 };
 
 export const PROJECTS: TProject[] = [
@@ -111,10 +121,27 @@ export const PROJECTS: TProject[] = [
       },
     ],
     Tech: ["React", "Node.js", "Express", "MariaDB", "Flutter", "Next.js"],
-    Links: [
-      { key: "website", url: "https://adhamfathallah.com" },
-      { key: "googleplay", url: "https://play.google.com/store/apps/details?id=com.adhamfathallah.app" },
-    ],
+    Links: [{ key: "website", url: "https://adhamfathallah.com" }],
+    App: {
+      Name: "Adham Fathallah",
+      Folder: "/Projects/adham-fathallah/App",
+      Summary: {
+        en: "The same platform in your buyers' pockets: projects, live prices, payment plans and direct contact with developers, on Android today and iPhone soon.",
+        ar: "المنصة نفسها في جيب المشتري: المشروعات والأسعار المحدّثة وأنظمة السداد والتواصل المباشر مع المطورين، على Android الآن وiPhone قريبًا.",
+      },
+      Stores: [
+        { Store: "googleplay", Url: "https://play.google.com/store/apps/details?id=com.adhamfathallah.app" },
+        { Store: "appstore" },
+      ],
+      Screens: [
+        { File: "01-discover.webp", Caption: { en: "Discover top projects in one place", ar: "اكتشف أهم المشروعات في مكان واحد" } },
+        { File: "02-smart-filters.webp", Caption: { en: "Find the right unit with smart filters", ar: "اعثر على الوحدة المناسبة بفلاتر ذكية" } },
+        { File: "03-project-details.webp", Caption: { en: "Explore every project in depth", ar: "استكشف كل مشروع بالتفصيل" } },
+        { File: "04-gallery-location.webp", Caption: { en: "Galleries, locations and contact options", ar: "الصور والمواقع وطرق التواصل" } },
+        { File: "05-payment-plans.webp", Caption: { en: "Compare payment plans clearly", ar: "قارن أنظمة السداد بوضوح" } },
+        { File: "06-offers.webp", Caption: { en: "Featured offers and unit types", ar: "العروض المميزة وأنواع الوحدات" } },
+      ],
+    },
     Captions: {
       "01-home.webp": { en: "Home page with live developer prices", ar: "الصفحة الرئيسية وأسعار المطورين المحدّثة" },
       "02-projects.webp": { en: "Projects directory by city and type", ar: "دليل المشروعات حسب المدينة والنوع" },

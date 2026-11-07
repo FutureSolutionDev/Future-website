@@ -3,7 +3,7 @@ import { CONTACT } from "@/Lib/Site";
 import { SERVICES, ServiceStack, TECH_EXPERTISE, type TService } from "@/Data/Services/Index";
 import { TEAM } from "@/Data/Team";
 import { AnswerText, type TFaq } from "@/Data/Faqs";
-import type { TProject } from "@/Data/Projects";
+import type { TProject, TProjectApp } from "@/Data/Projects";
 import { ProductName, type TProduct } from "@/Data/Products";
 import type { TArticleMeta } from "@/Lib/Blog";
 
@@ -144,6 +144,23 @@ export function ArticleSchema(Meta: TArticleMeta, Image: string) {
     publisher: { "@id": ORGANIZATION_ID },
     mainEntityOfPage: Url,
     url: Url,
+  };
+}
+
+export function MobileAppSchema(App: TProjectApp, Language: Lang) {
+  const Android = App.Stores.find((Item) => Item.Store === "googleplay" && Item.Url);
+  return {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    name: App.Name,
+    description: App.Summary[Language],
+    operatingSystem: App.Stores.filter((Item) => Item.Url).map((Item) => (Item.Store === "googleplay" ? "Android" : "iOS")).join(", "),
+    applicationCategory: "LifestyleApplication",
+    image: Absolute(`${App.Folder}/icon.webp`),
+    screenshot: App.Screens.map((Screen) => Absolute(`${App.Folder}/${Screen.File}`)),
+    ...(Android ? { installUrl: Android.Url, downloadUrl: Android.Url } : {}),
+    offers: { "@type": "Offer", price: "0", priceCurrency: "EGP" },
+    author: { "@id": ORGANIZATION_ID },
   };
 }
 
