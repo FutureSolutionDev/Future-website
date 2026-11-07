@@ -11,7 +11,6 @@ export const COMMON_EN = {
     Contact: "Contact",
     Menu: "Menu",
     CloseMenu: "Close menu",
-    SwitchLanguage: "العربية",
     SwitchLanguageLabel: "اقرأ هذه الصفحة بالعربية",
     MainNavigation: "Main navigation",
     ThemeDark: "Switch to dark mode",
