@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Moon, Sun } from "lucide-react";
 
 export const THEME_STORAGE_KEY = "theme";
@@ -17,7 +18,21 @@ function ApplyTheme(Theme: "light" | "dark") {
   document.documentElement.setAttribute("data-theme", Theme);
 }
 
+function SavedTheme(): "light" | "dark" {
+  try {
+    const Stored = localStorage.getItem(THEME_STORAGE_KEY);
+    if (Stored === "light" || Stored === "dark") return Stored;
+  } catch {}
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
 export function ThemeToggle({ DarkLabel, LightLabel }: { DarkLabel: string; LightLabel: string }) {
+  const Pathname = usePathname();
+
+  useLayoutEffect(() => {
+    if (document.documentElement.getAttribute("data-theme") !== SavedTheme()) ApplyTheme(SavedTheme());
+  }, [Pathname]);
+
   useEffect(() => {
     const Query = window.matchMedia("(prefers-color-scheme: dark)");
     const OnSystemChange = (Event: MediaQueryListEvent) => {
