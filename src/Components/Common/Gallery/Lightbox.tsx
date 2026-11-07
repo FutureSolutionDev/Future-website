@@ -125,7 +125,7 @@ export function Lightbox({
         Event.stopPropagation();
         HandleKey(Event.nativeEvent);
       }}
-      className="fixed inset-0 z-[100] grid grid-rows-[auto_1fr_auto] bg-lightbox/95 text-brand-50 backdrop-blur-xl animate-rise"
+      className="fixed inset-0 z-[100] grid grid-cols-[minmax(0,1fr)] grid-rows-[auto_1fr_auto] bg-lightbox/95 text-brand-50 backdrop-blur-xl animate-rise"
     >
       <div className="flex items-center justify-between gap-4 px-4 pt-[max(16px,env(safe-area-inset-top))] pb-3 sm:px-7">
         <div className="flex min-w-0 items-baseline gap-4">
@@ -176,7 +176,7 @@ export function Lightbox({
       <div
         className={Cn(
           "relative min-h-0 px-3 sm:px-24",
-          Zoomed ? "overflow-auto" : "grid place-items-center",
+          Zoomed ? "overflow-auto" : "grid grid-cols-[minmax(0,1fr)] grid-rows-[minmax(0,1fr)] place-items-center",
         )}
         onTouchStart={Zoomed ? undefined : Navigation.OnTouchStart}
         onTouchEnd={Zoomed ? undefined : Navigation.OnTouchEnd}
@@ -195,7 +195,7 @@ export function Lightbox({
             "rounded-[10px] shadow-[0_40px_90px_rgba(0,0,0,0.6)] animate-rise",
             Zoomed
               ? "mx-auto h-auto w-[160%] max-w-none cursor-zoom-out"
-              : "max-h-full w-auto object-contain cursor-zoom-in",
+              : "h-auto max-h-full w-auto max-w-full object-contain cursor-zoom-in",
           )}
           onClick={ToggleZoom}
         />
