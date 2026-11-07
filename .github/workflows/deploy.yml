@@ -1,16 +1,4 @@
-# Build & deploy the static site to the VPS on every push to master.
-#
-# Required repository secrets (Settings → Secrets and variables → Actions):
-#   VPS_HOST      e.g. 203.0.113.10  (or a hostname)
-#   VPS_USER      SSH user, e.g. deploy
-#   VPS_SSH_KEY   private key for that user (use a dedicated deploy key)
-#   VPS_PATH      absolute site path, e.g. /var/www/futuresolutions/out
-#
-# Optional repository variables (Settings → Secrets and variables → Actions → Variables):
-#   NEXT_PUBLIC_WEB3FORMS_KEY   Web3Forms access key for the contact form
-#   NEXT_PUBLIC_GA_ID           GA4 measurement id (G-XXXXXXXXXX)
-
-name: Deploy to VPS
+name: Build
 
 on:
   push:
@@ -18,18 +6,21 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: deploy-production
+  group: build-branch
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
@@ -43,18 +34,14 @@ jobs:
           NEXT_PUBLIC_WEB3FORMS_KEY: ${{ vars.NEXT_PUBLIC_WEB3FORMS_KEY }}
           NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
 
-      - name: Setup SSH
+      - name: Publish out/ to the build branch
+        working-directory: out
+        env:
+          REMOTE: https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_deploy
-          chmod 600 ~/.ssh/id_deploy
-          ssh-keyscan -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
-
-      - name: Deploy (rsync out/ → VPS)
-        # 'P Projects/***' protects gallery screenshots uploaded directly to the
-        # server from being deleted by --delete (new local images still sync up)
-        run: |
-          rsync -az --delete \
-            --filter='P Projects/***' \
-            -e "ssh -i ~/.ssh/id_deploy" \
-            out/ "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ secrets.VPS_PATH }}/"
+          git init -q -b build
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "build: ${GITHUB_SHA::7}"
+          git push -q --force "$REMOTE" build
