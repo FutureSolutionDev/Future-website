@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://futuresolutionsdev.com/sitemap.xml

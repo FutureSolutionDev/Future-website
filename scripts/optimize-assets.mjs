@@ -1,5 +1,5 @@
 // One-off asset optimizer: extracts rasters embedded in the seasonal SVGs,
-// compresses the hero/logo images, and emits WebP files next to the originals.
+// compresses the logo images, and emits WebP files next to the originals.
 // Run: node scripts/optimize-assets.mjs
 import sharp from 'sharp';
 import { readFile, writeFile, stat } from 'node:fs/promises';
@@ -77,9 +77,6 @@ for (const rel of [
     await svgRasterToWebp(rel);
 }
 
-// Hero images
-await pngToWebp('assets/hero.png', 1300);
-await pngToWebp('assets/hero-illustration.png', 1000);
 
 // Navbar logos (one per season variant, rendered at 160x80 css px → 320 retina)
 await pngToWebp('favico/favico.png', 320, 'favico/logo.webp');

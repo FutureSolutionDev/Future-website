@@ -1,12 +1,13 @@
-import type { Metadata } from 'next';
-import { IsLang, PageMetadata } from '@/lib/seo';
-import TechnologiesContent from './TechnologiesContent';
+import type { Metadata } from "next";
+import { MovedMetadata, MovedPage } from "@/Components/Common/MovedPage";
+import { ToLang } from "@/Lib/Seo";
+
+const TARGET = "/services";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-    const { lang } = await params;
-    return PageMetadata(IsLang(lang) ? lang : 'en', 'technologies', '/technologies');
+  return MovedMetadata(ToLang((await params).lang), TARGET);
 }
 
-export default function TechnologiesPage() {
-    return <TechnologiesContent />;
+export default async function TechnologiesMovedPage({ params }: { params: Promise<{ lang: string }> }) {
+  return <MovedPage Language={ToLang((await params).lang)} Target={TARGET} />;
 }
