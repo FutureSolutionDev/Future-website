@@ -8,27 +8,32 @@ import { Cn } from "@/Lib/Cn";
 
 const NATIVE_NAMES: Record<Lang, string> = { ar: "العربية", en: "English" };
 
-const SWITCH_FLAG = "lang-switch";
+const SWITCH_STATE = { Pending: false };
+
+function HashTarget(): HTMLElement | null {
+  const Raw = window.location.hash.slice(1);
+  if (!Raw) return null;
+  try {
+    return document.getElementById(decodeURIComponent(Raw));
+  } catch {
+    return document.getElementById(Raw);
+  }
+}
 
 function UseLandingScroll() {
   const Pathname = usePathname();
   useLayoutEffect(() => {
-    try {
-      if (!sessionStorage.getItem(SWITCH_FLAG)) return;
-      sessionStorage.removeItem(SWITCH_FLAG);
-    } catch {
-      return;
-    }
-    const Target = window.location.hash ? document.getElementById(decodeURIComponent(window.location.hash.slice(1))) : null;
+    if (!SWITCH_STATE.Pending) return;
+    SWITCH_STATE.Pending = false;
+    const Target = HashTarget();
     if (Target) Target.scrollIntoView();
     else window.scrollTo(0, 0);
   }, [Pathname]);
 }
 
-function MarkSwitch() {
-  try {
-    sessionStorage.setItem(SWITCH_FLAG, "1");
-  } catch {}
+function MarkSwitch(Event: React.MouseEvent<HTMLAnchorElement>) {
+  if (Event.button !== 0 || Event.metaKey || Event.ctrlKey || Event.shiftKey || Event.altKey) return;
+  SWITCH_STATE.Pending = true;
 }
 
 function EgyptFlag() {
