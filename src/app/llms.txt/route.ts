@@ -1,5 +1,5 @@
 import { ALL_FAQS, AnswerText } from "@/Data/Faqs";
-import { INDUSTRIES } from "@/Data/Industries";
+import { FEATURED_INDUSTRY, INDUSTRIES } from "@/Data/Industries";
 import { PRODUCTS } from "@/Data/Products";
 import { PROJECTS } from "@/Data/Projects";
 import { SERVICES, TECH_EXPERTISE } from "@/Data/Services/Index";
@@ -31,7 +31,7 @@ export function GET() {
     "",
     Section(
       "Industries",
-      INDUSTRIES.map((Industry) => `- [${Industry.Title.en}](${SITE_URL}/en/blog/${Industry.Slug}): ${Industry.Content.en}`),
+      [FEATURED_INDUSTRY, ...INDUSTRIES].map((Industry) => `- [${Industry.Title.en}](${SITE_URL}/en/solutions#${Industry.Slug}): ${Industry.Content.en}`),
     ),
     Section(
       "Client projects",

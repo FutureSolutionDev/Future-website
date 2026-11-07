@@ -8,12 +8,10 @@ import { JsonLd } from "@/Components/Common/JsonLd";
 import { PageHeader } from "@/Components/Common/PageHeader";
 import { SectionLabel } from "@/Components/Common/SectionLabel";
 import { ToolChips } from "@/Components/Public/Services/ToolChips";
-import { GetProductBySlug, ProductName } from "@/Data/Products";
-import { GetProjectBySlug } from "@/Data/Projects";
-import { GetServiceById, SERVICES, SHARED_DELIVERABLES, type TService } from "@/Data/Services/Index";
-import { GetProjectImages } from "@/Lib/Images";
+import { GetServiceById, SERVICES, SHARED_DELIVERABLES } from "@/Data/Services/Index";
+import { ResolveWork } from "@/Lib/Resolve";
 import { QuestionsSchema, ServiceSchema } from "@/Lib/Schema";
-import { BuildMetadata, LANGS, PathFor, ToLang, type Lang } from "@/Lib/Seo";
+import { BuildMetadata, LANGS, PathFor, ToLang } from "@/Lib/Seo";
 import { GetDictionary } from "@/I18n/Index";
 
 type TParams = { params: Promise<{ lang: string; id: string }> };
@@ -22,25 +20,6 @@ const SECTION_TITLE = "text-[26px] font-bold md:text-[34px]";
 
 export function generateStaticParams() {
   return LANGS.flatMap((lang) => SERVICES.map((Service) => ({ lang, id: Service.Id })));
-}
-
-function ResolveProof(Service: TService, Language: Lang) {
-  if (Service.Proof.Kind === "project") {
-    const Project = GetProjectBySlug(Service.Proof.Slug);
-    if (!Project) return null;
-    return {
-      Name: Project.Title,
-      Path: PathFor(Language, `/portfolio/${Project.Slug}`),
-      Cover: GetProjectImages(Project.ImagesFolder)[0],
-    };
-  }
-  const Product = GetProductBySlug(Service.Proof.Slug);
-  if (!Product) return null;
-  return {
-    Name: ProductName(Product, Language),
-    Path: PathFor(Language, `/products/${Product.Slug}`),
-    Cover: Product.ImagesFolder ? GetProjectImages(Product.ImagesFolder)[0] : undefined,
-  };
 }
 
 export async function generateMetadata({ params }: TParams): Promise<Metadata> {
@@ -63,7 +42,7 @@ export default async function ServicePage({ params }: TParams) {
   if (!Service) notFound();
   const { Common, Pages } = GetDictionary(Language);
   const Copy = Pages.Services;
-  const Proof = ResolveProof(Service, Language);
+  const Proof = ResolveWork(Service.Proof.Kind, Service.Proof.Slug, Language);
   const Faqs = Service.Faqs.map((Faq) => ({ Question: Faq.Question[Language], Answer: Faq.Answer[Language] }));
 
   return (

@@ -18,6 +18,8 @@ export const PAGES_EN = {
     Title: "Solutions tailored to your industry",
     Lead: "We understand the challenges of each industry and build the solution that fits it.",
     LearnMore: "Read about this solution",
+    FeaturedLabel: "Our strongest sector",
+    ProofsLabel: "Built by us",
     CtaTitle: "Your industry is not listed?",
     CtaText: "Tell us about your business. Every platform we build is tailored to its owner.",
   },
