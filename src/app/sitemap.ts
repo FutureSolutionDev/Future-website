@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { GetAllArticleMetas } from "@/Lib/Blog";
 import { PRODUCTS } from "@/Data/Products";
 import { PROJECTS } from "@/Data/Projects";
+import { SERVICES } from "@/Data/Services/Index";
 import { DEFAULT_LANG, LANGS, SITE_URL } from "@/Lib/Seo";
 
 export const dynamic = "force-static";
@@ -38,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...STATIC_PATHS.flatMap((Item) => Entry(Item.Path, Item.Priority)),
+    ...SERVICES.flatMap((Service) => Entry(`/services/${Service.Id}`, 0.85)),
     ...PROJECTS.flatMap((Project) => Entry(`/portfolio/${Project.Slug}`, 0.8)),
     ...PRODUCTS.flatMap((Product) => Entry(`/products/${Product.Slug}`, 0.7)),
     ...GetAllArticleMetas("en").flatMap((Meta) => Entry(`/blog/${Meta.slug}`, 0.7, Meta.publishedAt)),

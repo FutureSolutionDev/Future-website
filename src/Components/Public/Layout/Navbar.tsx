@@ -9,6 +9,7 @@ import { Menu, X } from "lucide-react";
 import { Cn } from "@/Lib/Cn";
 import { ButtonClass } from "@/Components/Common/Button";
 import SeasonalDecorations from "@/Components/Public/Seasonal/SeasonalDecorations";
+import { LanguageSwitch } from "./LanguageSwitch";
 import { ThemeToggle } from "./ThemeToggle";
 import type { Lang } from "@/Lib/Seo";
 import type { TCommon } from "@/I18n/Index";
@@ -142,16 +143,7 @@ export function Navbar({
 
         <div className="flex items-center gap-2">
           <ThemeToggle DarkLabel={Nav.ThemeDark} LightLabel={Nav.ThemeLight} />
-          <Link
-            href={`/${OtherLang}${Rest}${Hash}`}
-            hrefLang={OtherLang}
-            lang={OtherLang}
-            aria-label={Nav.SwitchLanguageLabel}
-            scroll={false}
-            className="grid h-[42px] min-w-[42px] place-items-center rounded-md border border-line px-3 text-[13px] font-semibold text-ink-muted transition-colors hover:text-ink"
-          >
-            {Nav.SwitchLanguage}
-          </Link>
+          <LanguageSwitch Target={OtherLang} Href={`/${OtherLang}${Rest}${Hash}`} Label={Nav.SwitchLanguageLabel} />
           <Link
             href={`/${Language}/contact`}
             className={ButtonClass("Primary", "Sm", "hidden sm:inline-flex")}

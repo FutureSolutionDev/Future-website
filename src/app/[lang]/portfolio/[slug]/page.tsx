@@ -8,7 +8,7 @@ import { MetricRail } from "@/Components/Public/Home/MetricRail";
 import { ProjectCard } from "@/Components/Public/Work/ProjectCard";
 import { FactsGrid, FeatureList, Screens, TechList } from "@/Components/Public/Work/DetailLayout";
 import { GetProjectBySlug, PROJECTS } from "@/Data/Projects";
-import { GetProjectImages } from "@/Lib/Images";
+import { GetProjectImages, GetWorkOgImage } from "@/Lib/Images";
 import { ProjectSchema } from "@/Lib/Schema";
 import { BuildMetadata, LANGS, PathFor, ToLang } from "@/Lib/Seo";
 import { GetDictionary } from "@/I18n/Index";
@@ -24,13 +24,14 @@ export async function generateMetadata({ params }: TParams): Promise<Metadata> {
   const Language = ToLang(lang);
   const Project = GetProjectBySlug(slug);
   if (!Project) return {};
-  const Cover = GetProjectImages(Project.ImagesFolder)[0];
+  const ShareImage = GetWorkOgImage(Project.Slug);
   return BuildMetadata({
     Language,
     Path: `/portfolio/${slug}`,
     Title: `${Project.Title}: ${Project.Category[Language]}`,
-    Description: Project.Summary[Language] + " " + (Project.Result?.[Language] ?? ""),
-    Images: Cover ? [{ url: Cover, width: 1200, height: 750, alt: Project.Title }] : undefined,
+    Description: `${Project.Summary[Language]} ${Project.Result?.[Language] ?? ""}`,
+    Keywords: [Project.Title, Project.Category[Language], ...Project.Tech],
+    Images: ShareImage ? [{ ...ShareImage, alt: Project.Title }] : undefined,
   });
 }
 

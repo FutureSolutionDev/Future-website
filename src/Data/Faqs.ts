@@ -148,12 +148,12 @@ export const FAQ_CHAPTERS: TFaqChapter[] = [
         Answer: {
           en: [
             "Hosting and domain are registered in your name and stay yours. Typical costs are known upfront with no hidden markup. We set everything up and can manage it for you through our ",
-            { Text: "hosting and operations service", Href: "/services#hosting" },
+            { Text: "hosting and operations service", Href: "/services/hosting" },
             ".",
           ],
           ar: [
             "تُسجَّل الاستضافة والنطاق باسمك وتبقى ملكك، وتكلفتها معروفة من البداية دون زيادات مخفية. نجهز كل شيء ويمكننا إدارته لك ضمن ",
-            { Text: "خدمة الاستضافة والتشغيل", Href: "/services#hosting" },
+            { Text: "خدمة الاستضافة والتشغيل", Href: "/services/hosting" },
             ".",
           ],
         },

@@ -1,6 +1,6 @@
 import { SITE_NAME, SITE_URL, SeoCopy, PathFor, type Lang } from "@/Lib/Seo";
 import { CONTACT } from "@/Lib/Site";
-import { SERVICES, TECH_EXPERTISE } from "@/Data/Services";
+import { SERVICES, ServiceStack, TECH_EXPERTISE, type TService } from "@/Data/Services/Index";
 import { TEAM } from "@/Data/Team";
 import { AnswerText, type TFaq } from "@/Data/Faqs";
 import type { TProject } from "@/Data/Projects";
@@ -84,22 +84,48 @@ export function ServicesSchema(Language: Lang) {
         serviceType: Service.Title.en,
         provider: { "@id": ORGANIZATION_ID },
         areaServed: "Worldwide",
-        url: Absolute(PathFor(Language, `/services#${Service.Id}`)),
+        url: Absolute(PathFor(Language, `/services/${Service.Id}`)),
       },
     })),
   };
 }
 
-export function FaqSchema(Faqs: TFaq[], Language: Lang) {
+export function ServiceSchema(Service: TService, Language: Lang) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: Service.Title[Language],
+    description: Service.MetaDescription[Language],
+    serviceType: Service.Title.en,
+    provider: { "@id": ORGANIZATION_ID },
+    areaServed: "Worldwide",
+    url: Absolute(PathFor(Language, `/services/${Service.Id}`)),
+    keywords: ServiceStack(Service).join(", "),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: Service.Title[Language],
+      itemListElement: Service.SubServices.map((Sub) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: Sub.Title[Language], description: Sub.Text[Language] },
+      })),
+    },
+  };
+}
+
+export function QuestionsSchema(Items: { Question: string; Answer: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: Faqs.map((Faq) => ({
+    mainEntity: Items.map((Item) => ({
       "@type": "Question",
-      name: Faq.Question[Language],
-      acceptedAnswer: { "@type": "Answer", text: AnswerText(Faq.Answer[Language]) },
+      name: Item.Question,
+      acceptedAnswer: { "@type": "Answer", text: Item.Answer },
     })),
   };
+}
+
+export function FaqSchema(Faqs: TFaq[], Language: Lang) {
+  return QuestionsSchema(Faqs.map((Faq) => ({ Question: Faq.Question[Language], Answer: AnswerText(Faq.Answer[Language]) })));
 }
 
 export function ArticleSchema(Meta: TArticleMeta, Image: string) {

@@ -10,7 +10,7 @@ import { MetricRail } from "@/Components/Public/Home/MetricRail";
 import { WaitlistForm } from "@/Components/Public/Work/WaitlistForm";
 import { FeatureList, Screens } from "@/Components/Public/Work/DetailLayout";
 import { GetProductBySlug, IsAvailable, PRODUCTS, ProductName, StatusLabel } from "@/Data/Products";
-import { GetProjectImages } from "@/Lib/Images";
+import { GetProjectImages, GetWorkOgImage } from "@/Lib/Images";
 import { ProductSchema } from "@/Lib/Schema";
 import { BuildMetadata, LANGS, PathFor, ToLang } from "@/Lib/Seo";
 import { WhatsAppLink } from "@/Lib/Site";
@@ -27,13 +27,14 @@ export async function generateMetadata({ params }: TParams): Promise<Metadata> {
   const Language = ToLang(lang);
   const Product = GetProductBySlug(slug);
   if (!Product) return {};
-  const Cover = Product.ImagesFolder ? GetProjectImages(Product.ImagesFolder)[0] : undefined;
+  const ShareImage = GetWorkOgImage(Product.Slug);
   return BuildMetadata({
     Language,
     Path: `/products/${slug}`,
     Title: `${ProductName(Product, Language)}: ${Product.Category[Language]}`,
-    Description: Product.Tagline[Language],
-    Images: Cover ? [{ url: Cover, width: 1200, height: 750, alt: ProductName(Product, Language) }] : undefined,
+    Description: `${Product.Tagline[Language]} ${Product.Description[Language]}`,
+    Keywords: [Product.Name, ...(Product.NameAr ? [Product.NameAr] : []), Product.Category[Language], Product.Category.en],
+    Images: ShareImage ? [{ ...ShareImage, alt: ProductName(Product, Language) }] : undefined,
   });
 }
 

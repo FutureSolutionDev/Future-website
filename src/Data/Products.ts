@@ -120,10 +120,13 @@ export const PRODUCTS: TProduct[] = [
       { key: "x", url: "https://x.com/BunXRay" },
     ],
     Captions: {
-      "01-home.webp": { en: "Home page and invite request", ar: "الصفحة الرئيسية وطلب الدعوة" },
-      "02-how-it-works.webp": { en: "How an engagement unfolds, in five steps", ar: "مراحل الاختبار الخمس" },
-      "03-team.webp": { en: "A team of specialists you shape", ar: "فريق متخصصين تشكّله بنفسك" },
-      "04-logic-flaws.webp": { en: "The logic flaws no checklist catches", ar: "ثغرات المنطق التي لا تلتقطها القوائم الجاهزة" },
+      "01-login.webp": { en: "Sign-in, fully in Arabic or English", ar: "تسجيل الدخول بالعربية أو الإنجليزية" },
+      "02-team-room.webp": {
+        en: "The team room: specialists plan and test live (findings hidden)",
+        ar: "غرفة الفريق: المتخصصون يخططون ويختبرون مباشرة (النتائج مخفية)",
+      },
+      "03-ai-team.webp": { en: "The AI specialists, each with a role and a model", ar: "متخصصو الذكاء الاصطناعي، لكل منهم دور ونموذج" },
+      "04-tools.webp": { en: "Tools the team calls when it needs them", ar: "الأدوات التي يستدعيها الفريق عند الحاجة" },
     },
   },
   {
@@ -131,7 +134,7 @@ export const PRODUCTS: TProduct[] = [
     Name: "Internet Monitor",
     Status: "open-source",
     Stage: { en: "Free for home and work · Elastic License 2.0", ar: "مجاني للبيت والعمل · Elastic License 2.0" },
-    Category: { en: "Free desktop app for Windows, Mac and Linux", ar: "تطبيق مجاني لأنظمة Windows وMac وLinux" },
+    Category: { en: "Free app for Windows, Mac and Linux", ar: "تطبيق مجاني لأنظمة Windows وMac وLinux" },
     Tagline: {
       en: "Document every internet outage, and complain to your provider with proof.",
       ar: "وثّق كل انقطاع في الإنترنت، واشتكِ لشركة الإنترنت بدليل.",

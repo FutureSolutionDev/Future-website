@@ -13,7 +13,6 @@ export const COMMON_AR: TCommonCopy = {
     Contact: "تواصل معنا",
     Menu: "القائمة",
     CloseMenu: "إغلاق القائمة",
-    SwitchLanguage: "EN",
     SwitchLanguageLabel: "Read this page in English",
     MainNavigation: "التنقل الرئيسي",
     ThemeDark: "التبديل إلى الوضع الداكن",
