@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { OutArrow } from "@/Components/Common/Icon";
-import { SERVICES } from "@/Data/Services";
+import { SERVICES } from "@/Data/Services/Index";
 import { PathFor, type Lang } from "@/Lib/Seo";
 
 export function ServiceRows({ Language }: { Language: Lang }) {
@@ -9,7 +9,7 @@ export function ServiceRows({ Language }: { Language: Lang }) {
       {SERVICES.map((Service, Index) => (
         <li key={Service.Id}>
           <Link
-            href={PathFor(Language, `/services#${Service.Id}`)}
+            href={PathFor(Language, `/services/${Service.Id}`)}
             className="group grid grid-cols-[40px_1fr] items-start gap-4 border-b border-line py-6 transition-colors md:grid-cols-[56px_1fr_28px] md:gap-5"
           >
             <span className="pt-2 font-mono text-sm text-accent-ink">

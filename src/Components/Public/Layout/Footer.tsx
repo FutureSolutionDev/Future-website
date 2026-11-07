@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CONTACT, SITE_TITLE } from "@/Lib/Site";
 import { PathFor, type Lang } from "@/Lib/Seo";
-import { SERVICES } from "@/Data/Services";
+import { SERVICES } from "@/Data/Services/Index";
 import { PRODUCTS, ProductName } from "@/Data/Products";
 import type { TCommon } from "@/I18n/Index";
 import type { TNavItem } from "./Navbar";
@@ -30,7 +30,7 @@ export function Footer({ Language, Common, Items, LogoSrc }: TFooterProps) {
           <ul>
             {SERVICES.map((Service) => (
               <li key={Service.Id}>
-                <Link href={PathFor(Language, `/services#${Service.Id}`)} className={LINK}>
+                <Link href={PathFor(Language, `/services/${Service.Id}`)} className={LINK}>
                   {Service.Title[Language]}
                 </Link>
               </li>
