@@ -8,7 +8,8 @@ import { JsonLd } from "@/Components/Common/JsonLd";
 import { PageHeader } from "@/Components/Common/PageHeader";
 import { SectionLabel } from "@/Components/Common/SectionLabel";
 import { ToolChips } from "@/Components/Public/Services/ToolChips";
-import { GetServiceById, SERVICES, SHARED_DELIVERABLES } from "@/Data/Services/Index";
+import { GetServiceById, SERVICES, SHARED_DELIVERABLES, ServiceStack } from "@/Data/Services/Index";
+import { GetWorkOgImage } from "@/Lib/Images";
 import { ResolveWork } from "@/Lib/Resolve";
 import { QuestionsSchema, ServiceSchema } from "@/Lib/Schema";
 import { BuildMetadata, LANGS, PathFor, ToLang } from "@/Lib/Seo";
@@ -27,11 +28,14 @@ export async function generateMetadata({ params }: TParams): Promise<Metadata> {
   const Language = ToLang(lang);
   const Service = GetServiceById(id);
   if (!Service) return {};
+  const ShareImage = GetWorkOgImage(Service.Proof.Slug);
   return BuildMetadata({
     Language,
     Path: `/services/${Service.Id}`,
     Title: Service.Title[Language],
     Description: Service.MetaDescription[Language],
+    Keywords: [Service.Title[Language], ...Service.SubServices.map((Sub) => Sub.Title[Language]), ...ServiceStack(Service).slice(0, 4)],
+    Images: ShareImage ? [{ ...ShareImage, alt: Service.Title[Language] }] : undefined,
   });
 }
 

@@ -32,8 +32,9 @@ export async function generateMetadata({ params }: TParams): Promise<Metadata> {
   return BuildMetadata({
     Language,
     Path: `/blog/${slug}`,
-    Title: Article.Meta.title,
+    Title: Article.Meta.seoTitle ?? Article.Meta.title,
     Description: Article.Meta.excerpt,
+    Keywords: [...Article.Meta.keywords, Article.Meta.category],
     OgType: "article",
     Images: [{ url: Image, width: 1200, height: 630, alt: Article.Meta.title }],
     PublishedTime: Article.Meta.publishedAt,

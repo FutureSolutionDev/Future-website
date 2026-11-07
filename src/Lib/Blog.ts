@@ -11,6 +11,8 @@ export const ARTICLE_ICONS = ["ShoppingCart", "BarChart", "Server", "Layers"] as
 const FrontmatterSchema = z.object({
   title: z.string().min(1),
   excerpt: z.string().min(1),
+  seoTitle: z.string().max(60).optional(),
+  keywords: z.array(z.string()).default([]),
   category: z.string().min(1),
   readTime: z.string().min(1),
   publishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "publishedAt must be YYYY-MM-DD"),

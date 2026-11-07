@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SEO_EN } from "@/I18n/Seo/En";
 import { SEO_AR } from "@/I18n/Seo/Ar";
+import { SITE_TITLE } from "@/Lib/Site";
 
 export type Lang = "en" | "ar";
 export type TBilingual = Record<Lang, string>;
@@ -43,7 +44,26 @@ type TBuildMetadataOptions = {
   Images?: { url: string; width?: number; height?: number; alt?: string }[];
   PublishedTime?: string;
   Authors?: string[];
+  Keywords?: string[];
 };
+
+const TITLE_LIMIT = 60;
+const DESCRIPTION_LIMIT = 158;
+const KEYWORD_LIMIT = 14;
+
+export function ClampDescription(Text: string): string {
+  const Clean = Text.replace(/\s+/g, " ").trim();
+  if (Clean.length <= DESCRIPTION_LIMIT) return Clean;
+  const Head = Clean.slice(0, DESCRIPTION_LIMIT);
+  const SentenceEnd = Math.max(Head.lastIndexOf(". "), Head.lastIndexOf("؟ "), Head.lastIndexOf("? "), Head.lastIndexOf("! "));
+  if (SentenceEnd >= 90) return Head.slice(0, SentenceEnd + 1);
+  return `${Head.slice(0, Head.lastIndexOf(" ")).replace(/[\s,،:;]+$/, "")}…`;
+}
+
+function ResolveTitle(Title: string | { absolute: string }): string | { absolute: string } {
+  if (typeof Title !== "string") return Title;
+  return `${Title} | ${SITE_TITLE}`.length > TITLE_LIMIT ? { absolute: Title } : Title;
+}
 
 export function BuildMetadata({
   Language,
@@ -54,14 +74,18 @@ export function BuildMetadata({
   Images,
   PublishedTime,
   Authors,
+  Keywords = [],
 }: TBuildMetadataOptions): Metadata {
   const Url = PathFor(Language, Path);
   const OgImages = Images ?? [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: SITE_NAME }];
   const PlainTitle = typeof Title === "string" ? Title : Title.absolute;
+  const Summary = ClampDescription(Description);
+  const AllKeywords = Array.from(new Set([...Keywords, ...SeoCopy(Language).SiteKeywords])).slice(0, KEYWORD_LIMIT);
 
   return {
-    title: Title,
-    description: Description,
+    title: ResolveTitle(Title),
+    description: Summary,
+    keywords: AllKeywords,
     alternates: {
       canonical: Url,
       languages: {
@@ -72,7 +96,7 @@ export function BuildMetadata({
     },
     openGraph: {
       title: PlainTitle,
-      description: Description,
+      description: Summary,
       url: Url,
       siteName: SITE_NAME,
       type: OgType,
@@ -85,7 +109,7 @@ export function BuildMetadata({
     twitter: {
       card: "summary_large_image",
       title: PlainTitle,
-      description: Description,
+      description: Summary,
       images: OgImages.map((Image) => Image.url),
     },
   };
@@ -98,5 +122,6 @@ export function PageMetadata(Language: Lang, PageKey: TPageKey, Path: string): M
     Path,
     Title: PageKey === "home" ? { absolute: Copy.title } : Copy.title,
     Description: Copy.description,
+    Keywords: Copy.keywords,
   });
 }

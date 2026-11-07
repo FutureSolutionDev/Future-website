@@ -131,7 +131,7 @@ export const PRODUCTS: TProduct[] = [
     Name: "Internet Monitor",
     Status: "open-source",
     Stage: { en: "Free for home and work · Elastic License 2.0", ar: "مجاني للبيت والعمل · Elastic License 2.0" },
-    Category: { en: "Free desktop app for Windows, Mac and Linux", ar: "تطبيق مجاني لأنظمة Windows وMac وLinux" },
+    Category: { en: "Free app for Windows, Mac and Linux", ar: "تطبيق مجاني لأنظمة Windows وMac وLinux" },
     Tagline: {
       en: "Document every internet outage, and complain to your provider with proof.",
       ar: "وثّق كل انقطاع في الإنترنت، واشتكِ لشركة الإنترنت بدليل.",
