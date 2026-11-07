@@ -50,6 +50,12 @@ export const COMMON_EN = {
     Open: "Open image",
     Of: "of",
   },
+  Stores: {
+    GetItOn: "Get it on",
+    DownloadOn: "Download on the",
+    SoonOn: "Coming soon to",
+    Soon: "Soon",
+  },
   Files: {
     Title: "Project files",
     Screens: "Screens",

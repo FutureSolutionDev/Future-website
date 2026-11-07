@@ -50,6 +50,8 @@ export const PAGES_EN = {
     LiveNow: "Live now",
     Screens: "Screens",
     OtherProjects: "Other projects",
+    AppLabel: "Mobile app",
+    AppTitle: "The platform, in your customers' pockets",
   },
   Product: {
     AllProducts: "All products",
