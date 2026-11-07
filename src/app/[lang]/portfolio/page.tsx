@@ -7,7 +7,7 @@ import { PageHeader } from "@/Components/Common/PageHeader";
 import { SectionLabel } from "@/Components/Common/SectionLabel";
 import { ProjectCard } from "@/Components/Public/Work/ProjectCard";
 import { PROJECTS } from "@/Data/Projects";
-import { PRODUCTS, StatusLabel } from "@/Data/Products";
+import { PRODUCTS, ProductName, StatusLabel } from "@/Data/Products";
 import { GetProjectImages } from "@/Lib/Images";
 import { PageMetadata, PathFor, ToLang } from "@/Lib/Seo";
 import { GetDictionary } from "@/I18n/Index";
@@ -95,9 +95,9 @@ export default async function PortfolioPage({ params }: { params: Promise<{ lang
                 key={Product.Slug}
                 Href={PathFor(Language, `/products/${Product.Slug}`)}
                 ImageSrc={Product.ImagesFolder ? GetProjectImages(Product.ImagesFolder)[0] : undefined}
-                ImageAlt={Product.Name}
+                ImageAlt={ProductName(Product, Language)}
                 Kicker={Product.Category[Language]}
-                Title={Product.Name}
+                Title={ProductName(Product, Language)}
                 Text={Product.Tagline[Language]}
                 Badge={StatusLabel(Product, Copy)}
               />
@@ -117,9 +117,9 @@ export default async function PortfolioPage({ params }: { params: Promise<{ lang
                 key={Product.Slug}
                 Href={PathFor(Language, `/products/${Product.Slug}`)}
                 ImageSrc={Product.ImagesFolder ? GetProjectImages(Product.ImagesFolder)[0] : undefined}
-                ImageAlt={Product.Name}
+                ImageAlt={ProductName(Product, Language)}
                 Kicker={Product.Category[Language]}
-                Title={Product.Name}
+                Title={ProductName(Product, Language)}
                 Text={Product.Tagline[Language]}
                 Badge={StatusLabel(Product, Copy)}
               />

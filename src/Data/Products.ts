@@ -1,4 +1,4 @@
-import type { TBilingual } from "@/Lib/Seo";
+import type { Lang, TBilingual } from "@/Lib/Seo";
 import type { TLinkItem, TScreenCaptions } from "@/Data/Links";
 
 export type TProductStatus = "live" | "beta" | "coming-soon" | "open-source";
@@ -6,6 +6,7 @@ export type TProductStatus = "live" | "beta" | "coming-soon" | "open-source";
 export type TProduct = {
   Slug: string;
   Name: string;
+  NameAr?: string;
   Status: TProductStatus;
   Stage?: TBilingual;
   Category: TBilingual;
@@ -88,6 +89,7 @@ export const PRODUCTS: TProduct[] = [
   {
     Slug: "bunxray",
     Name: "BunXRay",
+    NameAr: "ثاقب",
     Status: "beta",
     Stage: { en: "Free, invite-only beta", ar: "نسخة تجريبية مجانية بالدعوة" },
     Category: { en: "AI Security Testing", ar: "اختبار أمني بالذكاء الاصطناعي" },
@@ -97,7 +99,7 @@ export const PRODUCTS: TProduct[] = [
     },
     Description: {
       en: "BunXRay tests your real site the way an attacker would. A team of AI specialists, each able to run on a different model, maps your pages and endpoints, argues out a plan in a shared room, then tries it with real requests while you watch every message and every request as it happens. A different specialist re-checks each finding against its evidence before it reaches you, and the report shows the plans tried, the evidence and the model behind each finding.",
-      ar: "يختبر BunXRay موقعك الحقيقي كما يفعل المهاجم. فريق من متخصصي الذكاء الاصطناعي، يستطيع كل منهم العمل على نموذج مختلف، يرسم خريطة صفحاتك ونقاط الاتصال، ويتناقش في خطة داخل غرفة مشتركة، ثم ينفذها بطلبات حقيقية بينما تتابع كل رسالة وكل طلب لحظة بلحظة. ويعيد متخصص آخر فحص كل نتيجة مقابل دليلها قبل أن تصلك، ويعرض التقرير الخطط التي جُرّبت والأدلة والنموذج الذي يقف وراء كل نتيجة.",
+      ar: "يختبر ثاقب موقعك الحقيقي كما يفعل المهاجم. فريق من متخصصي الذكاء الاصطناعي، يستطيع كل منهم العمل على نموذج مختلف، يرسم خريطة صفحاتك ونقاط الاتصال، ويتناقش في خطة داخل غرفة مشتركة، ثم ينفذها بطلبات حقيقية بينما تتابع كل رسالة وكل طلب لحظة بلحظة. ويعيد متخصص آخر فحص كل نتيجة مقابل دليلها قبل أن تصلك، ويعرض التقرير الخطط التي جُرّبت والأدلة والنموذج الذي يقف وراء كل نتيجة.",
     },
     Audience: {
       en: "Teams and founders who own a web app and want to find the logic flaws a fixed scanner misses.",
@@ -173,11 +175,7 @@ export const PRODUCTS: TProduct[] = [
   {
     Slug: "est8core",
     Name: "Est8Core",
-    Status: "coming-soon",
-    Stage: {
-      en: "In final development, preparing for early access",
-      ar: "في مرحلة التطوير النهائية، والتجهيز للوصول المبكر",
-    },
+    Status: "live",
     Category: { en: "Real Estate Brokerage CRM", ar: "نظام CRM لشركات الوساطة العقارية" },
     Tagline: {
       en: "From lead to closed deal, with commissions, installments and approvals included.",
@@ -222,7 +220,7 @@ export const PRODUCTS: TProduct[] = [
       },
     ],
     ImagesFolder: "/Products/est8core",
-    Links: [{ key: "website", url: "https://demo.est8core.com", label: { en: "Website", ar: "موقع الويب" } }],
+    Links: [{ key: "website", url: "https://demo.est8core.com", label: { en: "Start free", ar: "ابدأ مجانًا" } }],
     DemoOnRequest: false,
     InvestorCta: false,
     Captions: {
@@ -295,6 +293,10 @@ export const PRODUCTS: TProduct[] = [
 
 export function IsAvailable(Product: TProduct): boolean {
   return Product.Status !== "coming-soon";
+}
+
+export function ProductName(Product: TProduct, Language: Lang): string {
+  return Language === "ar" && Product.NameAr ? Product.NameAr : Product.Name;
 }
 
 export function StatusLabel(Product: TProduct, Copy: { Live: string; Beta: string; ComingSoon: string; OpenCode: string }): string {

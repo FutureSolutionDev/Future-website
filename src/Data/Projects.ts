@@ -111,7 +111,10 @@ export const PROJECTS: TProject[] = [
       },
     ],
     Tech: ["React", "Node.js", "Express", "MariaDB", "Flutter", "Next.js"],
-    Links: [{ key: "website", url: "https://adhamfathallah.com" }],
+    Links: [
+      { key: "website", url: "https://adhamfathallah.com" },
+      { key: "googleplay", url: "https://play.google.com/store/apps/details?id=com.adhamfathallah.app" },
+    ],
     Captions: {
       "01-home.webp": { en: "Home page with live developer prices", ar: "الصفحة الرئيسية وأسعار المطورين المحدّثة" },
       "02-projects.webp": { en: "Projects directory by city and type", ar: "دليل المشروعات حسب المدينة والنوع" },

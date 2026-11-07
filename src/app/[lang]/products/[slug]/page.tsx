@@ -9,7 +9,7 @@ import { PageHeader } from "@/Components/Common/PageHeader";
 import { MetricRail } from "@/Components/Public/Home/MetricRail";
 import { WaitlistForm } from "@/Components/Public/Work/WaitlistForm";
 import { FeatureList, Screens } from "@/Components/Public/Work/DetailLayout";
-import { GetProductBySlug, IsAvailable, PRODUCTS, StatusLabel } from "@/Data/Products";
+import { GetProductBySlug, IsAvailable, PRODUCTS, ProductName, StatusLabel } from "@/Data/Products";
 import { GetProjectImages } from "@/Lib/Images";
 import { ProductSchema } from "@/Lib/Schema";
 import { BuildMetadata, LANGS, PathFor, ToLang } from "@/Lib/Seo";
@@ -31,9 +31,9 @@ export async function generateMetadata({ params }: TParams): Promise<Metadata> {
   return BuildMetadata({
     Language,
     Path: `/products/${slug}`,
-    Title: `${Product.Name}: ${Product.Category[Language]}`,
+    Title: `${ProductName(Product, Language)}: ${Product.Category[Language]}`,
     Description: Product.Tagline[Language],
-    Images: Cover ? [{ url: Cover, width: 1200, height: 750, alt: Product.Name }] : undefined,
+    Images: Cover ? [{ url: Cover, width: 1200, height: 750, alt: ProductName(Product, Language) }] : undefined,
   });
 }
 
@@ -46,6 +46,7 @@ export default async function ProductPage({ params }: TParams) {
   const { Common, Pages } = Copy;
   const Images = Product.ImagesFolder ? GetProjectImages(Product.ImagesFolder) : [];
   const IsLive = IsAvailable(Product);
+  const Name = ProductName(Product, Language);
   const Status = Product.Stage?.[Language] ?? StatusLabel(Product, Pages.Work);
 
   return (
@@ -56,10 +57,10 @@ export default async function ProductPage({ params }: TParams) {
         Common={Common}
         Trail={[
           { Name: Common.Nav.Work, Path: PathFor(Language, "/portfolio") },
-          { Name: Product.Name, Path: PathFor(Language, `/products/${Product.Slug}`) },
+          { Name, Path: PathFor(Language, `/products/${Product.Slug}`) },
         ]}
         Label={Product.Category[Language]}
-        Title={<span className="font-latin">{Product.Name}</span>}
+        Title={<span className={Name === Product.Name ? "font-latin" : undefined}>{Name}</span>}
         Lead={Product.Tagline[Language]}
       >
         <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-line px-3 py-1 text-sm font-semibold text-accent-ink">
@@ -68,7 +69,7 @@ export default async function ProductPage({ params }: TParams) {
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           {Product.DemoOnRequest && (
-            <ButtonLink Href={WhatsAppLink(`${Pages.Product.DemoMessage} ${Product.Name}`)} External>
+            <ButtonLink Href={WhatsAppLink(`${Pages.Product.DemoMessage} ${Name}`)} External>
               <MessageCircle size={18} aria-hidden="true" />
               {Pages.Product.RequestDemo}
             </ButtonLink>
@@ -105,7 +106,7 @@ export default async function ProductPage({ params }: TParams) {
                   {Pages.Product.InvestorTitle}
                 </p>
                 <p className="mt-1.5 text-[15px] text-ink-muted">{Pages.Product.InvestorText}</p>
-                <ButtonLink Href={WhatsAppLink(`${Pages.Product.InvestorMessage} ${Product.Name}`)} External Variant="Line" Size="Sm" ClassName="mt-4">
+                <ButtonLink Href={WhatsAppLink(`${Pages.Product.InvestorMessage} ${Name}`)} External Variant="Line" Size="Sm" ClassName="mt-4">
                   <MessageCircle size={16} aria-hidden="true" />
                   {Common.Cta.WhatsApp}
                 </ButtonLink>
@@ -121,7 +122,7 @@ export default async function ProductPage({ params }: TParams) {
         )}
 
         {Images.length > 0 && (
-          <Screens Title={Product.Name} ImagesFolder={Product.ImagesFolder} Images={Images} Captions={Product.Captions} Language={Language} Copy={Copy} />
+          <Screens Title={Name} ImagesFolder={Product.ImagesFolder} Images={Images} Captions={Product.Captions} Language={Language} Copy={Copy} />
         )}
         <FeatureList Title={Pages.Product.Delivers} Features={Product.Features} Language={Language} />
       </div>
@@ -129,7 +130,7 @@ export default async function ProductPage({ params }: TParams) {
       <CtaPanel
         Language={Language}
         Common={Common}
-        Title={IsLive ? Pages.Product.CtaLive : `${Pages.Product.CtaSoon} ${Product.Name}?`}
+        Title={IsLive ? Pages.Product.CtaLive : `${Pages.Product.CtaSoon} ${Name}?`}
         Text={Pages.Product.CtaText}
       />
     </>

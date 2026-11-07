@@ -10,7 +10,7 @@ import { FaqPreview } from "@/Components/Public/Home/FaqPreview";
 import { FeaturedCase } from "@/Components/Public/Work/FeaturedCase";
 import { ProjectCard } from "@/Components/Public/Work/ProjectCard";
 import { PROJECTS } from "@/Data/Projects";
-import { PRODUCTS } from "@/Data/Products";
+import { PRODUCTS, ProductName } from "@/Data/Products";
 import { GetProjectImages } from "@/Lib/Images";
 import { PageMetadata, PathFor, ToLang } from "@/Lib/Seo";
 import { GetDictionary } from "@/I18n/Index";
@@ -71,9 +71,9 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               <ProjectCard
                 Href={PathFor(Language, `/products/${LiveProduct.Slug}`)}
                 ImageSrc={GetProjectImages(LiveProduct.ImagesFolder)[0]}
-                ImageAlt={LiveProduct.Name}
+                ImageAlt={ProductName(LiveProduct, Language)}
                 Kicker={LiveProduct.Category[Language]}
-                Title={LiveProduct.Name}
+                Title={ProductName(LiveProduct, Language)}
                 Text={LiveProduct.Tagline[Language]}
                 Badge={Copy.Pages.Work.Live}
               />

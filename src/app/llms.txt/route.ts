@@ -44,7 +44,7 @@ export function GET() {
       "Products",
       PRODUCTS.map(
         (Product) =>
-          `- [${Product.Name}](${SITE_URL}/en/products/${Product.Slug}) (${Product.Status.replace("-", " ")}): ${Product.Tagline.en}`,
+          `- [${Product.Name}${Product.NameAr ? ` (${Product.NameAr})` : ""}](${SITE_URL}/en/products/${Product.Slug}) (${Product.Status.replace("-", " ")}): ${Product.Tagline.en}`,
       ),
     ),
     Section(

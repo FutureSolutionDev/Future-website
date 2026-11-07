@@ -3,6 +3,7 @@ import { CtaPanel } from "@/Components/Common/CtaPanel";
 import { Icon } from "@/Components/Common/Icon";
 import { JsonLd } from "@/Components/Common/JsonLd";
 import { PageHeader } from "@/Components/Common/PageHeader";
+import { PRODUCTS, ProductName } from "@/Data/Products";
 import { SERVICES } from "@/Data/Services";
 import { ServicesSchema } from "@/Lib/Schema";
 import { PageMetadata, PathFor, ToLang } from "@/Lib/Seo";
@@ -46,11 +47,20 @@ export default async function ServicesPage({ params }: { params: Promise<{ lang:
                   {Service.Stack && (
                     <p className="mt-4 flex flex-wrap items-center gap-2 text-sm text-ink-soft">
                       <span>{Copy.StackLabel}:</span>
-                      {Service.Stack.map((Tool) => (
-                        <span key={Tool} lang="en" className="rounded-full border border-line px-3 py-0.5 font-mono text-xs">
-                          {Tool}
-                        </span>
-                      ))}
+                      {Service.Stack.map((Tool) => {
+                        const Own = PRODUCTS.find((Product) => Product.Name === Tool);
+                        const Label = Own ? ProductName(Own, Language) : Tool;
+                        const IsLatin = Label === Tool;
+                        return (
+                          <span
+                            key={Tool}
+                            lang={IsLatin ? "en" : undefined}
+                            className={IsLatin ? "rounded-full border border-line px-3 py-0.5 font-mono text-xs" : "rounded-full border border-line px-3 py-0.5 text-xs font-semibold"}
+                          >
+                            {Label}
+                          </span>
+                        );
+                      })}
                     </p>
                   )}
                 </div>

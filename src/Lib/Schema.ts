@@ -4,7 +4,7 @@ import { SERVICES, TECH_EXPERTISE } from "@/Data/Services";
 import { TEAM } from "@/Data/Team";
 import { AnswerText, type TFaq } from "@/Data/Faqs";
 import type { TProject } from "@/Data/Projects";
-import type { TProduct } from "@/Data/Products";
+import { ProductName, type TProduct } from "@/Data/Products";
 import type { TArticleMeta } from "@/Lib/Blog";
 
 export type TCrumb = { Name: string; Path: string };
@@ -142,7 +142,8 @@ export function ProductSchema(Product: TProduct, Language: Lang, Images: string[
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: Product.Name,
+    name: ProductName(Product, Language),
+    ...(Product.NameAr ? { alternateName: Language === "ar" ? Product.Name : Product.NameAr } : {}),
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     description: Product.Description[Language],

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CONTACT, SITE_TITLE } from "@/Lib/Site";
 import { PathFor, type Lang } from "@/Lib/Seo";
 import { SERVICES } from "@/Data/Services";
-import { PRODUCTS } from "@/Data/Products";
+import { PRODUCTS, ProductName } from "@/Data/Products";
 import type { TCommon } from "@/I18n/Index";
 import type { TNavItem } from "./Navbar";
 
@@ -60,7 +60,7 @@ export function Footer({ Language, Common, Items, LogoSrc }: TFooterProps) {
             {PRODUCTS.map((Product) => (
               <li key={Product.Slug}>
                 <Link href={PathFor(Language, `/products/${Product.Slug}`)} className={LINK}>
-                  {Product.Name}
+                  {ProductName(Product, Language)}
                 </Link>
               </li>
             ))}
