@@ -190,7 +190,7 @@ export function Lightbox({
           alt={Active.Caption}
           width={1600}
           height={1000}
-          sizes="100vw"
+          unoptimized
           className={Cn(
             "rounded-[10px] shadow-[0_40px_90px_rgba(0,0,0,0.6)] animate-rise",
             Zoomed
