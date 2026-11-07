@@ -132,6 +132,7 @@ export function FilesViewer({ Title, ImagesFolder, InitialImages, Captions, File
                   alt={Active.Caption}
                   width={1400}
                   height={900}
+                  unoptimized
                   priority
                   style={{ width: `${ZOOM_STEPS[ZoomIndex]}%` }}
                   className="mx-auto h-auto max-w-none rounded-lg shadow-shot animate-rise md:max-h-[540px] md:w-auto md:object-contain"
