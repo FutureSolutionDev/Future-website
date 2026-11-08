@@ -30,7 +30,7 @@ export const SEO_EN = {
     about: {
       title: "About Future Solutions",
       description:
-        "Future Solutions Dev is a software agency founded in 2024, serving clients across the Arab world and worldwide with engineers, designers and strategists.",
+        "Future Solutions Dev is a software agency founded in 2022, serving clients across the Arab world and worldwide with engineers, designers and strategists.",
       keywords: ["about Future Solutions", "software agency Egypt", "software team", "company values"],
     },
     contact: {

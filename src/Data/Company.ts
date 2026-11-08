@@ -62,7 +62,7 @@ export const COMPANY_PRINCIPLES: { Icon: TPrincipleIcon; Title: TBilingual; Text
 ];
 
 export const COMPANY_STATS: { Value: string; Label: TBilingual }[] = [
-  { Value: "2024", Label: { en: "Founded, serving worldwide", ar: "سنة التأسيس، ونخدم العالم كله" } },
+  { Value: "2022", Label: { en: "Founded, serving worldwide", ar: "سنة التأسيس، ونخدم العالم كله" } },
   { Value: "100%", Label: { en: "You own the code", ar: "الكود ملكك بالكامل" } },
   { Value: "24/7", Label: { en: "Platforms live in production", ar: "منصات تعمل في الإنتاج دائمًا" } },
   { Value: "2", Label: { en: "Languages: Arabic and English", ar: "لغتان: العربية والإنجليزية" } },
