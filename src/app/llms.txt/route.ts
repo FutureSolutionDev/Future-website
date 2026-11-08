@@ -19,7 +19,7 @@ export function GET() {
     "",
     `> ${SeoCopy("en").SiteDescription}`,
     "",
-    "Future Solutions Dev is a software agency founded in 2024 and based in Cairo, Egypt. It serves businesses across the Arab world (Egypt, Saudi Arabia, the Gulf) and worldwide, in Arabic and English. Clients own 100% of the code, receive a fixed quote before work starts and see a working link every week.",
+    "Future Solutions Dev is a software agency founded in 2022 and based in Cairo, Egypt. It serves businesses across the Arab world (Egypt, Saudi Arabia, the Gulf) and worldwide, in Arabic and English. Clients own 100% of the code, receive a fixed quote before work starts and see a working link every week.",
     "",
     `Contact: ${CONTACT.Email} · +${CONTACT.Phone} · ${CONTACT.WhatsApp}`,
     "",

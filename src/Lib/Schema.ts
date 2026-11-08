@@ -26,7 +26,7 @@ export function OrganizationSchema(Language: Lang) {
     url: SITE_URL,
     logo: Absolute("/favico/logo.webp"),
     description: SeoCopy(Language).SiteDescription,
-    foundingDate: "2024",
+    foundingDate: "2022",
     email: CONTACT.Email,
     telephone: `+${CONTACT.Phone}`,
     address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" },

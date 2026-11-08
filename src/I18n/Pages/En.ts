@@ -105,7 +105,7 @@ export const PAGES_EN = {
   About: {
     TitleStart: "We turn business ideas into",
     TitleAccent: "platforms that win",
-    Lead: "Future Solutions is a software agency founded in 2024, serving clients across the Arab world and beyond. We design, build and run web, mobile and SaaS platforms for business owners who want an outcome, not a stalled tech project.",
+    Lead: "Future Solutions is a software agency founded in 2022, serving clients across the Arab world and beyond. We design, build and run web, mobile and SaaS platforms for business owners who want an outcome, not a stalled tech project.",
     StoryOne:
       "We started from a simple observation: most business owners don't need a website. They need a system that sells for them, organizes their work and grows with them. So we deliver complete platforms: a store that takes payments, a dashboard that runs everything and marketing tools built in.",
     StoryTwo:
