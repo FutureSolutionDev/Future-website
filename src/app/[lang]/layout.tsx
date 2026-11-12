@@ -7,6 +7,7 @@ import { Footer } from "@/Components/Public/Layout/Footer";
 import { THEME_INIT_SCRIPT } from "@/Components/Public/Layout/ThemeToggle";
 import SeasonalGreetings from "@/Components/Public/Seasonal/SeasonalGreetings";
 import { JsonLd } from "@/Components/Common/JsonLd";
+import { ServiceWorker } from "@/Components/Common/ServiceWorker";
 import { GetDictionary } from "@/I18n/Index";
 import { ACTIVE_GREETING, SITE_KEYS, SITE_TITLE } from "@/Lib/Site";
 import {
@@ -168,6 +169,7 @@ export default async function LangLayout({
           Items={Items}
           LogoSrc={ACTIVE_GREETING.Logo}
         />
+        <ServiceWorker />
         {SITE_KEYS.GaId && <GoogleAnalytics gaId={SITE_KEYS.GaId} />}
       </body>
     </html>
