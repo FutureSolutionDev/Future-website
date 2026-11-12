@@ -1,0 +1,54 @@
+import { ImagesRelease } from "@/Lib/AssetVersion";
+
+export const dynamic = "force-static";
+
+const CACHE_PREFIX = "fs-images-";
+const MAX_ENTRIES = 80;
+
+function Script(Release: string): string {
+  return `const CACHE_NAME = "${CACHE_PREFIX}${Release}";
+const MAX_ENTRIES = ${MAX_ENTRIES};
+const IMAGE_PATH = /^\\/(Projects|Products|Team|og)\\/.+\\.(webp|png|jpe?g|avif)$/i;
+
+self.addEventListener("install", () => self.skipWaiting());
+
+self.addEventListener("activate", (Event) => {
+  Event.waitUntil(
+    caches.keys()
+      .then((Keys) => Promise.all(Keys.filter((Key) => Key.startsWith("${CACHE_PREFIX}") && Key !== CACHE_NAME).map((Key) => caches.delete(Key))))
+      .then(() => self.clients.claim()),
+  );
+});
+
+async function Trim(Cache) {
+  const Keys = await Cache.keys();
+  for (let Index = 0; Index < Keys.length - MAX_ENTRIES; Index++) await Cache.delete(Keys[Index]);
+}
+
+async function FromCache(Request) {
+  const Cache = await caches.open(CACHE_NAME);
+  const Hit = await Cache.match(Request);
+  if (Hit) return Hit;
+  const Response = await fetch(Request);
+  if (Response.ok && Response.type === "basic") {
+    await Cache.put(Request, Response.clone());
+    await Trim(Cache);
+  }
+  return Response;
+}
+
+self.addEventListener("fetch", (Event) => {
+  const Request = Event.request;
+  if (Request.method !== "GET") return;
+  const Url = new URL(Request.url);
+  if (Url.origin !== self.location.origin || !Url.searchParams.has("v") || !IMAGE_PATH.test(Url.pathname)) return;
+  Event.respondWith(FromCache(Request).catch(() => fetch(Request)));
+});
+`;
+}
+
+export function GET(): Response {
+  return new Response(Script(ImagesRelease()), {
+    headers: { "Content-Type": "application/javascript; charset=utf-8", "Cache-Control": "no-cache" },
+  });
+}

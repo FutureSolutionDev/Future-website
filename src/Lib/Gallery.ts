@@ -3,7 +3,7 @@ import type { TScreenCaptions } from "@/Data/Links";
 import type { TGalleryImage } from "@/Components/Common/Gallery/Types";
 
 export function FileNameOf(Src: string): string {
-  return Src.split("/").pop() ?? Src;
+  return Src.split("?")[0].split("/").pop() ?? Src;
 }
 
 function HumanizeFileName(FileName: string): string {

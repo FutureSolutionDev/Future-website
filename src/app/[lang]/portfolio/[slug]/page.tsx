@@ -10,6 +10,7 @@ import { StoreBadge } from "@/Components/Common/StoreBadge";
 import { AppShowcase } from "@/Components/Public/Work/AppShowcase";
 import { FactsGrid, FeatureList, Screens, TechList } from "@/Components/Public/Work/DetailLayout";
 import { GetProjectBySlug, PROJECTS } from "@/Data/Projects";
+import { Versioned } from "@/Lib/AssetVersion";
 import { GetProjectImages, GetWorkOgImage } from "@/Lib/Images";
 import { MobileAppSchema, ProjectSchema } from "@/Lib/Schema";
 import { BuildMetadata, LANGS, PathFor, ToLang } from "@/Lib/Seo";
@@ -101,6 +102,8 @@ export default async function ProjectPage({ params }: TParams) {
         {Project.App && (
           <AppShowcase
             App={Project.App}
+            IconSrc={Versioned(`${Project.App.Folder}/icon.webp`)}
+            ScreenSrcs={Project.App.Screens.map((Screen) => Versioned(`${Project.App?.Folder}/${Screen.File}`))}
             Language={Language}
             Label={Pages.Project.AppLabel}
             Title={Pages.Project.AppTitle}

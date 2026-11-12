@@ -11,6 +11,8 @@ import type { Lang } from "@/Lib/Seo";
 
 type TAppShowcaseProps = {
   App: TProjectApp;
+  IconSrc: string;
+  ScreenSrcs: string[];
   Language: Lang;
   Label: string;
   Title: string;
@@ -18,10 +20,10 @@ type TAppShowcaseProps = {
   GalleryCopy: TGalleryCopy;
 };
 
-export function AppShowcase({ App, Language, Label, Title, StoreCopy, GalleryCopy }: TAppShowcaseProps) {
+export function AppShowcase({ App, IconSrc, ScreenSrcs, Language, Label, Title, StoreCopy, GalleryCopy }: TAppShowcaseProps) {
   const [OpenIndex, SetOpenIndex] = useState<number | null>(null);
-  const Images: TGalleryImage[] = App.Screens.map((Screen) => ({
-    Src: `${App.Folder}/${Screen.File}`,
+  const Images: TGalleryImage[] = App.Screens.map((Screen, Index) => ({
+    Src: ScreenSrcs[Index] ?? `${App.Folder}/${Screen.File}`,
     Caption: Screen.Caption[Language],
     FileName: Screen.File,
   }));
@@ -33,7 +35,7 @@ export function AppShowcase({ App, Language, Label, Title, StoreCopy, GalleryCop
           <SectionLabel>{Label}</SectionLabel>
           <div className="mt-6 flex items-center gap-4">
             <Image
-              src={`${App.Folder}/icon.webp`}
+              src={IconSrc}
               alt={App.Name}
               width={128}
               height={128}
