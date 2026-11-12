@@ -81,6 +81,7 @@ export const PRODUCTS: TProduct[] = [
     DemoOnRequest: true,
     Captions: {
       "01-dashboard.webp": { en: "Command dashboard: what needs attention today", ar: "لوحة القيادة: ما يحتاج انتباهك اليوم" },
+      "01b-dashboard-charts.webp": { en: "Dashboard: operations, sales, new customers and monthly revenue", ar: "لوحة القيادة: التشغيل والمبيعات والعملاء الجدد والإيرادات الشهرية" },
       "02-customers.webp": { en: "Customers with source, status and owner", ar: "العملاء بمصدرهم وحالتهم والمسؤول عنهم" },
       "03-customer-panel.webp": { en: "Customer profile in a side panel", ar: "ملف العميل في لوحة جانبية" },
       "04-contracts.webp": { en: "Contracts and the position of every month", ar: "العقود وموقف كل شهر" },
