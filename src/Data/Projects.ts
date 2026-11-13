@@ -121,7 +121,7 @@ export const PROJECTS: TProject[] = [
       },
     ],
     Tech: ["React", "Node.js", "Express", "MariaDB", "Flutter", "Next.js"],
-    Links: [{ key: "website", url: "https://adhamfathallah.com" }],
+    Links: [{ key: "website", url: "https://app.adhamfathallah.com" }],
     App: {
       Name: "Adham Fathallah",
       Folder: "/Projects/adham-fathallah/App",
