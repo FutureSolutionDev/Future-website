@@ -1,0 +1,30 @@
+3:"$Sreact.fragment"
+4:"/_next/static/chunks/3qfy96eoyh-ek.js"
+5:I[39756,["$4"],"default"]
+6:I[37457,["$4"],"default"]
+b:"/_next/static/chunks/1kaedbcst2f8i.js"
+c:"/_next/static/chunks/3ke0cl66s8vye.js"
+d:"/_next/static/chunks/04-5f7xbs_ljg.js"
+e:I[22016,["$b","$c","$d"],""]
+f:I[97367,["$4"],"OutletBoundary"]
+10:"$Sreact.suspense"
+13:"ViewportBoundary"
+14:I[97367,["$4"],"$13"]
+15:"MetadataBoundary"
+16:I[97367,["$4"],"$15"]
+17:I[27201,["$4"],"IconMark"]
+8:X
+8:C
+9:X
+a:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$3","c",{"children":[["$","section",null,{"className":"container-page py-24","children":[["$","meta",null,{"httpEquiv":"refresh","content":"0;url=/en/services"}],["$","h1",null,{"className":"sr-only","children":"This page has moved. If you are not redirected, follow this link:"}],["$","p",null,{"className":"text-lg text-ink-muted","children":["This page has moved. If you are not redirected, follow this link:"," ",["$","$Le",null,{"href":"/en/services","className":"font-semibold text-accent-ink underline","children":"/en/services"}]]}]]}],null,["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]]}],"p":"$@12","v":null,"s":"$9"}}]]
+2:[["children",{"s":"technologies","h":64,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
+1:[["children",{"s":{"n":"lang","t":"d","k":"en","s":["llms.txt","sw.js"]},"h":65584,"c":"$Q2"}]]
+0:{"t":{"t":{"s":"","h":131152,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L14",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#ffffff","media":"(prefers-color-scheme: light)"}],["$","meta","3",{"name":"theme-color","content":"#0b2840","media":"(prefers-color-scheme: dark)"}]]}],["$","$L16",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$10",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Future Solutions Dev"}],["$","meta","1",{"name":"description","content":"Future Solutions builds custom web, mobile, SaaS and AI software for businesses in Egypt, the Gulf and worldwide, from real estate platforms to online stores."}],["$","meta","2",{"name":"application-name","content":"Future Solutions Dev"}],["$","link","3",{"rel":"manifest","href":"/manifest.json"}],["$","meta","4",{"name":"publisher","content":"Future Solutions Dev"}],["$","meta","5",{"name":"robots","content":"noindex, follow"}],["$","link","6",{"rel":"canonical","href":"https://futuresolutionsdev.com/en/services"}],["$","meta","7",{"name":"google-site-verification","content":"KZqsk3oGtcDsiEFbH2SDUbaSsBA238c42ShrLfsmv2g"}],["$","meta","8",{"name":"msvalidate.01","content":"314B6D037027F4B4D7C73C663ECF08DA"}],["$","link","9",{"rel":"shortcut icon","href":"/favico/favico.png"}],["$","link","10",{"rel":"icon","href":"/favico/favico.png"}],["$","link","11",{"rel":"apple-touch-icon","href":"/favico/favico.png"}],["$","$L17","12",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@18","v":null,"s":"$9"}},"a":"$@19","u":"$@1a","b":"2hxcLeWg_8CT2NqQqLXHM"}
+11:null
+1a:true
+9:300
+9:C
+19:0
+7:"$undefined"
+18:"$undefined"
+12:"$undefined"

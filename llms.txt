@@ -1,0 +1,85 @@
+# Future Solutions Dev
+
+> Future Solutions builds custom web, mobile, SaaS and AI software for businesses in Egypt, the Gulf and worldwide, from real estate platforms to online stores.
+
+Future Solutions Dev is a software agency founded in 2022 and based in Cairo, Egypt. It serves businesses across the Arab world (Egypt, Saudi Arabia, the Gulf) and worldwide, in Arabic and English. Clients own 100% of the code, receive a fixed quote before work starts and see a working link every week.
+
+Contact: info@futuresolutionsdev.com · +201015471713 · https://wa.me/201148371185
+
+## Services
+
+- [Web Development](https://futuresolutionsdev.com/en/services/web): Fast bilingual websites, custom stores and web apps built with Next.js and React, made to rank on Google and convert visitors.
+- [Mobile Apps](https://futuresolutionsdev.com/en/services/mobile): iPhone and Android apps from one codebase with Flutter or React Native, with notifications, offline mode and store publishing.
+- [SaaS Platforms](https://futuresolutionsdev.com/en/services/saas): Multi-tenant SaaS platforms with subscriptions, Stripe, Paymob and Fawry billing, roles, APIs and reports, from MVP to scale.
+- [AI Solutions](https://futuresolutionsdev.com/en/services/ai): AI assistants on your own data, document and voice processing and workflow automation with Claude, GPT, Gemini and open models.
+- [Hosting & Operations](https://futuresolutionsdev.com/en/services/hosting): Server setup, automated deployments, monitoring and backups on VPS or AWS, Google Cloud and Azure, with costs you can predict.
+- [Cybersecurity](https://futuresolutionsdev.com/en/services/security): Penetration testing, AI security testing, server hardening, dependency audits and Cloudflare protection, with a clear report of every fix.
+
+Core technologies: Next.js, React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Framer Motion, GSAP, TanStack Query, SWR, Zustand, Redux Toolkit, React Hook Form, Zod, Node.js, Bun, Hono, Express, NestJS, Go, Laravel, PHP, .NET, PostgreSQL, MySQL, MariaDB, MongoDB, REST, OpenAPI, GraphQL, tRPC, Flutter, Dart, React Native, Expo, Firebase Auth, Firebase Cloud Messaging, Crashlytics, WebSockets, Google Play, App Store, Drizzle, Prisma, Redis, BullMQ, Stripe, Paymob, Fawry, Socket.IO, WhatsApp Business API, Claude, GPT, Gemini, Kimi, GLM, Llama, Mistral, pgvector, LangChain, Whisper, Python, FastAPI, Hetzner, DigitalOcean, Contabo, AWS, Google Cloud, Azure, Vercel, Netlify, Nginx, PM2, systemd, Docker, GitHub Actions, Uptime Kuma, Better Stack, Grafana, Prometheus, Cloudflare R2, Amazon S3, BunXRay, OWASP ZAP, Burp Suite, Cloudflare, Let's Encrypt, Fail2ban, UFW, Snyk, Dependabot, Sentry.
+
+## Industries
+
+- [Real Estate](https://futuresolutionsdev.com/en/solutions#real-estate): Our deepest sector. We built the platforms brokers use every day: live developer prices and payment plans, brokerage CRMs with commissions and approvals, and buyer portals with mobile apps.
+- [E-Commerce](https://futuresolutionsdev.com/en/solutions#e-commerce-solutions): A store that sells while you sleep: it takes payments, manages stock and wins back abandoned carts.
+- [FinTech](https://futuresolutionsdev.com/en/solutions#fintech-solutions): Financial systems where every transaction is recorded, encrypted and auditable.
+- [Healthcare](https://futuresolutionsdev.com/en/solutions#healthcare-solutions): Clinics and medical centers that respect patients' time and the privacy of their records.
+- [Education](https://futuresolutionsdev.com/en/solutions#education): Learning platforms for schools, centers and course creators, with content, exams and payments in one place.
+- [Restaurants and Cafes](https://futuresolutionsdev.com/en/solutions#restaurants): Your own ordering channel and digital menu, so you keep the margin that delivery apps take.
+- [Logistics and Delivery](https://futuresolutionsdev.com/en/solutions#logistics): Shipments, drivers and warehouses tracked live, with customers informed at every step.
+- [Tourism and Hotels](https://futuresolutionsdev.com/en/solutions#tourism): Direct bookings for trips, rooms and experiences, without paying commission on every guest.
+- [HR and Recruitment](https://futuresolutionsdev.com/en/solutions#hr): Attendance, payroll and hiring handled in one system instead of spreadsheets.
+- [Marketing and Service Agencies](https://futuresolutionsdev.com/en/solutions#agencies): Clients, projects and approvals in one place, so agreements never get lost in WhatsApp.
+- [Beauty, Wellness and Fitness](https://futuresolutionsdev.com/en/solutions#wellness): Bookings, memberships and loyalty for salons, beauty clinics and gyms.
+- [Construction and Manufacturing](https://futuresolutionsdev.com/en/solutions#manufacturing): Projects, inventory and production followed from the site or the factory floor.
+- [Startups](https://futuresolutionsdev.com/en/solutions#startups): From idea to a first version customers can pay for, usually within 4 to 8 weeks.
+- [Government and Nonprofits](https://futuresolutionsdev.com/en/solutions#government): Service portals and donation platforms that are accessible, secure and easy to use.
+- [Law Firms](https://futuresolutionsdev.com/en/solutions#legal): Cases, deadlines and contracts organized, with documents kept private and searchable.
+- [AI for Any Business](https://futuresolutionsdev.com/en/solutions#ai): Whatever your sector, AI can answer customers, read documents and automate busywork.
+
+## Client projects
+
+- [Master V](https://futuresolutionsdev.com/en/portfolio/master-v): Real Estate Intelligence Platform. 10K+ brokers active on the platform across 1K+ compounds and 15K+ live-priced units, with data refreshed every day.
+- [Adham Fathallah](https://futuresolutionsdev.com/en/portfolio/adham-fathallah): Consumer Real Estate Platform. 20K+ buyers browsing 1K+ compounds, on the same engine relaunched white-labeled for a top property brand.
+- [Imtithal](https://futuresolutionsdev.com/en/portfolio/imtithal): E-Commerce Platform. 500+ digital files sold and 50+ B2B teams served, with the store, admin panel and marketing automation shipped as one platform.
+
+## Products
+
+- [Nova CRM](https://futuresolutionsdev.com/en/products/nova-crm) (live): The full revenue cycle, from the first call to renewal, in one branded system.
+- [BunXRay (ثاقب)](https://futuresolutionsdev.com/en/products/bunxray) (beta): Watch a team of AI specialists test your site's security, step by step.
+- [Internet Monitor](https://futuresolutionsdev.com/en/products/internet-monitor) (open source): Document every internet outage, and complain to your provider with proof.
+- [Est8Core](https://futuresolutionsdev.com/en/products/est8core) (live): From lead to closed deal, with commissions, installments and approvals included.
+- [SmartestProp](https://futuresolutionsdev.com/en/products/smartestprop) (coming soon): Your branded AI agent answers every property inquiry and hands you a qualified lead.
+
+## Frequently asked questions
+
+- **How much does a project cost?** It depends on the scope: a landing site is not an e-commerce platform. After one free consultation you get a fixed quote with a clear scope. The price you approve is the price you pay.
+- **How long does it take?** A typical first version ships in 4 to 8 weeks depending on scope, with a working link you can see every week from week one, as described in how we work.
+- **I have an idea but I'm not technical. Where do I start?** That is exactly what the free consultation is for. Tell us the business goal in your own words, and we translate it into what is possible, what it costs and how long it takes.
+- **What do you need from me to get started?** Three things: describe your goal in plain words, share examples you like (any site or app), and be available for quick decisions when we ask. We handle design, content structure and everything technical. Send us your idea.
+- **Who owns the code?** You do, 100%. Code, design and data are yours, delivered with documentation. There is no lock-in: any developer can continue the work after us.
+- **My idea is confidential. How is it protected?** We sign an NDA before you share any details. It is standard practice for us. Your idea, data and business information stay confidential whether or not we end up working together.
+- **Who pays for hosting and running costs?** Hosting and domain are registered in your name and stay yours. Typical costs are known upfront with no hidden markup. We set everything up and can manage it for you through our hosting and operations service.
+- **Do I pay everything upfront?** No. Payment is split into installments tied to delivery milestones you can see and test. You pay for progress you have verified, not for promises.
+- **Do you work with clients outside Egypt?** Yes. We work fully remotely in Arabic and English, and our platforms ship bilingual when your market needs it. See our work.
+- **What happens after launch?** We don't disappear. Support and maintenance plans keep your platform fast, secure and up to date, and we are there for the next feature when you are ready.
+- **I already have an old website or system. Rebuild or improve?** We assess it first. Sometimes targeted improvements get you 80% of the value at a fraction of the cost; sometimes a rebuild is genuinely cheaper in the long run. We tell you which, with reasons, before you spend.
+
+## Articles
+
+- [Website Development Cost in Egypt 2026: Honest Ranges and What Moves the Price](https://futuresolutionsdev.com/en/blog/website-development-cost-egypt): Wondering what a website or online platform costs in Egypt in 2026? Honest ranges by project type, the real factors that move the price, and red flags to avoid.
+- [Custom E-Commerce Platform Development That Actually Drives Revenue](https://futuresolutionsdev.com/en/blog/e-commerce-solutions): Build a custom e-commerce platform engineered for conversions, not just presence. See what separates high-revenue online stores from the rest.
+- [Real Estate Website Development: Build a Platform That Generates Leads](https://futuresolutionsdev.com/en/blog/real-estate-website-development): Why generic portal listings don't sell your projects, and what a lead-generating real estate platform must include.
+- [Website Builder vs Custom Website: Which One Does Your Business Actually Need?](https://futuresolutionsdev.com/en/blog/custom-website-vs-website-builders): Honest comparison of WordPress, Shopify, and Wix vs custom development: costs, ownership, SEO, and Arabic support over 3 years.
+- [Real Estate CRM Software: Stop Losing Leads in WhatsApp and Excel](https://futuresolutionsdev.com/en/blog/real-estate-crm-system): How a purpose-built real estate CRM captures every lead, keeps agents accountable, and gives management real visibility.
+- [How to Choose a Software Development Company: 8 Questions to Ask Before Signing](https://futuresolutionsdev.com/en/blog/how-to-choose-software-company): 8 practical questions that protect your budget, timeline, and code ownership before you hire any software agency.
+- [Fintech Software Development: Building Secure Financial Applications That Earn Trust](https://futuresolutionsdev.com/en/blog/fintech-solutions): Fintech software development demands more than clean code. It demands verifiable security, regulatory awareness, and systems that work when money is on the line.
+- [Custom ERP System: The Smarter Way to Run Your Business](https://futuresolutionsdev.com/en/blog/erp-solutions): Discover how a custom ERP system eliminates spreadsheet chaos, unifies your data, and gives growing businesses real control.
+- [Clinic Management Software: Running a Modern Medical Practice](https://futuresolutionsdev.com/en/blog/healthcare-solutions): See how purpose-built clinic management software reduces admin burden, cuts no-shows, and improves the patient experience.
+
+## Arabic version
+
+- [Home](https://futuresolutionsdev.com/ar)
+- [Services](https://futuresolutionsdev.com/ar/services)
+- [Our work](https://futuresolutionsdev.com/ar/portfolio)
+- [FAQ](https://futuresolutionsdev.com/ar/faq)
+- [Blog](https://futuresolutionsdev.com/ar/blog)

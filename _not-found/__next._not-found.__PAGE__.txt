@@ -1,0 +1,27 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/08mika-44sn50.js"
+3:I[22016,["$2"],""]
+7:I[39756,["$2"],"default"]
+8:I[37457,["$2"],"default"]
+c:I[97367,["$2"],"OutletBoundary"]
+d:"$Sreact.suspense"
+10:"ViewportBoundary"
+11:I[97367,["$2"],"$10"]
+12:"MetadataBoundary"
+13:I[97367,["$2"],"$12"]
+:HL["/_next/static/chunks/1a-ef64s9qle1.css","style"]
+5:X
+a:X
+a:C
+b:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[null,null,["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]]}],"p":"$@f","v":null,"s":"$5"}}]]
+6:[["children",{"s":"/_not-found","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@9","v":"$a","s":"$5"},"c":"$Qb"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1a-ef64s9qle1.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/08mika-44sn50.js","async":true}]],["$","html",null,{"lang":"ar","dir":"rtl","className":"XDFYBW_variable","children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n(function () {\n  var path = location.pathname;\n  if (/^\\/(en|ar)(\\/|$)/.test(path)) return;\n  var lang = 'en';\n  try { if (localStorage.getItem('language') === 'ar') lang = 'ar'; } catch (e) {}\n  if (lang === 'en' && /^ar(-|$)/i.test(navigator.language || '')) lang = 'ar';\n  document.documentElement.style.visibility = 'hidden';\n  location.replace('/' + lang + (path === '/' ? '' : path) + location.search);\n})();\n"}}]}],["$","body",null,{"data-theme":"inverse","className":"grid min-h-screen place-items-center px-4","children":["$","main",null,{"className":"max-w-xl text-center","children":[["$","p",null,{"className":"font-mono text-7xl font-semibold text-accent","children":"404"}],["$","h1",null,{"className":"mt-6 text-3xl font-bold","children":"الصفحة غير موجودة"}],["$","p",null,{"className":"mt-3 text-ink-muted","children":"الصفحة التي تبحث عنها غير موجودة أو نُقلت إلى مكان آخر."}],["$","p",null,{"lang":"en","dir":"ltr","className":"mt-2 text-ink-soft","children":"The page you are looking for does not exist or has been moved."}],["$","div",null,{"className":"mt-8 flex flex-wrap justify-center gap-3","children":[["$","$L3",null,{"href":"/ar","className":"inline-flex h-[50px] items-center rounded-md bg-primary px-6 font-semibold text-on-primary","children":"العودة إلى الرئيسية"}],["$","$L3",null,{"href":"/en","lang":"en","className":"inline-flex h-[50px] items-center rounded-md border border-line-strong px-6 font-semibold","children":"Back to home"}]]}]]}]}]]}]]}],"p":"$@4","v":null,"s":"$5"},"c":"$Q6"},"h":{"r":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L11",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L13",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"404 | Future Solutions Dev"}],["$","meta","1",{"name":"robots","content":"noindex, nofollow"}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@14","v":null,"s":"$5"}},"a":"$@15","u":"$@16","b":"2hxcLeWg_8CT2NqQqLXHM"}
+e:null
+5:300
+16:true
+5:C
+15:0
+9:"$undefined"
+4:"$undefined"
+14:"$undefined"
+f:"$undefined"
